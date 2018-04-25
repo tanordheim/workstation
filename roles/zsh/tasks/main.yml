@@ -5,11 +5,13 @@
   with_items:
     - zsh
     - zsh-completions
+  become: true
 
 - name: Change shell to zsh
   user:
     name: "{{ ansible_user }}"
     shell: /bin/zsh
+  become: true
 
 - name: Install zsh configuration
   copy: src=zshrc dest=~/.zshrc
