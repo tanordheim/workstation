@@ -5,7 +5,13 @@
   pacman: name=termite state=present
 
 - name: Prepare Termite configuration directories
-  file: path=~/.config/termite state=directory
+  file: path=~/.config/{{ item }} state=directory
+  with_items:
+    - termite
+    - gtk-3.0
 
 - name: Install Termite configuration
-  copy: src=config dest=~/.config/termite/config
+  copy: src={{ item.src }} dest=~/.config/{{ item.dest }}
+  with_items:
+    - { src: "config", dest: "termite/config" }
+    - { src: "gtk.css", dest: "gtk-3.0/gtk.css" }
