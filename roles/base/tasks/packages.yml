@@ -6,6 +6,7 @@
   with_items:
     - base-devel
     - bc
+    - scrot
     - xclip
 
 - name: Install base AUR packages

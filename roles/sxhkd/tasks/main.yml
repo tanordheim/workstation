@@ -1,0 +1,14 @@
+---
+
+- name: Install sxhkd and dependencies
+  become: true
+  pacman: name={{ item }} state=present
+  with_items:
+    - sxhkd
+    - rofi
+
+- name: Prepare sxhkd configuration directories
+  file: path=~/.config/sxhkd state=directory
+
+- name: Install sxhkd configuration
+  copy: src=sxhkdrc dest=~/.config/sxhkd
