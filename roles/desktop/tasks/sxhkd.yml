@@ -8,7 +8,7 @@
     - rofi
 
 - name: Prepare sxhkd configuration directories
-  file: path=~/.config/sxhkd tate=directory
+  file: path=~/.config/sxhkd state=directory
 
 - name: Install sxhkd configuration
   copy: src=sxhkd/sxhkdrc dest=~/.config/sxhkd/sxhkdrc
