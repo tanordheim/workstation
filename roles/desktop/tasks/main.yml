@@ -1,5 +1,12 @@
 ---
 
+- name: Include desktop dependencies
+  pacman: name={{ item }} state=present
+  with_items:
+    - xorg-xrandr
+    - xorg-xrdb
+    - xorg-xsetroot
+
 - include: sddm.yml
 - include: termite.yml
 - include: compton.yml
