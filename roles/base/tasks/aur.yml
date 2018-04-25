@@ -7,8 +7,8 @@
 - name: Configure sudo access for AUR user
   become: true
   lineinfile:
-    dest=/etc/sudoers.d/aurbuilder-allow-sudo-pacman
-    state=present
-    create=yes
-    regexp="aurbuilder .*"
+    path: /etc/sudoers.d/aurbuilder-allow-sudo-pacman
+    create: yes
+    regexp: "aurbuilder .*"
     line="aurbuilder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    validate: "visudo -cf %s"
