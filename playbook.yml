@@ -1,7 +1,6 @@
 ---
 
 - hosts: workstations
-  become: yes
   roles:
       - { role: base }
       - { role: zsh }
