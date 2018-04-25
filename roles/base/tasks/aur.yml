@@ -5,6 +5,6 @@
 
 - name: Configure sudo access for AUR user
   copy:
-    content: aurbuilder ALL=(ALL) NOPASSWD: /usr/bin/pacman
+    content: "aurbuilder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     path: /etc/sudoers.d/aurbuilder-allow-sudo-pacman
     validate: /usr/sbin/visudo -cf %s
