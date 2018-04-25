@@ -3,3 +3,7 @@
 - name: Install sddm
   become: true
   pacman: name=sddm state=present
+
+- name: Enable sddm
+  become: true
+  systemd: name=sddm enabled=yes
