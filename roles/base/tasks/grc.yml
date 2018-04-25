@@ -1,14 +1,15 @@
 ---
 
-# - name: Install grc
-#   become: true
-#   aur: name=grc state=present
+- name: Install grc
+  become: true
+  aur: name=grc user=aurbuilder
 
 - name: Prepare grc configuration directories
   file: path=~/.grc state=directory
 
 - name: Install grc configuration
-  copy: src={{ item }} dest=~/.grc/{{ item }}
+  copy: src=grc/{{ item }} dest=~/.grc/{{ item }}
   with_items:
     - grc.conf
     - conf.gotest
+

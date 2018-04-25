@@ -8,3 +8,4 @@
 - include: aur.yml
 - include: packages.yml
 - include: git.yml
+- include: grc.yml

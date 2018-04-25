@@ -4,7 +4,6 @@
   roles:
       - { role: base }
       - { role: shell }
-      - { role: grc }
       - { role: termite }
       - { role: compton }
       - { role: bspwm }
