@@ -55,7 +55,6 @@ do
             ;;
     esac
 done &
-xrandr --output DisplayPort-1 --auto --right-of DisplayPort-2 --auto --primary
 $HOME/.config/bspwm/configure_monitors "$(bspc query -M | wc -l)"
 
 # Set wallpaper.
