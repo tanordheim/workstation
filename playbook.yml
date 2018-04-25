@@ -9,4 +9,4 @@
       - { role: grc }
       - { role: termite }
       - { role: compton }
-      - { role: sxhkd }
+      - { role: bspwm }

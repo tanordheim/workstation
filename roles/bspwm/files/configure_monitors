@@ -1,0 +1,30 @@
+#!/bin/sh
+
+log() {
+	MSG=$1
+	# touch $HOME/.config/bspwm/configure_monitors.log
+	# echo $MSG >> $HOME/.config/bspwm/configure_monitors.log
+	echo $MSG
+}
+
+DISPLAYS=$1
+log "Configuring for $DISPLAYS displays"
+if [ "$DISPLAYS" -eq "2" ]; then
+
+	mon1=$(bspc query -M | sed -n 1p)
+	log "Configuring monitor 1: $mon1"
+    bspc monitor $mon1 -d 1 2 3 4
+
+	mon2=$(bspc query -M | sed -n 2p)
+	log "Configuring monitor 2: $mon2"
+    bspc monitor $mon2 -d 5 6 7 8
+
+else
+	log "Configuring default monitor"
+    bspc monitor -d 1 2 3 4 5 6 7 8
+fi
+
+log "Relaunching Polybar"
+$HOME/.config/polybar/start.sh
+
+log "Done configuring for $DISPLAYS displays"

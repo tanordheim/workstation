@@ -1,0 +1,72 @@
+#!/bin/sh
+
+start_bg() {
+    PNAME=$1
+    CMD=$2
+
+    echo "Starting background process $PNAME ($CMD)"
+    pkill -x $PNAME
+    $CMD &
+}
+
+
+# Configure Xresources
+xrdb -merge ~/.Xresources
+
+# Set keyboard layout.
+setxkbmap no
+
+# Start compton compositor.
+start_bg "compton" "compton --config $HOME/.config/compton/compton.conf"
+
+# Start sxhkd hotkey daemon.
+start_bg "sxhkd" "sxhkd"
+
+# Change which cursor to use when nothing is focused.
+xsetroot -cursor_name left_ptr
+
+# Identify some colors for the color scheme.
+color=$(xrdb -query | grep "color4" | cut -f2 | sed -r 's/#//' | head -n 1)
+color2=$(xrdb -query | grep "color0" | cut -f2 | sed -r 's/#//' | head -n 1)
+
+# Allow click to focus.
+bspc config click_to_focus true
+
+# Configure borders and gaps.
+bspc config border_width 0
+bspc config focused_border_color "#$color"
+bspc config normal_border_color "#$color2"
+bspc config window_gap 15
+
+# Configure how windows are split and organized.
+bspc config split_ratio 0.50
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config initial_polarity second_child
+
+# Configure monitors and desktops.
+bspc subscribe monitor | while read -r line
+do
+    case $line in
+        monitor_add*|monitor_geometry*)
+            $HOME/.config/bspwm/configure_monitors "$(bspc query -M | wc -l)"
+            ;;
+        *)
+            ;;
+    esac
+done &
+xrandr --output DisplayPort-1 --auto --right-of DisplayPort-2 --auto --primary
+$HOME/.config/bspwm/configure_monitors "$(bspc query -M | wc -l)"
+
+# Set wallpaper.
+if [ -x ~/.fehbg ]
+then
+	~/.fehbg
+fi
+
+# Start Polybar.
+$HOME/.config/polybar/start.sh
+
+# Start background services.
+start_bg "nm-applet" "nm-applet"
+dropbox start
