@@ -6,3 +6,4 @@
       - { role: zsh }
       - { role: git }
       - { role: tmux }
+      - { role: grc }
