@@ -1,0 +1,5 @@
+# Add a "c" function with an autocomplete definition to allow easily
+# changing working directory into a source code directory.
+c() { cd $HOME/Dev/src/$1; }
+_c() { _files -W $HOME/Dev/src -/;  }
+compdef _c c

@@ -1,0 +1,12 @@
+# Use colors in ls
+alias ls="ls --color"
+
+# Wrap go commands in grc for colorization of things like "go test".
+alias go="nocorrect grc go"
+
+# "open" alias, bad habit from OSX.
+alias open="xdg-open"
+
+# use neovim instead of vi/vim.
+alias vi="nvim"
+alias vim="nvim"
