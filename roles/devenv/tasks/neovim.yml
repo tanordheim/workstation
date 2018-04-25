@@ -24,4 +24,7 @@
   copy: src=neovim/init.vim dest=~/.config/nvim/init.vim
 
 - name: Update Neovim plugins
-  shell: nvim +PluginInstall +qall
+  shell: nvim --headless {{ item }}
+  with_items:
+    - +PluginInstall +qall
+    - +UpdateRemotePlugins +qall
