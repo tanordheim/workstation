@@ -1,0 +1,8 @@
+---
+
+- name: Install git
+  become: true
+  pacman: name=git state=present
+
+- name: Install git configuration
+  copy: src=git/gitconfig item.src }} dest=~/.gitconfig

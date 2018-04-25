@@ -7,3 +7,4 @@
 - include: ssh-keys.yml
 - include: aur.yml
 - include: packages.yml
+- include: git.yml

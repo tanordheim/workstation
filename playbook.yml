@@ -3,9 +3,7 @@
 - hosts: workstations
   roles:
       - { role: base }
-      - { role: zsh }
-      - { role: git }
-      - { role: tmux }
+      - { role: shell }
       - { role: grc }
       - { role: termite }
       - { role: compton }

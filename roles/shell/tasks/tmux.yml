@@ -5,4 +5,4 @@
   pacman: name=tmux state=present
 
 - name: Install tmux configuration
-  copy: src=tmux.conf dest=~/.tmux.conf
+  copy: src=tmux/tmux.conf dest=~/.tmux.conf
