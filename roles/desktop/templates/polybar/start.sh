@@ -8,7 +8,7 @@ killall polybar
 {% if ansible_hostname == "starscream" %}
 export PRIMARY_MONITOR="DisplayPort-2"
 export SECONDARY_MONITOR="DisplayPort-1"
-{% elsif ansible_hostname == "mirage" %}
+{% elif ansible_hostname == "mirage" %}
 EXT_CONNECTED=$(xrandr --listmonitors | grep DP-1-2)
 if [ $? -eq 0  ]
 then
