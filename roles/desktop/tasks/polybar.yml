@@ -8,7 +8,7 @@
   file: path=~/.config/polybar state=directory
 
 - name: Install polybar configuration
-  copy: src=polybar/{{ item }} dest=~/.config/polybar/{{ item }} mode=0755
-  with_items:
-    - config
-    - start.sh
+  copy: src=polybar/config dest=~/.config/polybar/config
+
+- name: Install polybar startup script
+  template: src=polybar/start.sh dest=~/.config/polybar/start.sh mode=0755
