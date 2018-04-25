@@ -5,3 +5,4 @@
 - include: compton.yml
 - include: sxhkd.yml
 - include: bspwm.yml
+- include: polybar.yml

@@ -1,0 +1,14 @@
+---
+
+- name: Install polybar
+  become: true
+  aur: name=polybar user=aurbuilder
+
+- name: Prepare polybar configuration directories
+  file: path=~/.config/polybar state=directory
+
+- name: Install polybar configuration
+  copy: src=polybar/{{ item }} dest=~/.config/polybar/{{ item }} mode=0755
+  with_items:
+    - config
+    - start.sh
