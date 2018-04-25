@@ -9,5 +9,7 @@
     - zsh
     - zsh-completions
 
-- debug:
-    msg: "User is {{ansible_user}}"
+- name: Change user shell
+  user:
+    name: "{{ ansible_user }}"
+    shell: /bin/zsh
