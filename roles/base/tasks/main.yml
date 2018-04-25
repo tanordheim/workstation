@@ -1,7 +1,7 @@
 ---
 
 - name: Update PacMan cache
-  pacman: update_cache=yes
   become: true
+  pacman: update_cache=yes
 
 - include: packages.yml

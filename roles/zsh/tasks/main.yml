@@ -1,17 +1,17 @@
 ---
 
 - name: Install zsh
+  become: true
   pacman: name={{ item }} state=present
   with_items:
     - zsh
     - zsh-completions
-  become: true
 
 - name: Change shell to zsh
+  become: true
   user:
     name: "{{ ansible_user }}"
     shell: /bin/zsh
-  become: true
 
 - name: Prepare zsh configuration directories
   file: path=~/.zsh state=directory

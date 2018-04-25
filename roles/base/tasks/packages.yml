@@ -1,6 +1,7 @@
 ---
 
 - name: Install base packages
+  become: true
   pacman: name={{ item }} state=present
   with_items:
     - bc
