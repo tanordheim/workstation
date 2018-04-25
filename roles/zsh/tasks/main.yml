@@ -14,5 +14,7 @@
   become: true
 
 - name: Install zsh configuration
-  copy: src=zshrc dest=~/.zshrc
+  copy: src={{ item.src }} dest=~/{{item.dest }}
+  with_items:
+    - { src: "zshrc", dest: ".zshrc" }
 
