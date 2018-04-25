@@ -1,5 +1,13 @@
 ---
 
+- name: Install neovim
+  become: true
+  pacman: name={{ item }} state=present
+  with_items:
+    - neovim
+    - python-neovim
+    - python2-neovim
+
 - name: Prepare Neovim configuration directories
   file: path=~/{{ item }} state=directory
   with_items:
@@ -11,3 +19,9 @@
 
 - name: Install Vundle
   git: repo=https://github.com/VundleVim/Vundle.vim dest=~/.vim/bundle/Vundle.vim accept_hostkey=yes
+
+- name: Install Neovim configuration
+  copy: src=neovim/init.vim dest=~/.config/nvim/init.vim
+
+- name: Update Neovim plugins
+  shell: nvim +PluginInstall +qall
