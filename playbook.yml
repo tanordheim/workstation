@@ -5,3 +5,4 @@
       - { role: base }
       - { role: zsh }
       - { role: git }
+      - { role: tmux }
