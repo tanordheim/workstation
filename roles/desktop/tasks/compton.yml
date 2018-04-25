@@ -8,4 +8,4 @@
   file: path=~/.config/compton state=directory
 
 - name: Install Compton configuration
-  copy: src=compton.conf dest=~/.config/compton/compton.conf
+  copy: src=compton/compton.conf dest=~/.config/compton/compton.conf

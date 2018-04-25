@@ -1,0 +1,7 @@
+---
+
+- include: sddm.yml
+- include: termite.yml
+- include: compton.yml
+- include: sxhkd.yml
+- include: bspwm.yml
