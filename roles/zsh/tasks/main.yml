@@ -11,3 +11,6 @@
     name: "{{ ansible_user }}"
     shell: /bin/zsh
 
+- name: Install zsh configuration
+  copy: src=zshrc dest=~/.zshrc
+
