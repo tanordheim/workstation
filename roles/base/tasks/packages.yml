@@ -8,6 +8,7 @@
     - xclip
 
 - name: Install base AUR packages
+  become: true
   aur: name={{ item }} user=aurbuilder
   with_items:
     - yaourt
