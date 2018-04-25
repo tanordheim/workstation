@@ -5,3 +5,4 @@
       - { role: base }
       - { role: shell }
       - { role: desktop }
+      - { role: devenv }
