@@ -1,9 +1,11 @@
 ---
 
 - name: Create AUR user
+  become: true
   user: name=aurbuilder group=wheel
 
 - name: Configure sudo access for AUR user
+  become: true
   copy:
     content: "aurbuilder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     path: /etc/sudoers.d/aurbuilder-allow-sudo-pacman
