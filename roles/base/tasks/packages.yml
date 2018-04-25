@@ -4,6 +4,7 @@
   become: true
   pacman: name={{ item }} state=present
   with_items:
+    - base-devel
     - bc
     - xclip
 
