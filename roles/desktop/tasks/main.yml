@@ -12,6 +12,7 @@
 - name: Install Xresources
   copy: src=Xresources dest=~/.Xresources
 
+- include: fonts.yml
 - include: sddm.yml
 - include: termite.yml
 - include: compton.yml

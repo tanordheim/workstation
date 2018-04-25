@@ -1,0 +1,18 @@
+---
+
+- name: Install custom fonts
+  become: true
+  copy: src=fonts/{{ item }} dest=/usr/share/fonts/{{ item }}
+  with_items:
+    - "Droid Sans Mono for Powerline.otf"
+    - "Monaco for Powerline.otf"
+
+- name: Install font packages
+  become: true
+  pacman: name={{ item }} state=present
+  with_items:
+    - otf-font-awesome
+    - ttf-font-awesome
+
+- name: Update font cache
+  shell: fc-cache
