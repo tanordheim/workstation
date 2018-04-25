@@ -10,4 +10,4 @@
     - zsh-completions
 
 - debug:
-    - msg: "User is {{ansible_user}}"
+    msg: "User is {{ansible_user}}"
