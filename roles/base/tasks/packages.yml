@@ -12,4 +12,5 @@
   become: true
   aur: name={{ item }} user=aurbuilder
   with_items:
+    - package-query
     - yaourt
