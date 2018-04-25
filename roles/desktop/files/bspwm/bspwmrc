@@ -30,7 +30,7 @@ color=$(xrdb -query | grep "color4" | cut -f2 | sed -r 's/#//' | head -n 1)
 color2=$(xrdb -query | grep "color0" | cut -f2 | sed -r 's/#//' | head -n 1)
 
 # Allow click to focus.
-bspc config click_to_focus true
+bspc config click_to_focus "true"
 
 # Configure borders and gaps.
 bspc config border_width 0
