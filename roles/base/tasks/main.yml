@@ -8,3 +8,6 @@
   with_items:
     - zsh
     - zsh-completions
+
+- debug:
+    - msg: "User is {{ansible_user}}"
