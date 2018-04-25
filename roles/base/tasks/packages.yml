@@ -6,3 +6,8 @@
   with_items:
     - bc
     - xclip
+
+- name: Install base AUR packages
+  become: yes
+  become_user: aurbuilder
+  aur: name=yaourt skip_installed=yes
