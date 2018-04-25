@@ -17,7 +17,7 @@
   file: path=~/.zsh state=directory
 
 - name: Install zsh configuration
-  copy: src={{ item.src }} dest=~/{{item.dest }}
+  copy: src={{ item.src }} dest=~/{{ item.dest }}
   with_items:
     - { src: "zshrc", dest: ".zshrc" }
     - { src: "aliases", dest: ".zsh/aliases" }

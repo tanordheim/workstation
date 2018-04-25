@@ -3,3 +3,8 @@
 - name: Install git
   become: true
   pacman: name=git state=present
+
+- name: Install git configuration
+  copy: src={{ item.src }} dest=~/{{ item.dest }}
+  with_items:
+    - { src: " gitconfig", dest: ".gitconfig" }
