@@ -1,6 +1,7 @@
 ---
 
 - name: Include desktop dependencies
+  become: true
   pacman: name={{ item }} state=present
   with_items:
     - xorg-xrandr
