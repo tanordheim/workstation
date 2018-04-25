@@ -1,0 +1,54 @@
+! HiDPI
+Xft.dpi: 120
+
+! Hinting
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! Colors 0-15.
+*.color0: #1D1C25
+*color0: #1D1C25
+*.color1: #605F67
+*color1: #605F67
+*.color2: #923D3D
+*color2: #923D3D
+*.color3: #8D494A
+*color3: #8D494A
+*.color4: #A75253
+*color4: #A75253
+*.color5: #D55252
+*color5: #D55252
+*.color6: #F14545
+*color6: #F14545
+*.color7: #807A86
+*color7: #807A86
+*.color8: #77767c
+*color8: #77767c
+*.color9: #605F67
+*color9: #605F67
+*.color10: #923D3D
+*color10: #923D3D
+*.color11: #8D494A
+*color11: #8D494A
+*.color12: #A75253
+*color12: #A75253
+*.color13: #D55252
+*color13: #D55252
+*.color14: #F14545
+*color14: #F14545
+*.color15: #807A86
+*color15: #807A86
+
+! Black color that will not be affected by bold highlighting.
+*.color66: #1D1C25
+*color66: #1D1C25
+
+! Rofi colors.
+rofi.color-window: #1D1C25, #923D3D, #923D3D
+rofi.color-normal: #1D1C25, #807A86, #1D1C25, #923D3D, #1D1C25
+rofi.color-active: #1D1C25, #807A86, #1D1C25, #923D3D, #1D1C25
+rofi.color-urgent: #1D1C25, #605F67, #1D1C25, #605F67, #807A86

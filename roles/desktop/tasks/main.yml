@@ -7,6 +7,10 @@
     - xorg-xrandr
     - xorg-xrdb
     - xorg-xsetroot
+    - network-manager-applet
+
+- name: Install Xresources
+  copy: src=Xresources dest=~/.Xresources
 
 - include: sddm.yml
 - include: termite.yml
