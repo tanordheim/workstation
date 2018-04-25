@@ -8,6 +8,6 @@
     - xclip
 
 - name: Install base AUR packages
-  become: yes
-  become_user: aurbuilder
-  aur: name=yaourt skip_installed=yes
+  aur: name={{ item }} user=aurbuilder
+  with_items:
+    - yaourt
