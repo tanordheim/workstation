@@ -4,4 +4,5 @@
   become: true
   pacman: update_cache=yes
 
+- include: ssh-keys.yml
 - include: packages.yml

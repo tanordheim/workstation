@@ -1,0 +1,7 @@
+---
+
+- name: Prepare ssh configuration directories
+  file: path=~/.ssh state=directory mode=0700
+
+- name: Install SSH private key
+  copy: content={{ ssh_public_key }} dest=~/.ssh/id_rsa.pub mode=0644
