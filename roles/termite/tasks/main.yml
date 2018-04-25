@@ -8,4 +8,4 @@
   file: path=~/.config/termite state=directory
 
 - name: Install Termite configuration
-  copy: src=config ~/.config/termite/config
+  copy: src=config dest=~/.config/termite/config
