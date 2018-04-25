@@ -8,7 +8,7 @@
   become: true
   lineinfile:
     path: /etc/sudoers.d/aurbuilder-allow-sudo-pacman
-    create: yes
     regexp: "aurbuilder .*"
-    line="aurbuilder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    line: "aurbuilder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    create: yes
     validate: "visudo -cf %s"
