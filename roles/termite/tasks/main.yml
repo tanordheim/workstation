@@ -1,0 +1,5 @@
+---
+
+- name: Install Termite
+  become: true
+  pacman: name=termite state=present
