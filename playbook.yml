@@ -8,3 +8,4 @@
       - { role: tmux }
       - { role: grc }
       - { role: termite }
+      - { role: compton }
