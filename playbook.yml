@@ -2,7 +2,7 @@
 
 - hosts: workstations
   roles:
-      - { role: base }
-      - { role: shell }
-      - { role: desktop }
-      - { role: devenv }
+      - { role: base, tags: ["base"] }
+      - { role: shell, tags: ["shell"] }
+      - { role: desktop, tags: ["desktop"] }
+      - { role: devenv, tags: ["devenv"] }
