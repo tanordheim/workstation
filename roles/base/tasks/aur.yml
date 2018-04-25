@@ -9,4 +9,3 @@
   copy:
     content: "aurbuilder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     dest: /etc/sudoers.d/aurbuilder-allow-sudo-pacman
-    validate: /usr/sbin/visudo -cf %s
