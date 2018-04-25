@@ -3,3 +3,9 @@
 - name: Install Termite
   become: true
   pacman: name=termite state=present
+
+- name: Prepare Termite configuration directories
+  file: path=~/.config/termite state=directory
+
+- name: Install Termite configuration
+  copy: src=config ~/.config/termite/config
