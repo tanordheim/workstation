@@ -2,3 +2,9 @@
 
 - name: Update PacMan cache
   pacman: update_cache=yes
+
+- debug:
+    msg: "Ansible hostname is {{ ansible_hostname }}"
+
+- debug:
+    msg: "Inventory hostname is {{ inventory_hostname }}"
