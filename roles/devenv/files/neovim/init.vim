@@ -42,6 +42,7 @@ Plugin 'fatih/vim-go'
 Plugin 'mhartington/nvim-typescript'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'hashivim/vim-terraform'
 
 " autocomplete, snippets and formatting.
 Plugin 'Shougo/deoplete.nvim'
@@ -263,6 +264,15 @@ augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup FileType yaml
     au FileType yaml setl shiftwidth=2
+augroup end
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" TERRAFORM RESOURCE SETTINGS
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup FileType terraform
+    au FileType terraform setl shiftwidth=2
 augroup end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
