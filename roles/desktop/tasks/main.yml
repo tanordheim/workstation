@@ -9,13 +9,6 @@
     - xorg-xsetroot
     - network-manager-applet
 
-- name: Install Xresources
-  copy: src=Xresources dest=~/.Xresources
-
 - include: fonts.yml
-- include: sddm.yml
+- include: kde.yml
 - include: termite.yml
-- include: compton.yml
-- include: sxhkd.yml
-- include: bspwm.yml
-- include: polybar.yml
