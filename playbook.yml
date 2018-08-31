@@ -4,5 +4,5 @@
   roles:
       - { role: base, tags: ["base"] }
       - { role: shell, tags: ["shell"] }
-      # - { role: desktop, tags: ["desktop"] }
+      - { role: desktop, tags: ["desktop"] }
       - { role: devenv, tags: ["devenv"] }
