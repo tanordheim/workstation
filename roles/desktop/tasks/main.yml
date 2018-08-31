@@ -10,5 +10,6 @@
     - network-manager-applet
 
 - include: fonts.yml
-- include: kde.yml
+- include: sddm.yml
 - include: termite.yml
+- include: kde.yml
