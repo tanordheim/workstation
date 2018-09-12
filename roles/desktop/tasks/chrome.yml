@@ -1,0 +1,5 @@
+---
+
+- name: Install Google Chrome
+  become: true
+  aur: name=google-chrome user=aurbuilder

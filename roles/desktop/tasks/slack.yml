@@ -1,0 +1,5 @@
+---
+
+- name: Install Slack
+  become: true
+  aur: name=slack-desktop user=aurbuilder

@@ -14,5 +14,11 @@
     - otf-font-awesome
     - ttf-font-awesome
 
+- name: Install font AUR packages
+  become: true
+  aur: name={{ item }} user=aurbuilder
+  with_items:
+    - ttf-ms-fonts
+
 - name: Update font cache
   shell: fc-cache

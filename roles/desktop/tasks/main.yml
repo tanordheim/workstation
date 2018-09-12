@@ -13,3 +13,6 @@
 - include: sddm.yml
 - include: termite.yml
 - include: kde.yml
+- include: firefox.yml
+- include: chrome.yml
+- include: slack.yml
