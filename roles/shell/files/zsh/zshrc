@@ -91,6 +91,15 @@ source $HOME/.zsh/completions
 source $HOME/.zsh/exports
 test -e $HOME/.zshrc.local && source $HOME/.zshrc.local
 
+function load-zshrc-d() {
+    setopt null_glob
+    for file in $HOME/.zshrc.d/*.zsh
+    do
+        source $file
+    done
+}
+load-zshrc-d
+
 #
 # Hooks
 #

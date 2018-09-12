@@ -14,7 +14,10 @@
     shell: /bin/zsh
 
 - name: Prepare zsh configuration directories
-  file: path=~/.zsh state=directory
+  file: path={{ item }} state=directory
+  with_items:
+    - ~/.zsh
+    - ~/.zshrc.d
 
 - name: Install zsh configuration
   copy: src=zsh/{{ item.src }} dest=~/{{ item.dest }}
