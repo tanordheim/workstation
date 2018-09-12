@@ -6,3 +6,4 @@
       - { role: shell, tags: ["shell"] }
       - { role: desktop, tags: ["desktop"] }
       - { role: devenv, tags: ["devenv"] }
+      - { role: gcloud, tags: ["gcloud"] }

@@ -1,0 +1,33 @@
+---
+
+- name: Download Google Cloud SDK archive
+  get_url:
+    url: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-{{ gcloud_sdk_version }}-linux-x86_64.tar.gz"
+    dest: "/tmp/gcloud-sdk-{{ gcloud_sdk_version }}.tar.gz"
+
+- name: Remove pre-existing Google Cloud SDK installation directory.
+  become: true
+  file: path="{{ gcloud_target_path }}" state=absent
+
+- name: Prepare Google Cloud SDK installation directory.
+  become: true
+  file: path="{{ gcloud_target_path }}" state=directory
+
+- name: Unpack Google Cloud SDK
+  become: true
+  unarchive:
+    src: "/tmp/gcloud-sdk-{{ gcloud_sdk_version }}.tar.gz"
+    dest: "{{ gcloud_target_path }}"
+    extra_opts:
+      - --strip-components=1
+
+- name: Install Google Cloud SDK installation script
+  become: true
+  template: src="init.sh.j2" dest="{{ gcloud_target_path }}/init.sh" mode=0755
+
+- name: Install Google Cloud SDK
+  become: true
+  shell: "{{ gcloud_target_path }}/init.sh"
+
+- name: Configure shell
+  template: src="zshrc.j2" dest="~/.zshrc.d/google-cloud-sdk.zsh" mode=0644

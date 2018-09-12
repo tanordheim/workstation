@@ -1,0 +1,5 @@
+---
+
+gcloud_sdk_version: "216.0.0"
+gcloud_target_path: "/opt/google-cloud-sdk"
+gcloud_additional_components: []
