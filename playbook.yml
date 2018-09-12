@@ -6,5 +6,6 @@
       - { role: shell, tags: ["shell"] }
       - { role: desktop, tags: ["desktop"] }
       - { role: devenv, tags: ["devenv"] }
-      - { role: gcloud, tags: ["gcloud", "devenv"] }
-      - { role: helm, tags: ["helm", "devenv"] }
+      - { role: gcloud, tags: ["gcloud", "kubernetes", "devenv"] }
+      - { role: helm, tags: ["helm", "kubernetes", "devenv"] }
+      - { role: stern, tags: ["stern", "kubernetes", "devenv"] }

@@ -9,7 +9,7 @@
   become: true
   file: path="{{ helm_target_path }}" state=absent
 
-- name: Prepare Helm isntallation directory
+- name: Prepare Helm installation directory
   become: true
   file: path="{{ helm_target_path }}" state=directory
 

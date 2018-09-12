@@ -1,0 +1,4 @@
+---
+
+stern_version: "1.8.0"
+stern_target_path: "/opt/stern"
