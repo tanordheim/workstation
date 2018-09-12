@@ -1,0 +1,2 @@
+- Set KDE keyboard layout to "no".
+- Use Breeze Dark KDE Look&Feel
