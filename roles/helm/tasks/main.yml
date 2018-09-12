@@ -1,0 +1,25 @@
+---
+
+- name: Download Helm archive
+  get_url:
+    url: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    dest: "/tmp/helm-{{ helm_version }}.tar.gz"
+
+- name: Remove pre-existing Helm installation directory
+  become: true
+  file: path="{{ helm_target_path }}" state=absent
+
+- name: Prepare Helm isntallation directory
+  become: true
+  file: path="{{ helm_target_path }}" state=directory
+
+- name: Unpack Helm
+  become: true
+  unarchive:
+    src: "/tmp/helm-{{ helm_version }}.tar.gz"
+    dest: "{{ helm_target_path }}"
+    extra_opts:
+      - --strip-components=1
+
+- name: Configure shell
+  template: src="zshrc.j2" dest="~/.zshrc.d/helm.zsh" mode=0644
