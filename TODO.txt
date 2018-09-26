@@ -1,2 +1,4 @@
 - Set KDE keyboard layout to "no".
 - Use Breeze Dark KDE Look&Feel
+- Install:
+  - networkmanage-l2tp

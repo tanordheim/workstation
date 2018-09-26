@@ -17,3 +17,4 @@
 - include: chrome.yml
 - include: slack.yml
 - include: vlc.yml
+- include: networkmanager.yml
