@@ -9,3 +9,6 @@
       - { role: gcloud, tags: ["gcloud", "kubernetes", "devenv"] }
       - { role: helm, tags: ["helm", "kubernetes", "devenv"] }
       - { role: stern, tags: ["stern", "kubernetes", "devenv"] }
+      - { role: node, tags: ["node", "devenv"] }
+      - { role: python, tags: ["python", "devenv"] }
+      - { role: docker, tags: ["docker", "devenv"] }
