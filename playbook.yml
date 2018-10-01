@@ -12,3 +12,5 @@
       - { role: node, tags: ["node", "devenv"] }
       - { role: python, tags: ["python", "devenv"] }
       - { role: docker, tags: ["docker", "devenv"] }
+      - { role: go, tags: ["go", "devenv"] }
+      - { role: vscode, tags: ["vscode", "devenv"] }
