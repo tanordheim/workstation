@@ -13,6 +13,8 @@
   with_items:
     - otf-font-awesome
     - ttf-font-awesome
+    - ttf-droid
+    - ttf-hack
 
 - name: Install font AUR packages
   become: true
