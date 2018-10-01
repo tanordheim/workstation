@@ -47,7 +47,6 @@ Plugin 'hashivim/vim-terraform'
 " autocomplete, snippets and formatting.
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-go'
-Plugin 'Robzz/deoplete-omnisharp'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'AndrewRadev/splitjoin.vim'
