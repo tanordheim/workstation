@@ -21,7 +21,7 @@
   git: repo=https://github.com/VundleVim/Vundle.vim dest=~/.vim/bundle/Vundle.vim accept_hostkey=yes
 
 - name: Install Neovim configuration
-  copy: src=neovim/init.vim dest=~/.config/nvim/init.vim
+  copy: src=init.vim dest=~/.config/nvim/init.vim
 
 - name: Update Neovim plugins
   shell: nvim --headless {{ item }}

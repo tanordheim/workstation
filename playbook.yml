@@ -5,7 +5,7 @@
       - { role: base, tags: ["base"] }
       - { role: shell, tags: ["shell"] }
       - { role: desktop, tags: ["desktop"] }
-      - { role: devenv, tags: ["devenv"] }
+      - { role: vim, tags: ["vim", "devenv"] }
       - { role: gcloud, tags: ["gcloud", "kubernetes", "devenv"] }
       - { role: helm, tags: ["helm", "kubernetes", "devenv"] }
       - { role: stern, tags: ["stern", "kubernetes", "devenv"] }
