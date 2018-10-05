@@ -14,3 +14,4 @@
       - { role: docker, tags: ["docker", "devenv"] }
       - { role: go, tags: ["go", "devenv"] }
       - { role: vscode, tags: ["vscode", "devenv"] }
+      - { role: dotnet, tags: ["dotnet", "devenv"] }
