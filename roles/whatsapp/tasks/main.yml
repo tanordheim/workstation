@@ -1,0 +1,8 @@
+---
+
+- name: Install WhatsApp
+  become: true
+  aur: name={{ item }} user=aurbuilder
+  with_items:
+    - nodejs-nativefier
+    - whatsapp-web-desktop
