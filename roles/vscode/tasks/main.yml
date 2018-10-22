@@ -15,6 +15,7 @@
     - vscodevim.vim
     - vscoss.vscode-ansible
     - ms-vscode.csharp
+    - formulahendry.dotnet-test-explorer
 
 - name: Create Visual Studio Code config directories
   file: path="~/.config/Code/User" state=directory
