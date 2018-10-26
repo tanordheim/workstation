@@ -1,0 +1,5 @@
+---
+
+- name: Install Dropbox
+  become: true
+  aur: name=dropbox user=aurbuilder

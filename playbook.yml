@@ -16,3 +16,4 @@
       - { role: vscode, tags: ["vscode", "devenv"] }
       - { role: dotnet, tags: ["dotnet", "devenv"] }
       - { role: whatsapp, tags: ["desktop", "whatsapp"] }
+      - { role: dropbox, tags: ["desktop", "dropbox"] }
