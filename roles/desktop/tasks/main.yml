@@ -13,6 +13,7 @@
 - include: sddm.yml
 - include: termite.yml
 - include: kde.yml
+- include: latte-dock.yml
 - include: firefox.yml
 - include: slack.yml
 - include: vlc.yml
