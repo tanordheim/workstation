@@ -1,4 +1,4 @@
 ---
 
-helm_version: "2.9.1"
+helm_version: "2.11.0"
 helm_target_path: "/opt/helm"
