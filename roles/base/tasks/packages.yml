@@ -8,6 +8,7 @@
     - bc
     - scrot
     - unzip
+    - zip
     - xclip
 
 - name: Install base AUR packages
