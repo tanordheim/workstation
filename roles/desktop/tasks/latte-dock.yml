@@ -1,0 +1,5 @@
+---
+
+- name: Install latte-dock
+  become: true
+  pacman: name=latte-dock state=present

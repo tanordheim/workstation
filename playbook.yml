@@ -1,0 +1,20 @@
+---
+
+- hosts: workstations
+  roles:
+      - { role: base, tags: ["base"] }
+      - { role: shell, tags: ["shell"] }
+      - { role: desktop, tags: ["desktop"] }
+      - { role: vim, tags: ["vim", "devenv"] }
+      - { role: gcloud, tags: ["gcloud", "kubernetes", "devenv"] }
+      - { role: helm, tags: ["helm", "kubernetes", "devenv"] }
+      - { role: istio, tags: ["istio", "kubernetes", "devenv"] }
+      - { role: stern, tags: ["stern", "kubernetes", "devenv"] }
+      - { role: node, tags: ["node", "devenv"] }
+      - { role: python, tags: ["python", "devenv"] }
+      - { role: docker, tags: ["docker", "devenv"] }
+      - { role: go, tags: ["go", "devenv"] }
+      - { role: vscode, tags: ["vscode", "devenv"] }
+      - { role: dotnet, tags: ["dotnet", "devenv"] }
+      - { role: whatsapp, tags: ["desktop", "whatsapp"] }
+      - { role: dropbox, tags: ["desktop", "dropbox"] }

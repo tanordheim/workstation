@@ -1,0 +1,8 @@
+---
+
+- name: Install tmux
+  become: true
+  pacman: name=tmux state=present
+
+- name: Install tmux configuration
+  copy: src=tmux/tmux.conf dest=~/.tmux.conf

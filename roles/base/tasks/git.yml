@@ -1,0 +1,11 @@
+---
+
+- name: Install git
+  become: true
+  pacman: name={{item}} state=present
+  with_items:
+    - git
+    - git-lfs
+
+- name: Install git configuration
+  copy: src=git/gitconfig dest=~/.gitconfig

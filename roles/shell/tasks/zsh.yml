@@ -1,0 +1,30 @@
+---
+
+- name: Install zsh
+  become: true
+  pacman: name={{ item }} state=present
+  with_items:
+    - zsh
+    - zsh-completions
+
+- name: Change shell to zsh
+  become: true
+  user:
+    name: "{{ ansible_user }}"
+    shell: /bin/zsh
+
+- name: Prepare zsh configuration directories
+  file: path={{ item }} state=directory
+  with_items:
+    - ~/.zsh
+    - ~/.zshrc.d
+
+- name: Install zsh configuration
+  copy: src=zsh/{{ item.src }} dest=~/{{ item.dest }}
+  with_items:
+    - { src: "zshrc", dest: ".zshrc" }
+    - { src: "aliases", dest: ".zsh/aliases" }
+    - { src: "colors", dest: ".zsh/colors" }
+    - { src: "completions", dest: ".zsh/completions" }
+    - { src: "exports", dest: ".zsh/exports" }
+

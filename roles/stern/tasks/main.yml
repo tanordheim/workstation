@@ -1,0 +1,22 @@
+---
+
+- name: Download Stern binary
+  get_url:
+    url: "https://github.com/wercker/stern/releases/download/{{ stern_version }}/stern_linux_amd64"
+    dest: "/tmp/stern-{{ stern_version }}"
+    mode: 0755
+
+- name: Remove pre-existing Stern installation directory
+  become: true
+  file: path="{{ stern_target_path }}" state=absent
+
+- name: Prepare Stern installation directory
+  become: true
+  file: path="{{ stern_target_path }}" state=directory
+
+- name: Install Stern binary
+  become: true
+  shell: cp "/tmp/stern-{{ stern_version }}" "{{ stern_target_path }}"/stern
+
+- name: Configure shell
+  template: src="zshrc.j2" dest="~/.zshrc.d/stern.zsh" mode=0644

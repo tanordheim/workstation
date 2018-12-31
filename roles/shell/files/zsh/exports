@@ -1,0 +1,12 @@
+# Define the editor to use.
+export EDITOR=nvim
+
+# Go development.
+export GOPATH=$HOME/Dev
+export PATH="$PATH:$GOPATH/bin"
+
+# ASP.NET Core development.
+export ASPNETCORE_ENVIRONMENT=Development
+
+# Add local scripts and bin path to path.
+export PATH="$PATH:$HOME/.scripts:$HOME/.bin"

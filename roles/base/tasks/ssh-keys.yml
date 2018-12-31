@@ -1,0 +1,13 @@
+---
+
+- name: Prepare ssh configuration directories
+  file: path=~/.ssh state=directory mode=0700
+
+- name: Install SSH public key
+  copy: content={{ ssh_public_key }} dest=~/.ssh/id_rsa.pub mode=0644
+
+- name: Install SSH private key
+  copy: content={{ ssh_private_key }} dest=~/.ssh/id_rsa mode=0600
+
+- name: Authorize SSH public key
+  authorized_key: user={{ ansible_user }} state=present key={{ ssh_public_key }}

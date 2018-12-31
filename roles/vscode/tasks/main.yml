@@ -1,0 +1,27 @@
+---
+
+- name: Install Visual Studio Code packages
+  become: true
+  aur: name=visual-studio-code-bin user=aurbuilder
+
+- name: Install Visual Studio Code extensions
+  shell: code --install-extension {{ item }} --force
+  with_items:
+    - ms-kubernetes-tools.vscode-kubernetes-tools
+    - ms-python.python
+    - msjsdiag.debugger-for-chrome
+    - PeterJausovec.vscode-docker
+    - ms-vscode.Go
+    - vscodevim.vim
+    - vscoss.vscode-ansible
+    - ms-vscode.csharp
+    - formulahendry.dotnet-test-explorer
+    - mauve.terraform
+    - zxh404.vscode-proto3
+    - redhat.vscode-yaml
+
+- name: Create Visual Studio Code config directories
+  file: path="~/.config/Code/User" state=directory
+
+- name: Configure Visual Studio Code
+  template: src="settings.json.j2" dest="~/.config/Code/User/settings.json" mode=0644

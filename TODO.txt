@@ -1,0 +1,7 @@
+- Set KDE keyboard layout to "no".
+- Use Breeze Dark KDE Look&Feel
+- Install:
+  - networkmanage-l2tp
+- Set default browser application in ~/.kde4/share/config/kdeglobals:
+    [General]
+    BrowserApplication[$e]=firefox.desktop
