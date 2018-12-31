@@ -2,6 +2,7 @@
 
 - hosts: workstations
   roles:
+      - { role: ssh-keys, tags: ["base", "ssh-keys"] }
       - { role: base, tags: ["base"] }
       - { role: shell, tags: ["shell"] }
       - { role: desktop, tags: ["desktop"] }
