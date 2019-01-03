@@ -1,0 +1,20 @@
+---
+
+- name: Install git
+  become: true
+  pacman: name={{item}} state=present
+  with_items:
+    - git
+    - git-lfs
+  when: ansible_distribution == 'ArchLinux'
+
+- name: Install git
+  become: true
+  apt: name={{item}} state=latest
+  with_items:
+    - git
+    - git-lfs
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install git configuration
+  copy: src=gitconfig dest=~/.gitconfig

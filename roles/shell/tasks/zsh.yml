@@ -6,6 +6,12 @@
   with_items:
     - zsh
     - zsh-completions
+  when: ansible_distribution == 'ArchLinux'
+
+- name: Install zsh
+  become: true
+  apt: name=zsh state=latest
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Change shell to zsh
   become: true

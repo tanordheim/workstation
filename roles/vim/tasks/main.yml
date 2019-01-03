@@ -7,6 +7,16 @@
     - neovim
     - python-neovim
     - python2-neovim
+  when: ansible_distribution == 'ArchLinux'
+
+- name: Install neovim
+  become: true
+  apt: name={{ item }} state=latest
+  with_items:
+    - neovim
+    - python-neovim
+    - python3-neovim
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Prepare Neovim configuration directories
   file: path=~/{{ item }} state=directory
