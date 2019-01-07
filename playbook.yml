@@ -33,3 +33,4 @@
       - { role: istio, tags: ["devenv", "kubernetes", "istio"] }
       - { role: minikube, tags: ["devenv", "kubernetes", "minikube"] }
       - { role: gcloud, tags: ["devenv", "gcloud"] }
+      - { role: hugo, tags: ["devenv", "hugo"] }

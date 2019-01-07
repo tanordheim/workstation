@@ -1,0 +1,6 @@
+---
+
+- name: Install Hugo
+  homebrew:
+    name: hugo
+    state: present
