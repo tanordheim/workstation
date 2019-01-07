@@ -5,3 +5,6 @@
   with_items:
     - "Normal Font"
     - "Non Ascii Font"
+
+- name: Set transparency
+  shell: /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Transparency' 0.015" ~/Library/Preferences/com.googlecode.iterm2.plist
