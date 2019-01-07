@@ -1,6 +1,0 @@
----
-
-- name: Install VLC
-  become: true
-  pacman: name=vlc state=present
-

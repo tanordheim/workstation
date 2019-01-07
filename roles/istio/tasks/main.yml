@@ -1,25 +1,6 @@
 ---
 
-- name: Download Istio archive
-  get_url:
-    url: "https://github.com/istio/istio/releases/download/{{ istio_version }}/istio-{{ istio_version }}-linux.tar.gz"
-    dest: "/tmp/istio-{{ istio_version }}.tar.gz"
-
-- name: Remove pre-existing Istio installation directory
-  become: true
-  file: path="{{ istio_target_path }}" state=absent
-
-- name: Prepare Istio installation directory
-  become: true
-  file: path="{{ istio_target_path }}" state=directory
-
-- name: Unpack Istio
-  become: true
-  unarchive:
-    src: "/tmp/istio-{{ istio_version }}.tar.gz"
-    dest: "{{ istio_target_path }}"
-    extra_opts:
-      - --strip-components=1
-
-- name: Configure shell
-  template: src="zshrc.j2" dest="~/.zshrc.d/istio.zsh" mode=0644
+- name: Install istioctl
+  homebrew:
+    name: istioctl
+    state: present

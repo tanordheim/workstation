@@ -1,0 +1,6 @@
+---
+
+- name: Install Signal
+  homebrew_cask:
+    name: signal
+    state: present

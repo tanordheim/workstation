@@ -1,8 +1,6 @@
 ---
 
-- name: Install .NET Core packages
-  become: true
-  pacman: name={{ item }} state=present
-  with_items:
-    - dotnet-runtime
-    - dotnet-sdk
+- name: Install .NET Core
+  homebrew_cask:
+    name: dotnet-sdk
+    state: present

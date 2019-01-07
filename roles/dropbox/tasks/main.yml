@@ -1,5 +1,6 @@
 ---
 
 - name: Install Dropbox
-  become: true
-  aur: name=dropbox user=aurbuilder
+  homebrew_cask:
+    name: dropbox
+    state: present

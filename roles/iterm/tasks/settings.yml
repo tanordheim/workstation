@@ -1,0 +1,7 @@
+---
+
+- name: Set terminal font
+  shell: /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'{{item}}' MonacoForPowerline 12" ~/Library/Preferences/com.googlecode.iterm2.plist
+  with_items:
+    - "Normal Font"
+    - "Non Ascii Font"

@@ -1,0 +1,22 @@
+---
+
+- name: Set dark mode
+  osx_defaults:
+    key: AppleInterfaceStyle
+    type: string
+    value: Dark
+    state: present
+
+- name: Disable saving window state when loggout out
+  osx_defaults:
+    key: TALLogoutSavesState
+    type: bool
+    value: NO
+    state: present
+
+- name: Disable relaunching apps when logging in
+  osx_defaults:
+    key: LoginWindowLaunchesRelaunchApps
+    type: bool
+    value: NO
+    state: present

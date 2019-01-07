@@ -1,0 +1,17 @@
+---
+
+- name: Set dock size
+  osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: float
+    value: 42.0
+    state: present
+
+- name: Disable showing recent windows in dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: NO
+    state: present

@@ -1,7 +1,6 @@
 ---
 
-- name: Install Go packages
-  become: true
-  pacman: name={{ item }} state=present
-  with_items:
-    - go
+- name: Install Go
+  homebrew:
+    name: go
+    state: present

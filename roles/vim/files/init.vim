@@ -4,6 +4,10 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" define whith python interpreters to use
+" let g:python_host_prog = '/usr/local/bin/python2'
+" let g:python3_host_prog = '/usr/local/bin/python3'
+
 " be iMproved, required.
 set nocompatible
 " turn off filetype detection, required.

@@ -4,19 +4,32 @@
   roles:
       - { role: ssh-keys, tags: ["base", "ssh-keys"] }
       - { role: git, tags: ["base", "git"] }
-      - { role: base, tags: ["base"] }
-      - { role: shell, tags: ["shell"] }
-      - { role: desktop, tags: ["desktop"] }
-      - { role: vim, tags: ["vim", "devenv"] }
-      - { role: gcloud, tags: ["gcloud", "kubernetes", "devenv"] }
-      - { role: helm, tags: ["helm", "kubernetes", "devenv"] }
-      - { role: istio, tags: ["istio", "kubernetes", "devenv"] }
-      - { role: stern, tags: ["stern", "kubernetes", "devenv"] }
-      - { role: node, tags: ["node", "devenv"] }
-      - { role: python, tags: ["python", "devenv"] }
-      - { role: docker, tags: ["docker", "devenv"] }
-      - { role: go, tags: ["go", "devenv"] }
-      - { role: vscode, tags: ["vscode", "devenv"] }
-      - { role: dotnet, tags: ["dotnet", "devenv"] }
-      - { role: whatsapp, tags: ["desktop", "whatsapp"] }
+      - { role: python, tags: ["base", "devenv", "python"] }
+      - { role: vim, tags: ["base", "devenv", "vim"] }
+      - { role: zsh, tags: ["base", "zsh"] }
+      - { role: tmux, tags: ["base", "tmux"] }
+      - { role: macos, tags: ["desktop", "macos"] }
+      - { role: fonts, tags: ["desktop", "fonts"] }
+      - { role: firefox, tags: ["desktop", "firefox"] }
+      - { role: chrome, tags: ["desktop", "chrome"] }
+      - { role: iterm, tags: ["desktop", "iterm"] }
       - { role: dropbox, tags: ["desktop", "dropbox"] }
+      - { role: onedrive, tags: ["desktop", "onedrive"] }
+      - { role: office, tags: ["desktop", "office"] }
+      - { role: slack, tags: ["desktop", "slack"] }
+      - { role: teams, tags: ["desktop", "teams"] }
+      - { role: signal, tags: ["desktop", "signal"] }
+      - { role: whatsapp, tags: ["desktop", "whatsapp"] }
+      - { role: vlc, tags: ["desktop", "vlc"] }
+      - { role: docker, tags: ["devenv", "docker"] }
+      - { role: vscode, tags: ["devenv", "vscode"] }
+      - { role: go, tags: ["devenv", "go"] }
+      - { role: dotnet, tags: ["devenv", "dotnet"] }
+      - { role: node, tags: ["devenv", "node"] }
+      - { role: virtualbox, tags: ["devenv", "virtualbox"] }
+      - { role: vagrant, tags: ["devenv", "vagrant"] }
+      - { role: helm, tags: ["devenv", "kubernetes", "helm"] }
+      - { role: stern, tags: ["devenv", "kubernetes", "stern"] }
+      - { role: istio, tags: ["devenv", "kubernetes", "istio"] }
+      - { role: minikube, tags: ["devenv", "kubernetes", "minikube"] }
+      - { role: gcloud, tags: ["devenv", "gcloud"] }

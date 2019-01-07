@@ -1,5 +1,0 @@
----
-
-- name: Install KDE Connect
-  become: true
-  pacman: name=kdeconnect state=present

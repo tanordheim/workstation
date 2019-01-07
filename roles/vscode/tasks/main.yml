@@ -1,8 +1,9 @@
 ---
 
-- name: Install Visual Studio Code packages
-  become: true
-  aur: name=visual-studio-code-bin user=aurbuilder
+- name: Install Visual Studio Code
+  homebrew_cask:
+    name: visual-studio-code
+    state: present
 
 - name: Install Visual Studio Code extensions
   shell: code --install-extension {{ item }} --force
@@ -21,7 +22,7 @@
     - redhat.vscode-yaml
 
 - name: Create Visual Studio Code config directories
-  file: path="~/.config/Code/User" state=directory
+  file: path="~/Library/Application Support/Code/User" state=directory
 
 - name: Configure Visual Studio Code
-  template: src="settings.json.j2" dest="~/.config/Code/User/settings.json" mode=0644
+  template: src="settings.json.j2" dest="~/Library/Application Support/Code/User/settings.json" mode=0644

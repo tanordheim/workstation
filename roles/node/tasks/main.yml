@@ -1,9 +1,6 @@
 ---
 
-- name: Install node packages
-  become: true
-  pacman: name={{ item }} state=present
-  with_items:
-    - nodejs
-    - npm
-    - yarn
+- name: Install node.js
+  homebrew:
+    name: node
+    state: present

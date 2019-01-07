@@ -1,4 +1,0 @@
----
-
-istio_version: "1.0.3"
-istio_target_path: "/opt/istio"

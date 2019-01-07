@@ -1,5 +1,0 @@
----
-
-- name: Install KDE
-  become: true
-  pacman: name=plasma-meta state=present

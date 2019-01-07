@@ -1,9 +1,0 @@
----
-
-gcloud_sdk_version: "224.0.0"
-gcloud_target_path: "/opt/google-cloud-sdk"
-gcloud_components:
-  - bq
-  - core
-  - gsutil
-  - kubectl

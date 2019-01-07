@@ -1,15 +1,6 @@
 ---
 
-- name: Install docker packages
-  become: true
-  pacman: name={{ item }} state=present
-  with_items:
-    - docker
-
-- name: Start Docker on startup
-  become: true
-  systemd: state=started enabled=true name=docker
-
-- name: Add user to docker group
-  become: true
-  user: name="{{ansible_user}}" groups=docker append=yes
+- name: Install Docker
+  homebrew_cask:
+    name: docker
+    state: present
