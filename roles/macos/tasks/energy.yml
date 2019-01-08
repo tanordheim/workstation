@@ -1,0 +1,5 @@
+---
+
+- name: Disable computer sleep when plugged in
+  become: true
+  shell: pmset -c sleep 0

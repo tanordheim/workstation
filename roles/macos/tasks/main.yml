@@ -1,5 +1,6 @@
 ---
 
+- include: energy.yml
 - include: mouse.yml
 - include: interface.yml
 - include: dock.yml
