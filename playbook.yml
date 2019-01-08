@@ -21,6 +21,7 @@
       - { role: signal, tags: ["desktop", "signal"] }
       - { role: whatsapp, tags: ["desktop", "whatsapp"] }
       - { role: vlc, tags: ["desktop", "vlc"] }
+      - { role: spotify, tags: ["desktop", "spotify"] }
       - { role: docker, tags: ["devenv", "docker"] }
       - { role: vscode, tags: ["devenv", "vscode"] }
       - { role: go, tags: ["devenv", "go"] }
