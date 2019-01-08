@@ -6,3 +6,4 @@
 - include: interface.yml
 - include: dock.yml
 - include: finder.yml
+- include: terminfo.yml

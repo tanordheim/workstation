@@ -1,0 +1,16 @@
+---
+
+- name: Prepare terminfo directories
+  file: path=~/.terminfo state=directory
+
+- name: Install terminfo files
+  copy: src={{item}}.terminfo dest=~/.terminfo/{{item}}.terminfo
+  with_items:
+    - "tmux-256color"
+    - "tmux-256color-italic"
+
+- name: Compile terminfo files
+  shell: tic -x ~/.terminfo/{{item}}.terminfo
+  with_items:
+    - "tmux-256color"
+    - "tmux-256color-italic"
