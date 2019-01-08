@@ -1,0 +1,15 @@
+---
+
+- name: Set initial key repeat
+  osx_defaults:
+    key: InitialKeyRepeat
+    type: int
+    value: 25
+    state: present
+
+- name: Set key repeat rate
+  osx_defaults:
+    key: KeyRepeat
+    type: int
+    value: 2
+    state: present
