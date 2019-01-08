@@ -1,10 +1,24 @@
 ---
 
-- name: Set dark mode
+- name: Set light mode
   osx_defaults:
     key: AppleInterfaceStyle
     type: string
-    value: Dark
+    value: Light
+    state: present
+
+- name: Set accent color
+  osx_defaults:
+    key: AppleAccentColor
+    type: int
+    value: 1
+    state: present
+
+- name: Set highlight color
+  osx_defaults:
+    key: AppleHighlightColor
+    type: string
+    value: "0.847059 0.847059 0.862745 Graphite"
     state: present
 
 - name: Disable saving window state when loggout out
