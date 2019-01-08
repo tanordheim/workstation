@@ -4,3 +4,4 @@
 - include: mouse.yml
 - include: interface.yml
 - include: dock.yml
+- include: finder.yml
