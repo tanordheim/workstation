@@ -29,6 +29,7 @@
       - { role: node, tags: ["devenv", "node"] }
       - { role: virtualbox, tags: ["devenv", "virtualbox"] }
       - { role: vagrant, tags: ["devenv", "vagrant"] }
+      - { role: terraform, tags: ["devenv", "terraform"] }
       - { role: helm, tags: ["devenv", "kubernetes", "helm"] }
       - { role: stern, tags: ["devenv", "kubernetes", "stern"] }
       - { role: istio, tags: ["devenv", "kubernetes", "istio"] }

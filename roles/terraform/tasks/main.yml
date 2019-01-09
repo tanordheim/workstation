@@ -1,0 +1,6 @@
+---
+
+- name: Install Terraform
+  homebrew:
+    name: terraform
+    state: present
