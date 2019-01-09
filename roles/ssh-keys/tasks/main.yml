@@ -9,5 +9,11 @@
 - name: Install SSH private key
   copy: content={{ ssh_private_key }} dest=~/.ssh/id_rsa mode=0600
 
+- name: Install Google Compute SSH public key
+  copy: content={{ google_compute_ssh_public_key }} dest=~/.ssh/google_compute_engine.pub mode=0644
+
+- name: Install Google Compute SSH private key
+  copy: content={{ google_compute_ssh_private_key }} dest=~/.ssh/google_compute_engine mode=0600
+
 - name: Authorize SSH public key
   authorized_key: user={{ ansible_user }} state=present key={{ ssh_public_key }}
