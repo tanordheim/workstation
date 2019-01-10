@@ -13,3 +13,11 @@
     type: int
     value: 2
     state: present
+
+- name: Disable press and hold
+  osx_defaults:
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: NO
+    state: present
+
