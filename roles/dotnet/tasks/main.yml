@@ -4,3 +4,6 @@
   homebrew_cask:
     name: dotnet-sdk
     state: present
+
+- name: Configure shell
+  template: src="zshrc.j2" dest="~/.zshrc.d/dotnet.zsh" mode=0644
