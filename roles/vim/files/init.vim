@@ -133,8 +133,8 @@ set nowrap
 set backspace=indent,eol,start
 
 " set tab sizes and indenting.
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
 
