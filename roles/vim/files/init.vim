@@ -204,6 +204,7 @@ set scrolloff=10
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " configure vim-go.
+let g:go_bin_path = $HOME.'/Code/go/bin'
 let g:go_fmt_command = 'goimports'
 let g:go_list_type = 'quickfix'
 let g:go_metalinter_autosave = 1
