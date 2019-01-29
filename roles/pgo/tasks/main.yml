@@ -1,0 +1,17 @@
+---
+
+- name: Create the installation directory
+  become: true
+  file:
+    path: "{{pgo_install_path}}"
+    state: directory
+
+- name: Install pgo CLI
+  become: true
+  get_url:
+    url: "{{pgo_download_url}}"
+    dest: "{{pgo_install_path}}/pgo"
+    mode: 0755
+
+- name: Configure shell
+  template: src="zshrc.j2" dest="~/.zshrc.d/pgo.zsh" mode=0644
