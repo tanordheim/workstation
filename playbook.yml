@@ -4,6 +4,7 @@
   roles:
       - { role: ssh-keys, tags: ["base", "ssh-keys"] }
       - { role: git, tags: ["base", "git"] }
+      - { role: coreutils, tags: ["base", "coreutils"] }
       - { role: python, tags: ["base", "devenv", "python"] }
       - { role: vim, tags: ["base", "devenv", "vim"] }
       - { role: zsh, tags: ["base", "zsh"] }
