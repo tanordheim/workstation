@@ -14,4 +14,4 @@
     mode: 0755
 
 - name: Configure shell
-  template: src="zshrc.j2" dest="~/.zshrc.d/pgo.zsh" mode=0644
+  template: src="zshrc.j2" dest="~/.zshrc.d/kubedb.zsh" mode=0644
