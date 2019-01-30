@@ -3,14 +3,14 @@
 - name: Create the installation directory
   become: true
   file:
-    path: "{{pgo_install_path}}"
+    path: "{{kubedb_install_path}}"
     state: directory
 
-- name: Install pgo CLI
+- name: Install KubeDB CLI
   become: true
   get_url:
-    url: "{{pgo_download_url}}"
-    dest: "{{pgo_install_path}}/pgo"
+    url: "{{kubedb_download_url}}"
+    dest: "{{kubedb_install_path}}/kubedb"
     mode: 0755
 
 - name: Configure shell

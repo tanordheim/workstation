@@ -1,5 +1,0 @@
----
-
-pgo_version: "3.5.0"
-pgo_download_url: "https://github.com/CrunchyData/postgres-operator/releases/download/{{pgo_version}}/pgo-mac"
-pgo_install_path: "/opt/crunchydata-postgres-operator/{{pgo_version}}"

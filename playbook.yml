@@ -37,4 +37,4 @@
       - { role: minikube, tags: ["devenv", "kubernetes", "minikube"] }
       - { role: gcloud, tags: ["devenv", "gcloud"] }
       - { role: hugo, tags: ["devenv", "hugo"] }
-      - { role: pgo, tags: ["devenv", "kubernetes", "pgo"] }
+      - { role: kubedb, tags: ["devenv", "kubernetes", "kubedb"] }
