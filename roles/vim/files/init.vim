@@ -32,6 +32,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'airblade/vim-gitgutter'
 
 " ui/panel plugins.
 Plugin 'scrooloose/nerdtree'
@@ -301,3 +302,21 @@ augroup FileType cs
     au FileType cs nmap <leader>fi :OmniSharpFixIssue
     au BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 augroup end
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" GIT-GUTTER SETTINGS
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" decrease updatetime (default 4000) to make it feel more snappy
+set updatetime=100
+
+" modify the gutter signs to look better
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '━'
+let g:gitgutter_sign_modified_removed = '╋━'
+
+" don't enable gitgutter hotkeys, i want it mostly for the signs
+let g:gitgutter_map_keys = 0
