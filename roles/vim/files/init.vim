@@ -185,8 +185,8 @@ map <C-n> :ALENextWrap<CR>
 map <C-m> :ALEPreviousWrap<CR>
 
 " configure syntastic.
-" let g:syntastic_error_symbol = '✗✗'
-" let g:syntastic_warning_symbol = '⚠⚠'
+let g:syntastic_error_symbol = '✗✗'
+let g:syntastic_warning_symbol = '⚠⚠'
 
 " configure deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -208,7 +208,7 @@ set scrolloff=10
 let g:go_bin_path = $HOME.'/Code/go/bin'
 let g:go_fmt_command = 'goimports'
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0 " disabled because of the super annoying jumping to next error when enabled - see https://github.com/fatih/vim-go/issues/2136
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
