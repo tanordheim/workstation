@@ -7,3 +7,6 @@
 
 - name: Install tmux configuration
   copy: src=tmux.conf dest=~/.tmux.conf
+
+- name: Configure shell
+  template: src="zshrc.j2" dest="~/.zshrc.d/tmux.zsh" mode=0644
