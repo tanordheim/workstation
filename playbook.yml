@@ -9,6 +9,7 @@
       - { role: vim, tags: ["base", "devenv", "vim"] }
       - { role: zsh, tags: ["base", "zsh"] }
       - { role: tmux, tags: ["base", "tmux"] }
+      - { role: imagemagick, tags: ["base", "imagemagick"] }
       - { role: macos, tags: ["desktop", "macos"] }
       - { role: fonts, tags: ["desktop", "fonts"] }
       - { role: firefox, tags: ["desktop", "firefox"] }

@@ -1,0 +1,6 @@
+---
+
+- name: Install ImageMagick
+  homebrew:
+    name: imagemagick
+    state: present
