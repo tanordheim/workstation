@@ -33,6 +33,7 @@
       - { role: vagrant, tags: ["devenv", "vagrant"] }
       - { role: terraform, tags: ["devenv", "terraform"] }
       - { role: helm, tags: ["devenv", "kubernetes", "helm"] }
+      - { role: kustomize, tags: ["devenv", "kubernetes", "kustomize"] }
       - { role: stern, tags: ["devenv", "kubernetes", "stern"] }
       - { role: istio, tags: ["devenv", "kubernetes", "istio"] }
       - { role: minikube, tags: ["devenv", "kubernetes", "minikube"] }

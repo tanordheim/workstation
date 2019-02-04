@@ -1,0 +1,6 @@
+---
+
+- name: Install Kustomize
+  homebrew:
+    name: kustomize
+    state: present
