@@ -1,14 +1,6 @@
 ---
 
-- name: Install Go
-  homebrew:
-    name: go
-    state: present
+- include: go.yml
+- include: glide.yml
+- include: delve.yml
 
-- name: Configure shell
-  template: src="zshrc.j2" dest="~/.zshrc.d/go.zsh" mode=0644
-
-- name: Prepare the GOPATH
-  file:
-    path: "~/Code/go"
-    state: directory

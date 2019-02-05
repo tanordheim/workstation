@@ -1,0 +1,40 @@
+---
+
+- name: Install macOS legacy include headers
+  become: true
+  command: installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_{{ansible_distribution_version.split(".")[0]}}.{{ansible_distribution_version.split(".")[1]}}.pkg -target /
+  args:
+    creates: /System/Library/Frameworks/Kernel.framework/Versions/A/Headers/sys/stdio.h
+
+- name: Create the installation directory
+  become: true
+  file:
+    path: "{{go_delve_install_path}}"
+    owner: "{{ansible_user}}"
+    state: directory
+
+- name: Download the Delve source code
+  unarchive:
+    src: "{{go_delve_download_url}}"
+    dest: "{{go_delve_install_path}}"
+    remote_src: yes
+    extra_opts:
+      --strip-components=1
+    creates: "{{go_delve_install_path}}/README.md"
+  register: go_delve_downloaded
+
+- name: Install Delve dependencies
+  command: glide install
+  args:
+    chdir: "{{go_delve_install_path}}"
+  environment:
+    GOPATH: "{{go_delve_gopath}}"
+  when: go_delve_downloaded.changed
+
+- name: Install dlv
+  shell: make install && mv "{{go_delve_gopath}}/bin/dlv" "{{go_path}}/bin/dlv"
+  args:
+    chdir: "{{go_delve_install_path}}"
+  environment:
+    GOPATH: "{{go_delve_gopath}}"
+  when: go_delve_downloaded.changed

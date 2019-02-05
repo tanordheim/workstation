@@ -1,0 +1,6 @@
+---
+
+- name: Install Glide
+  homebrew:
+    name: glide
+    state: present
