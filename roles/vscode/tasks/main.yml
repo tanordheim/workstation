@@ -25,4 +25,10 @@
   file: path="~/Library/Application Support/Code/User" state=directory
 
 - name: Configure Visual Studio Code
-  template: src="settings.json.j2" dest="~/Library/Application Support/Code/User/settings.json" mode=0644
+  template:
+    src: "{{item}}.j2"
+    dest: "~/Library/Application Support/Code/User/{{item}}"
+    mode: 0644
+  with_items:
+    - "settings.json"
+    - "keybindings.json"
