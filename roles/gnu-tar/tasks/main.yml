@@ -1,0 +1,6 @@
+---
+
+- name: Install GNU tar
+  homebrew:
+    name: gnu-tar
+    state: present
