@@ -20,7 +20,7 @@
     - mauve.terraform
     - zxh404.vscode-proto3
     - redhat.vscode-yaml
-
+    - heptio.jsonnet
 - name: Create Visual Studio Code config directories
   file: path="~/Library/Application Support/Code/User" state=directory
 
