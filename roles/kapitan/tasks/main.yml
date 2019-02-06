@@ -1,0 +1,7 @@
+---
+
+- name: Install Kapitan
+  pip:
+    name: kapitan
+    version: "{{kapitan_version}}"
+    executable: pip3
