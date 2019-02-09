@@ -21,6 +21,8 @@
     - zxh404.vscode-proto3
     - redhat.vscode-yaml
     - heptio.jsonnet
+    - aeschli.vscode-css-formatter
+
 - name: Create Visual Studio Code config directories
   file: path="~/Library/Application Support/Code/User" state=directory
 
