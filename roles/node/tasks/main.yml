@@ -4,3 +4,8 @@
   homebrew:
     name: node
     state: present
+
+- name: Install yarn
+  homebrew:
+    name: yarn
+    state: present
