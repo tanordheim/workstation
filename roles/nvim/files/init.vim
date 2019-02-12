@@ -7,54 +7,50 @@
 " be iMproved, required.
 set nocompatible
 " turn off filetype detection, required.
-filetype off
+" filetype off
 
-" set the runtime path to include Vundle and initialize.
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" initialize vim-plugged
+call plug#begin('~/.vim/plugged')
 
 " let ale and syntastic coexist without warnings.
 let g:ale_emit_conflict_warnings = 0
 
-" let Vundle manage Vundle, required.
-Plugin 'VundleVim/Vundle.vim'
-
 " core plugins.
-Plugin 'flazz/vim-colorschemes'
-Plugin 'chriskempson/base16-vim'
-Plugin 'kien/ctrlp.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
+Plug 'kien/ctrlp.vim'
 
 " main plugins.
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'w0rp/ale'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
+Plug 'vim-syntastic/syntastic'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
 
 " ui/panel plugins.
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
 
 " language plugins.
-Plugin 'fatih/vim-go'
-Plugin 'mhartington/nvim-typescript'
-Plugin 'HerringtonDarkholme/yats.vim'
-Plugin 'OmniSharp/omnisharp-vim'
-Plugin 'hashivim/vim-terraform'
+Plug 'fatih/vim-go'
+Plug 'mhartington/nvim-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'hashivim/vim-terraform'
 
 " autocomplete, snippets and formatting.
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-go'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'AndrewRadev/splitjoin.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'AndrewRadev/splitjoin.vim'
 
-" end the vundle loader and enable filetype detection again.
-call vundle#end()
-filetype plugin indent on
+" end the plug loader and enable filetype detection again.
+call plug#end()
+" filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "

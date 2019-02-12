@@ -21,14 +21,18 @@
 - name: Prepare Neovim configuration directories
   file: path=~/{{ item }} state=directory
   with_items:
-    - .vim/bundle
+    - .local/share/nvim/site/autoload
+    - .vim/plugged
     - .vim/tmp/undo
     - .vim/tmp/backup
     - .vim/tmp/swap
     - .config/nvim
 
-- name: Install Vundle
-  git: repo=https://github.com/VundleVim/Vundle.vim dest=~/.vim/bundle/Vundle.vim accept_hostkey=yes
+- name: Install vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
+    mode: 0644
 
 - name: Install Neovim configuration
   copy: src=init.vim dest=~/.config/nvim/init.vim
@@ -36,5 +40,5 @@
 - name: Update Neovim plugins
   shell: nvim --headless {{ item }}
   with_items:
-    - +PluginInstall +qall
+    - +PlugInstall +qall
     - +UpdateRemotePlugins +qall
