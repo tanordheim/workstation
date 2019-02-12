@@ -1,0 +1,24 @@
+---
+
+- name: Create the installation directory
+  become: true
+  file:
+    path: "{{go_bingo_install_path}}"
+    owner: "{{ansible_user}}"
+    state: directory
+
+- name: Download the Bingo source code
+  unarchive:
+    src: "{{go_bingo_download_url}}"
+    dest: "{{go_bingo_install_path}}"
+    remote_src: yes
+    extra_opts:
+      --strip-components=1
+    creates: "{{go_bingo_install_path}}/README.md"
+  register: go_bingo_downloaded
+
+- name: Install Bingo
+  shell: go build -o bingo main.go && mv bingo "{{go_path}}/bin/bingo"
+  args:
+    chdir: "{{go_bingo_install_path}}"
+  when: go_bingo_downloaded.changed
