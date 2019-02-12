@@ -7,7 +7,7 @@
       - { role: coreutils, tags: ["base", "coreutils"] }
       - { role: gnu-tar, tags: ["base", "gnu-tar"] }
       - { role: python, tags: ["base", "devenv", "python"] }
-      - { role: vim, tags: ["base", "devenv", "vim"] }
+      - { role: nvim, tags: ["base", "devenv", "nvim", "vim"] }
       - { role: zsh, tags: ["base", "zsh"] }
       - { role: tmux, tags: ["base", "tmux"] }
       - { role: imagemagick, tags: ["base", "imagemagick"] }

@@ -6,7 +6,7 @@
     state: present
 
 - name: Configure shell
-  template: src="zshrc.j2" dest="~/.zshrc.d/vim.zsh" mode=0644
+  template: src="zshrc.j2" dest="~/.zshrc.d/nvim.zsh" mode=0644
 
 - name: Install neovim python2 modules
   pip:
