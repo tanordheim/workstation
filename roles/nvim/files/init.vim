@@ -274,24 +274,8 @@ augroup end
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" automatically open NERDTree and focus it on the current file when opening a
-" new file
+" automatically open NERDTree
 autocmd! VimEnter * NERDTree | wincmd w
-
-" detect if NERDTree is open
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" automatically update NERDTree to highlight the currently open buffer/file
-function! SyncNERDTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-autocmd VimEnter * call SyncNERDTree()
-autocmd BufEnter * call SyncNERDTree()
 
 " automatically close the nerdtree buffer if it's the only one left open
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
