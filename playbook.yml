@@ -7,7 +7,6 @@
       - { role: coreutils, tags: ["base", "coreutils"] }
       - { role: gnu-tar, tags: ["base", "gnu-tar"] }
       - { role: python, tags: ["base", "devenv", "python"] }
-      - { role: nvim, tags: ["base", "devenv", "nvim", "vim"] }
       - { role: zsh, tags: ["base", "zsh"] }
       - { role: tmux, tags: ["base", "tmux"] }
       - { role: imagemagick, tags: ["base", "imagemagick"] }
@@ -30,6 +29,7 @@
       - { role: go, tags: ["devenv", "go"] }
       - { role: dotnet, tags: ["devenv", "dotnet"] }
       - { role: node, tags: ["devenv", "node"] }
+      - { role: nvim, tags: ["base", "devenv", "nvim", "vim"] }
       - { role: virtualbox, tags: ["devenv", "virtualbox"] }
       - { role: vagrant, tags: ["devenv", "vagrant"] }
       - { role: terraform, tags: ["devenv", "terraform"] }

@@ -42,10 +42,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'hashivim/vim-terraform'
 
 " autocomplete, snippets and formatting.
-Plug 'Shougo/deoplete.nvim'
-Plug 'zchee/deoplete-go'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'AndrewRadev/splitjoin.vim'
 
 " end the plug loader and enable filetype detection again.
@@ -171,9 +168,6 @@ set noerrorbells
 " quickfix configuration.
 nnoremap <leader>a :cclose<CR>
 
-" configure UltiSnips keybindings.
-let g:UltiSnipsExpandTrigger = '<C-j>'
-
 " configure ale.
 let g:ale_sign_error = '✗✗'
 let g:ale_sign_warning = '⚠⚠'
@@ -184,17 +178,26 @@ map <C-m> :ALEPreviousWrap<CR>
 let g:syntastic_error_symbol = '✗✗'
 let g:syntastic_warning_symbol = '⚠⚠'
 
-" configure deoplete.
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
 " disable preview window when completing.
-set completeopt-=preview
+" TODO can this be left off?
+" set completeopt-=preview
 
 " set how much to scroll when reaching the bottom of the buffer.
 set scrolloff=10
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" use tab for triggering completion
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " GO LANGUAGE SETTINGS
 "
@@ -234,42 +237,6 @@ augroup FileType go
     au FileType go nmap <leader>t <Plug>(go-test)
     au FileType go nmap <leader>tf <Plug>(go-test-func)
     au FileType go nmap <leader>l <Plug>(go-metalinter)
-augroup end
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" TYPESCRIPT LANGUAGE SETTINGS
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup FileType typescript
-    au FileType typescript setl shiftwidth=2
-augroup end
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" HTML LANGUAGE SETTINGS
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup FileType html
-    au FileType html setl shiftwidth=2
-augroup end
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" YAML LANGUAGE SETTINGS
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup FileType yaml
-    au FileType yaml setl shiftwidth=2
-augroup end
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" TERRAFORM RESOURCE SETTINGS
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup FileType terraform
-    au FileType terraform setl shiftwidth=2
 augroup end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

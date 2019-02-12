@@ -6,7 +6,10 @@
     state: present
 
 - name: Configure shell
-  template: src="zshrc.j2" dest="~/.zshrc.d/nvim.zsh" mode=0644
+  template:
+    src: "zshrc.j2"
+    dest: "~/.zshrc.d/nvim.zsh"
+    mode: 0644
 
 - name: Install neovim python2 modules
   pip:
@@ -19,7 +22,9 @@
     executable: pip3
 
 - name: Prepare Neovim configuration directories
-  file: path=~/{{ item }} state=directory
+  file:
+    path: ~/{{ item }}
+    state: directory
   with_items:
     - .local/share/nvim/site/autoload
     - .vim/plugged
@@ -27,6 +32,7 @@
     - .vim/tmp/backup
     - .vim/tmp/swap
     - .config/nvim
+    - .config/coc/extensions
 
 - name: Install vim-plug
   get_url:
@@ -35,10 +41,29 @@
     mode: 0644
 
 - name: Install Neovim configuration
-  copy: src=init.vim dest=~/.config/nvim/init.vim
+  copy:
+    src: init.vim
+    dest: ~/.config/nvim/init.vim
 
 - name: Update Neovim plugins
   shell: nvim --headless {{ item }}
   with_items:
     - +PlugInstall +qall
     - +UpdateRemotePlugins +qall
+
+- name: Install CoC language plugins
+  shell:
+    cmd: yarn add {{ item }}
+    chdir: ~/.config/coc/extensions
+  with_items:
+    - coc-html
+    - coc-json
+    - coc-tsserver
+    - coc-css
+    - coc-yaml
+
+- name: Install CoC configuration
+  template:
+    src: "coc-settings.json.j2"
+    dest: "~/.config/nvim/coc-settings.json"
+    mode: 0644
