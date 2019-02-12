@@ -6,6 +6,8 @@
       - homebrew/cask-fonts/font-menlo-for-powerline
       - homebrew/cask-fonts/font-droid-sans-mono-for-powerline
       - font-roboto-mono-for-powerline
+      - font-robotomono-nerd-font
+      - font-hack-nerd-font
     state: present
 
 - name: Install font files
