@@ -6,14 +6,9 @@
 
 " be iMproved, required.
 set nocompatible
-" turn off filetype detection, required.
-" filetype off
 
 " initialize vim-plugged
 call plug#begin('~/.vim/plugged')
-
-" let ale and syntastic coexist without warnings.
-let g:ale_emit_conflict_warnings = 0
 
 " core plugins.
 Plug 'flazz/vim-colorschemes'
@@ -26,7 +21,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
-Plug 'vim-syntastic/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 
@@ -49,7 +43,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " end the plug loader and enable filetype detection again.
 call plug#end()
-" filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -94,7 +87,6 @@ let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
 
 " configure fugitive shortcuts.
 nnoremap <leader>s :Gstatus<CR>
@@ -167,22 +159,19 @@ set title
 set visualbell
 set noerrorbells
 
-" quickfix configuration.
-nnoremap <leader>a :cclose<CR>
-
 " configure ale.
 let g:ale_sign_error = '✗✗'
 let g:ale_sign_warning = '⚠⚠'
+let g:ale_open_list = 1
+let g:ale_virtualtext_cursor = 1
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {}
+let g:ale_linters_explicit = 1
 map <C-n> :ALENextWrap<CR>
 map <C-m> :ALEPreviousWrap<CR>
-
-" configure syntastic.
-let g:syntastic_error_symbol = '✗✗'
-let g:syntastic_warning_symbol = '⚠⚠'
-
-" disable preview window when completing.
-" TODO can this be left off?
-" set completeopt-=preview
+nnoremap <leader>l :ALELint<CR>
 
 " set how much to scroll when reaching the bottom of the buffer.
 set scrolloff=10
@@ -221,13 +210,9 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_addtags_transform = 'camelcase'
 
-" disable syntastic linting of go files.
-let g:syntastic_go_checkers = []
-
 " configure ale-linting of go files.
-let g:ale_linters = { 'go': [] }
-let g:ale_linters = { 'go': ['gometalinter'] }
-let g:ale_go_gometalinter_options = '--fast'
+let g:ale_linters['go'] = ['golangci-lint']
+let g:ale_go_golangci_lint_options = ''
 
 augroup FileType go
     au!
@@ -238,7 +223,6 @@ augroup FileType go
     au FileType go nmap <leader>b <Plug>(go-build)
     au FileType go nmap <leader>t <Plug>(go-test)
     au FileType go nmap <leader>tf <Plug>(go-test-func)
-    au FileType go nmap <leader>l <Plug>(go-metalinter)
 augroup end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,12 +230,6 @@ augroup end
 " C# LANGUAGE SETTINGS
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" disable ale-linting of cs files.
-let g:ale_linters = { 'cs': [] }
-
-" use OmniSharp for syntax checking cs files.
-let g:syntastic_cs_checkers = ['code_checker']
 
 " configure OmniSharp.
 let g:OmniSharp_server_type = 'roslyn'
@@ -265,7 +243,6 @@ augroup FileType cs
     au FileType cs nmap <leader>b :OmniSharpBuild<CR>
     au FileType cs nmap <leader>fu :OmniSharpFixUsings<CR>
     au FileType cs nmap <leader>fi :OmniSharpFixIssue
-    au BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
 augroup end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
