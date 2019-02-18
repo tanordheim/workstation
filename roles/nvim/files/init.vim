@@ -212,6 +212,7 @@ let g:go_addtags_transform = 'camelcase'
 
 " configure ale-linting of go files.
 let g:ale_linters['go'] = ['golangci-lint']
+let g:ale_go_golangci_lint_package = 1
 let g:ale_go_golangci_lint_options = ''
 
 augroup FileType go
