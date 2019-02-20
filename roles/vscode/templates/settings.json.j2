@@ -1,19 +1,46 @@
 {
-    "editor.fontFamily": "'Roboto Mono for Powerline'",
-    "editor.fontSize": 12,
+    "editor.fontFamily": "Hack Nerd Font",
+    "editor.fontSize": 13,
     "editor.rulers": [80,120],
     "editor.renderWhitespace": "all",
     "editor.tabSize": 2,
+    "editor.minimap.enabled": false,
     "extensions.autoUpdate": false,
     "breadcrumbs.enabled": true,
     "window.zoomLevel": 0,
     "explorer.confirmDragAndDrop": false,
+    "go.autocompleteUnimportedPackages": true,
+    "go.lintOnSave": "package",
     "go.lintTool": "golangci-lint",
     "go.delveConfig": {
         "apiVersion": 2,
         "maxStringLen": 256,
         "maxVariableRecurse": 5
     },
+    "go.useLanguageServer": true,
+    "go.alternateTools": {
+        "go-langserver": "bingo"
+    },
+    "go.languageServerFlags": [
+        "-enhance-signature-help",
+        "-trace",
+        "-format-style=goimports"
+    ],
+    "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "autoComplete": true,
+        "rename": true,
+        "goToDefinition": true,
+        "hover": true,
+        "signatureHelp": true,
+        "goToTypeDefinition": true,
+        "goToImplementation": true,
+        "documentSymbols": true,
+        "workspaceSymbols": true,
+        "findReferences": true
+    },
+    "go.testFlags": ["-v"],
+    "go.coverOnSingleTest": true,
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.leader": ",",
