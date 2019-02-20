@@ -101,6 +101,9 @@ set pastetoggle=<leader>p
 nnoremap <F1> :TagbarToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 
+" refresh NERDTree and CtrlP on f5
+nnoremap <F5> :NERDTreeRefreshRoot<CR>:CtrlPClearCache<CR>
+
 " highlight the current line.
 set cursorline
 
@@ -259,9 +262,6 @@ autocmd! VimEnter * NERDTree | wincmd w
 
 " automatically close the nerdtree buffer if it's the only one left open
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" refresh NERDTree on f5
-nnoremap <F5> :NERDTreeRefreshRoot<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
