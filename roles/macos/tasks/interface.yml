@@ -4,7 +4,7 @@
   osx_defaults:
     key: AppleInterfaceStyle
     type: string
-    value: Light
+    value: Dark
     state: present
 
 - name: Set accent color
