@@ -15,8 +15,6 @@
     - ms-vscode.Go
     - vscodevim.vim
     - vscoss.vscode-ansible
-    - ms-vscode.csharp
-    - formulahendry.dotnet-test-explorer
     - mauve.terraform
     - zxh404.vscode-proto3
     - redhat.vscode-yaml
