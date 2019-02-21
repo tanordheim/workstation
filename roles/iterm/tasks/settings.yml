@@ -8,3 +8,6 @@
 
 - name: Set transparency
   shell: /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Transparency' 0.015" ~/Library/Preferences/com.googlecode.iterm2.plist
+
+- name: Set terminal type
+  shell: /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'Terminal Type' xterm-256color-italic" ~/Library/Preferences/com.googlecode.iterm2.plist
