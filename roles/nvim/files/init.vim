@@ -1,8 +1,18 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 "
-" PACKAGE MANAGEMENT
+" NeoVim configuration
 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Strongly inspired by the following:
+"
+"  - https://github.com/sebdah/dotfiles/blob/master/config/nvim/init.vim
+"
+"------------------------------------------------------------------------------
+
+"------------------------------------------------------------------------------
+"
+" Package management
+"
+"------------------------------------------------------------------------------
 
 " be iMproved, required.
 set nocompatible
@@ -10,12 +20,8 @@ set nocompatible
 " initialize vim-plugged
 call plug#begin('~/.vim/plugged')
 
-" core plugins.
-Plug 'flazz/vim-colorschemes'
-Plug 'chriskempson/base16-vim'
+" general plugins.
 Plug 'kien/ctrlp.vim'
-
-" main plugins.
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -23,163 +29,281 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
-
-" ui/panel plugins.
-Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-dispatch'
 Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'godlygeek/tabular'
 
 " language plugins.
 Plug 'fatih/vim-go'
-Plug 'mhartington/nvim-typescript'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'OmniSharp/omnisharp-vim'
+Plug 'sebdah/vim-delve'
 Plug 'hashivim/vim-terraform'
 
-" autocomplete, snippets and formatting.
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'AndrewRadev/splitjoin.vim'
+" colorschemes plugins.
+Plug 'kaicataldo/material.vim'
+Plug 'rakr/vim-one'
 
 " end the plug loader and enable filetype detection again.
 call plug#end()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 "
-" SETTINGS & KEYBINDINGS
+" General settings
 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 
-" define how and where backups are stored.
-set undodir=~/.vim/tmp/undo/
-set backupdir=~/.vim/tmp/backup/
-set directory=~/.vim/tmp/swap/
-set backup
-set writebackup
-set noswapfile
+set autoindent " use indentation from previous line on new lines
+set smartindent " enable smart indentation (eg. indenting next lines after '{' and such)
+set autoread " auto-reload files that changed on disk - undo reverts the reload
+set clipboard=unnamedplus " use the system clipboard by default
+set colorcolumn=81 " show a vertical bar in the 80th column
+set completeopt-=preview " remove preview window
+set cursorline " highlight the current line
+set encoding=utf-8 " force UTF8 encoding
+set expandtab " expand tabs to spaces
+set list " show whitespaces
+set listchars=nbsp:⦸,tab:\ \ ,extends:»,precedes:«,trail:• " overide whitespace symbols for readability
+set nospell " disable spellchecks
+set noswapfile " disable swap file
+set nowrap " don't wrap long lines automatically
+set noerrorbells " no audible sounds on errors
+set visualbell " no visual alerts on errors
+set number " show line numbers
+set formatoptions-=t " disable auto-wrapping text while typing
+set formatoptions+=r " insert comment leader after hitting <enter> in insert mode
+set formatoptions+=o " insert comment leader after hitting o or O in insert mode
+set formatoptions+=n " recognize numbered lists when formatting text
+set softtabstop=2 " number of spaces a <tab> in insertmode represents
+set tabstop=2 " how many spaces a tab represents
+set title " let neovim set the terminal title
+set updatetime=100 " redraw status every 100ms
+let mapleader=',' " set the leader button
+set backup " back up files being edited
+set writebackup " create backup files before writing a file
+set history=100 " number of commands remembered in history table
+set undofile " persist undo tree between sessions
+set undolevels=100 " number of undo levels to remember
+set undodir=~/.vim/tmp/undo/ " set the directory where undo history is stored
+set backupdir=~/.vim/tmp/backup/ " set the directory where backups are stored
+set directory=~/.vim/tmp/swap/ " set the directory where swap files and other junk is stored
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set showmatch " auto-highlight matching parenthesis and other block indicators
+set scrolloff=10 " set how much to scroll when reaching the bottom of the buffer
 
-" persist undo tree between sessions
-set undofile
-set history=100
-set undolevels=100
+" enable 24bit colors if available
+if (has("termguicolors"))
+  set termguicolors
+endif
 
-" ignore certain files and folders.
-set wildignore+=*/.git/*,*/node_modules/*,*/vendor/*,*/bin/*,*/obj/*
+" wrap text in the quickfix window
+augroup quickfix
+  autocmd!
+  autocmd FileType qf setlocal wrap
+augroup END
 
-" set <leader>.
-let mapleader=','
+" define escape sequence for italics
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+highlight Comment cterm=italic
 
-" show trailing whitespaces.
-set list
-set listchars=nbsp:⦸,tab:\ \ ,extends:»,precedes:«,trail:•
+"------------------------------------------------------------------------------
+"
+" Searching
+"
+"------------------------------------------------------------------------------
 
-" enable syntax highlighting and set a color scheme.
-syntax on
-let base16colorspace = 256
-colorscheme base16-tomorrow-night
+syntax on " enable syntax highlighting
+set background=dark " use dark background
+colorscheme material " set colorscheme
 
-" configure ctrlp.
-let g:ctrlp_map = '<c-p>'
-nnoremap <leader>p :CtrlPBuffer<CR>
+let g:material_terminal_italics = 1 " turn on italics for the material theme
+let g:one_allow_italics = 1 " turn on italics for the one theme
 
-" enable and configure airline.
-let g:airline_theme = 'base16'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#ale#enabled = 1
+"------------------------------------------------------------------------------
+"
+" Searching
+"
+"------------------------------------------------------------------------------
 
-" configure fugitive shortcuts.
-nnoremap <leader>s :Gstatus<CR>
+set wildignore+=*/.git/*,*/node_modules/*,*/vendor/*,*/bin/*,*/obj/* " ignore certain annoying files and folders in completion
+set ignorecase " ignore casing when searching
+set smartcase " if searchtext contains non-lowercase characters, skip ignorecase
+set hlsearch " highlight all matches when searching
+set incsearch " search while typing
+set wildignorecase " case insensitive completion of filenames
+set inccommand=nosplit " show search and replace changes interactively
 
-" use the system clipboard by default.
-set clipboard=unnamedplus
+" clear search highlights
+map <leader><CR> :nohlsearch<CR>
 
-" toggle paste mode.
-set pastetoggle=<leader>p
+" center the buffer on the match when navigating between matches
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
-" show/hide toggleables.
-nnoremap <F1> :TagbarToggle<CR>
-nnoremap <F2> :NERDTreeToggle<CR>
+"------------------------------------------------------------------------------
+"
+" Navigation and keybinds
+"
+"------------------------------------------------------------------------------
 
-" refresh NERDTree and CtrlP on f5
-nnoremap <F5> :NERDTreeRefreshRoot<CR>:CtrlPClearCache<CR>
+" disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
-" highlight the current line.
-set cursorline
+" jump between buffers with shift+arrow
+nnoremap <S-Left> :bprevious<CR>
+nnoremap <S-Right> :bnext<CR>
 
-" show line numbers
-set number
+" skip quickfix buffer when navigating between buffers
+augroup qf
+  autocmd!
+  autocmd FileType qf set nobuflisted
+augroup END
 
-" make buffers hidden when they're abandoned.
-set hidden
-
-" don't wrap long lines automatically.
-set nowrap
-
-" allow backspacing over everytrhing in insert mode.
-set backspace=indent,eol,start
-
-" set tab sizes and indenting.
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set autoindent
-
-" insert tabs on the start of the line according to shiftwidth, not tabstop.
-set smarttab
-
-" case insensitive search, and highlight search terms.
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-
-" case insensitive completion of filenames.
-set wildignorecase
-
-" disable highlighting.
-map <silent> <leader><CR> :noh<CR>
-
-" auto-highlight matching parenthesis and other block indicators.
-set showmatch
-
-" simplify moving between open windows.
+" simplify moving between open windows by using ctrl+[jkhl]
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" switch cwd to the directory of the open buffer.
+" toggle paste mode.
+set pastetoggle=<leader>p
+
+" switch cwd to the directory of the open buffer
 nmap <silent> <leader>cd :lcd %:h<CR>
 
-" create the full directory tree to the open buffer.
+" create the full directory tree to the open buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
-" change terminal title.
-set title
+" unused?
+" quickclose quickfix window on demand
+" nnoremap <leader>a :cclose<CR>
 
-" don't beep.
-set visualbell
-set noerrorbells
+"------------------------------------------------------------------------------
+"
+" Splits
+"
+"------------------------------------------------------------------------------
 
-" close quickfix window on demand
-nnoremap <leader>a :cclose<CR>
+set splitbelow " create horizontal splits below the current buffer
+set splitright " create vertical splits to the right of the current buffer
+
+"------------------------------------------------------------------------------
+"
+" Plugin: bling/vim-airline
+"
+"------------------------------------------------------------------------------
+
+"let g:airline_theme = 'base16' " set the color scheme
+"let g:airline_theme = 'material'
+let g:airline_theme = 'one'
+let g:airline_powerline_fonts = 1 " enable powerline fonts
+let g:airline#extensions#ale#enabled = 1 " show ale-status in powerline
+let g:airline#extensions#tabline#enabled = 1 " enable top tabline
+let g:airline#extensions#tabline#show_tabs = 0 " only show buffers, not tabs, in the top tabline
+
+"------------------------------------------------------------------------------
+"
+" Plugin: kien/ctrlp.vim
+"
+"------------------------------------------------------------------------------
+
+let g:ctrlp_map = '<c-p>' " map ctrl+p to ctrlp
+
+"------------------------------------------------------------------------------
+"
+" Plugin: majutsushi/tagbar
+"
+"------------------------------------------------------------------------------
+
+" toggle the tagbar with F1
+nnoremap <F1> :TagbarToggle<CR>
+
+" configure the tagbar for Go
+let g:tagbar_type_go = {
+  \ 'ctagstype' : 'go',
+  \ 'kinds'     : [
+    \ 'p:package',
+    \ 'i:imports:1',
+    \ 'c:constants',
+    \ 'v:variables',
+    \ 't:types',
+    \ 'n:interfaces',
+    \ 'w:fields',
+    \ 'e:embedded',
+    \ 'm:methods',
+    \ 'r:constructor',
+    \ 'f:functions'
+  \ ],
+  \ 'sro' : '.',
+  \ 'kind2scope' : {
+    \ 't' : 'ctype',
+    \ 'n' : 'ntype'
+  \ },
+  \ 'scope2kind' : {
+    \ 'ctype' : 't',
+    \ 'ntype' : 'n'
+  \ },
+  \ 'ctagsbin'  : 'gotags',
+  \ 'ctagsargs' : '-sort -silent'
+\ }
+
+"------------------------------------------------------------------------------
+"
+" Plugin: scrooloose/nerdtree
+"
+"------------------------------------------------------------------------------
+
+" toggle NERDTree with F2
+nnoremap <F2> :NERDTreeToggle<CR>
+
+" refresh NERDTree on f5
+nnoremap <F5> :NERDTreeRefreshRoot<CR>
+
+let NERDTreeRespectWildIgnore=1 " respect wildignore when ignoring files in the tree
+
+" automatically open NERDTree
+autocmd! VimEnter * NERDTree | wincmd w
+
+" automatically close the nerdtree buffer if it's the only one left open
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"------------------------------------------------------------------------------
+"
+" Plugin: w0rp/ale
+"
+"------------------------------------------------------------------------------
 
 " configure ale.
-let g:ale_sign_error = '✗✗'
-let g:ale_sign_warning = '⚠⚠'
-let g:ale_open_list = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {}
-let g:ale_linters_explicit = 1
+let g:ale_sign_error = '✗✗' " override error sign shown in gutter
+let g:ale_sign_warning = '⚠⚠' " override warning sign shown in gutter
+let g:ale_open_list = 1 " automatically open a list of ale errors or warnings (eg. lint errors)
+let g:ale_lint_on_text_changed = 'never' " only lint on save
+let g:ale_linters = {} " disable all default linters
+let g:ale_linters_explicit = 1 " only use linters we explicitly enable
+
+" use ctrl+n and ctrl+N to jump between ale errors or warnings
 map <C-n> :ALENextWrap<CR>
 map <C-m> :ALEPreviousWrap<CR>
-nnoremap <leader>l :ALELint<CR>
 
-" set how much to scroll when reaching the bottom of the buffer.
-set scrolloff=10
+" unused?:
+" nnoremap <leader>l :ALELint<CR>
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+
+"------------------------------------------------------------------------------
+"
+" Plugin: neoclide/coc.nvim
+"
+"------------------------------------------------------------------------------
 
 " use tab for triggering completion
 inoremap <silent><expr> <TAB>
@@ -187,24 +311,55 @@ inoremap <silent><expr> <TAB>
   \ <SID>check_back_space() ? "\<TAB>" :
   \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 "
-" GO LANGUAGE SETTINGS
+" Plugin: airblade/vim-gitgutter
 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 
-" configure vim-go.
-let g:go_bin_path = $HOME.'/Code/go/bin'
-let g:go_fmt_command = 'goimports'
-let g:go_list_type = 'quickfix'
-let g:go_metalinter_autosave = 0 " disabled because of the super annoying jumping to next error when enabled - see https://github.com/fatih/vim-go/issues/2136
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+" modify the gutter signs to look better
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '━'
+let g:gitgutter_sign_modified_removed = '╋━'
+let g:gitgutter_map_keys = 0 " don't enable gitgutter hotkeys, i want it mostly for the signs
+
+"------------------------------------------------------------------------------
+"
+" Language: Go
+"
+"------------------------------------------------------------------------------
+
+au FileType go set noexpandtab " use hard tabs, not spaces
+au FileType go set shiftwidth=4 " define the visible width of a tab
+au FileType go set softtabstop=4 " number of spaces a <tab> in insertmode represents
+au FileType go set tabstop=4 " how many spaces a tab represents
+au FileType go nested :TagbarOpen " automatically open tagbar
+
+
+" keyboard bindings
+au FileType go nmap <leader>ga <Plug>(go-alternate-vertical)
+au FileType go nmap <leader>gd <Plug>(go-def)
+au FileType go nmap <leader>gt :GoDeclsDir<CR>
+au FileType go nmap <leader>i <Plug>(go-info)
+au FileType go nmap <leader>t <Plug>(go-test-func)
+au FileType go nmap <leader>T <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+au FileType go nmap <leader>b :DlvToggleBreakpoint<CR>
+au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
+
+let g:go_bin_path = $HOME.'/Code/go/bin' " explicitly set GOPATH
+let g:go_fmt_command = 'goimports' " use goimports when running gofmt
+let g:go_list_type = 'quickfix' " use quickfix for command outputs
+let g:go_statusline_duration = 10000 " only show statusline for 10s
+let g:go_echo_command_info = 0 " stop echoing go command info, shown in statusline instead
+
+" tweak default syntax highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -213,70 +368,28 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_auto_type_info = 1
 let g:go_addtags_transform = 'camelcase'
+let g:go_snippet_engine = 'neosnippet'
 
-" configure ale-linting of go files.
-let g:ale_linters['go'] = ['golangci-lint']
-let g:ale_go_golangci_lint_package = 1
-let g:ale_go_golangci_lint_options = ''
+" add statusbar info to airline
+call airline#parts#define_raw('go', '%#goStatuslineColor#%{go#statusline#Show()}%')
+call airline#parts#define_condition('go', '&filetype=="go"')
+let g:airline_section_x = airline#section#create(['go'])
 
-augroup FileType go
-    au!
-    autocmd FileType go command! -bang GoAlternateVerticalSplit call go#alternate#Switch(<bang>0, 'vsplit')
-    au FileType go nmap <leader>gd <Plug>(go-def-vertical)
-    au FileType go nmap <leader>ga :GoAlternateVerticalSplit<CR>
-    au FileType go nmap <leader>i <Plug>(go-info)
-    au FileType go nmap <leader>b <Plug>(go-build)
-    au FileType go nmap <leader>t <Plug>(go-test)
-    au FileType go nmap <leader>tf <Plug>(go-test-func)
-augroup end
+" configure ale linting
+let g:ale_linters['go'] = ['golangci-lint'] " use golang-ci
+let g:ale_go_golangci_lint_package = 1 " lint the entire package, not just the open buffer
+let g:ale_go_golangci_lint_options = '' " don't pass any options to golang-ci, use the default settings and optionally the .golangci.yml in cwd
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" C# LANGUAGE SETTINGS
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
+" Unused things after refactoring the file; migth add back in later or remove
+" entirely
+"------------------------------------------------------------------------------
 
-" configure OmniSharp.
-let g:OmniSharp_server_type = 'roslyn'
-let g:OmniSharp_server_path = '/opt/omnisharp-roslyn/OmniSharp.exe'
-let g:OmniSharp_selector_ui = 'ctrlp'
-augroup FileType cs
-    au!
-    au FileType cs setlocal omnifunc=OmniSharp#Complete
-    au FileType cs nmap <leader>i :OmniSharpTypeLookup<CR>
-    au FileType cs nmap gd :OmniSharpGotoDefinition<CR>
-    au FileType cs nmap <leader>b :OmniSharpBuild<CR>
-    au FileType cs nmap <leader>fu :OmniSharpFixUsings<CR>
-    au FileType cs nmap <leader>fi :OmniSharpFixIssue
-augroup end
+" set smarttab
+" set shiftwidth=2
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" NERDTREE SETTINGS
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" automatically open NERDTree
-autocmd! VimEnter * NERDTree | wincmd w
-
-" automatically close the nerdtree buffer if it's the only one left open
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" GIT-GUTTER SETTINGS
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" decrease updatetime (default 4000) to make it feel more snappy
-set updatetime=100
-
-" modify the gutter signs to look better
-let g:gitgutter_sign_added = '┃'
-let g:gitgutter_sign_modified = '┃'
-let g:gitgutter_sign_removed = '━'
-let g:gitgutter_sign_modified_removed = '╋━'
-
-" don't enable gitgutter hotkeys, i want it mostly for the signs
-let g:gitgutter_map_keys = 0
+" make buffers hidden when they're abandoned.
+" set hidden

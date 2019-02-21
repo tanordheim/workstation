@@ -5,6 +5,11 @@
     name: neovim
     state: present
 
+- name: Install ctags
+  homebrew:
+    name: ctags
+    state: present
+
 - name: Configure shell
   template:
     src: "zshrc.j2"
