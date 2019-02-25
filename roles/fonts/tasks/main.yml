@@ -14,3 +14,15 @@
   copy: src={{item}} dest=~/Library/Fonts/{{item}}
   with_items:
     - "Monaco for Powerline.otf"
+    - "SFMono-Bold.otf"
+    - "SFMono-BoldItalic.otf"
+    - "SFMono-Heavy.otf"
+    - "SFMono-HeavyItalic.otf"
+    - "SFMono-Light.otf"
+    - "SFMono-LightItalic.otf"
+    - "SFMono-Medium.otf"
+    - "SFMono-MediumItalic.otf"
+    - "SFMono-Regular.otf"
+    - "SFMono-RegularItalic.otf"
+    - "SFMono-Semibold.otf"
+    - "SFMono-SemiboldItalic.otf"
