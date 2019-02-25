@@ -20,6 +20,8 @@
     - redhat.vscode-yaml
     - heptio.jsonnet
     - aeschli.vscode-css-formatter
+    - pkief.material-icon-theme
+    - zhuangtongfa.material-theme
 
 - name: Create Visual Studio Code config directories
   file: path="~/Library/Application Support/Code/User" state=directory

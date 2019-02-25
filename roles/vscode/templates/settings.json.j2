@@ -1,6 +1,6 @@
 {
-    "editor.fontFamily": "Hack Nerd Font",
-    "editor.fontSize": 13,
+    "editor.fontFamily": "SFMono-Semibold",
+    "editor.fontSize": 12,
     "editor.rulers": [80,120],
     "editor.renderWhitespace": "all",
     "editor.tabSize": 2,
@@ -24,23 +24,17 @@
     "go.languageServerFlags": [
         "-enhance-signature-help",
         "-trace",
-        "-format-style=goimports"
+        "-format-style=goimports",
+        "-cache-style=none"
     ],
     "go.languageServerExperimentalFeatures": {
         "format": true,
         "autoComplete": true,
-        "rename": true,
-        "goToDefinition": true,
-        "hover": true,
-        "signatureHelp": true,
-        "goToTypeDefinition": true,
-        "goToImplementation": true,
-        "documentSymbols": true,
-        "workspaceSymbols": true,
-        "findReferences": true
     },
-    "go.testFlags": ["-v"],
-    "go.coverOnSingleTest": true,
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveTimeout": 5000
+    },
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.leader": ",",
@@ -49,5 +43,7 @@
     "jsonnet.libPaths": [
         "/usr/local/lib/python3.7/site-packages/kapitan"
     ],
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Dark Pro Bold"
 } 
  
