@@ -62,7 +62,6 @@ set autoindent " use indentation from previous line on new lines
 set smartindent " enable smart indentation (eg. indenting next lines after '{' and such)
 set autoread " auto-reload files that changed on disk - undo reverts the reload
 set clipboard=unnamedplus " use the system clipboard by default
-set colorcolumn=81 " show a vertical bar in the 80th column
 set completeopt-=preview " remove preview window
 set cursorline " highlight the current line
 set encoding=utf-8 " force UTF8 encoding
@@ -162,10 +161,10 @@ noremap <Right> <NOP>
 nnoremap <S-Left> :bprevious<CR>
 nnoremap <S-Right> :bnext<CR>
 
-" skip quickfix buffer when navigating between buffers
 augroup qf
   autocmd!
-  autocmd FileType qf set nobuflisted
+  autocmd FileType qf set nobuflisted " skip quickfix buffer when navigating between buffers
+  autocmd FileType qf wincmd J " always position quickfix window on the bottom
 augroup END
 
 " simplify moving between open windows by using ctrl+[jkhl]
@@ -183,9 +182,8 @@ nmap <silent> <leader>cd :lcd %:h<CR>
 " create the full directory tree to the open buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
-" unused?
-" quickclose quickfix window on demand
-" nnoremap <leader>a :cclose<CR>
+" close the quickfix window
+nnoremap <leader>a :cclose<CR>
 
 "------------------------------------------------------------------------------
 "
