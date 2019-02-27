@@ -33,9 +33,10 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 
@@ -104,11 +105,6 @@ augroup quickfix
   autocmd FileType qf setlocal wrap
 augroup END
 
-" define escape sequence for italics
-"let &t_ZH="\e[3m"
-"let &t_ZR="\e[23m"
-"highlight Comment cterm=italic
-
 "------------------------------------------------------------------------------
 "
 " Searching
@@ -119,9 +115,6 @@ let g:gruvbox_italic=1 " turn on italics for the gruvbox theme
 syntax on " enable syntax highlighting
 set background=dark " use dark background
 colorscheme gruvbox " set colorscheme
-
-"let g:material_terminal_italics = 1 " turn on italics for the material theme
-"let g:one_allow_italics = 1 " turn on italics for the one theme
 
 "------------------------------------------------------------------------------
 "
@@ -184,6 +177,10 @@ nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 " close the quickfix window
 nnoremap <leader>a :cclose<CR>
 
+" use ctrl+n and ctrl+N to jump between quickfix locations
+map <C-n> :cnext<CR>
+map <C-m> :cprev<CR>
+
 "------------------------------------------------------------------------------
 "
 " Splits
@@ -199,9 +196,6 @@ set splitright " create vertical splits to the right of the current buffer
 "
 "------------------------------------------------------------------------------
 
-"let g:airline_theme = 'base16' " set the color scheme
-"let g:airline_theme = 'material'
-"let g:airline_theme = 'one'
 let g:airline_theme = 'gruvbox' " set the color scheme
 let g:airline_powerline_fonts = 1 " enable powerline fonts
 let g:airline#extensions#ale#enabled = 1 " show ale-status in powerline
@@ -288,26 +282,22 @@ let g:ale_lint_on_text_changed = 'never' " only lint on save
 let g:ale_linters = {} " disable all default linters
 let g:ale_linters_explicit = 1 " only use linters we explicitly enable
 
-" use ctrl+n and ctrl+N to jump between ale errors or warnings
-map <C-n> :ALENextWrap<CR>
-map <C-m> :ALEPreviousWrap<CR>
-
-" unused?:
-" nnoremap <leader>l :ALELint<CR>
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 0 " don't use location list for listing linting issues
+let g:ale_set_quickfix = 1 " use quickfix list for listing linting issues
 
 "------------------------------------------------------------------------------
 "
-" Plugin: neoclide/coc.nvim
+" Plugin: Shugo/deoplete.nvim
 "
 "------------------------------------------------------------------------------
+
+let g:deoplete#enable_at_startup = 1 " enable deoplete
 
 " use tab for triggering completion
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
+  \ deoplete#mappings#manual_complete()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -353,7 +343,7 @@ au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
 
 let g:go_bin_path = $HOME.'/Code/go/bin' " explicitly set GOPATH
 let g:go_fmt_command = 'goimports' " use goimports when running gofmt
-let g:go_list_type = 'quickfix' " use quickfix for command outputs
+let g:go_list_type = 'locationlist' " use locationlist for command outputs
 let g:go_statusline_duration = 10000 " only show statusline for 10s
 let g:go_echo_command_info = 0 " stop echoing go command info, shown in statusline instead
 

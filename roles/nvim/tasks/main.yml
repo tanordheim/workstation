@@ -37,7 +37,6 @@
     - .vim/tmp/backup
     - .vim/tmp/swap
     - .config/nvim
-    - .config/coc/extensions
 
 - name: Install vim-plug
   get_url:
@@ -54,21 +53,3 @@
   shell: nvim --headless {{ item }}
   with_items:
     - +PlugInstall +qall
-    - +UpdateRemotePlugins +qall
-
-- name: Install CoC language plugins
-  shell:
-    cmd: yarn add {{ item }}
-    chdir: ~/.config/coc/extensions
-  with_items:
-    - coc-html
-    - coc-json
-    - coc-tsserver
-    - coc-css
-    - coc-yaml
-
-- name: Install CoC configuration
-  template:
-    src: "coc-settings.json.j2"
-    dest: "~/.config/nvim/coc-settings.json"
-    mode: 0644
