@@ -24,7 +24,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
@@ -46,8 +45,7 @@ Plug 'sebdah/vim-delve'
 Plug 'hashivim/vim-terraform'
 
 " colorschemes plugins.
-Plug 'kaicataldo/material.vim'
-Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 
 " end the plug loader and enable filetype detection again.
 call plug#end()
@@ -107,9 +105,9 @@ augroup quickfix
 augroup END
 
 " define escape sequence for italics
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
-highlight Comment cterm=italic
+"let &t_ZH="\e[3m"
+"let &t_ZR="\e[23m"
+"highlight Comment cterm=italic
 
 "------------------------------------------------------------------------------
 "
@@ -117,12 +115,13 @@ highlight Comment cterm=italic
 "
 "------------------------------------------------------------------------------
 
+let g:gruvbox_italic=1 " turn on italics for the gruvbox theme
 syntax on " enable syntax highlighting
 set background=dark " use dark background
-colorscheme material " set colorscheme
+colorscheme gruvbox " set colorscheme
 
-let g:material_terminal_italics = 1 " turn on italics for the material theme
-let g:one_allow_italics = 1 " turn on italics for the one theme
+"let g:material_terminal_italics = 1 " turn on italics for the material theme
+"let g:one_allow_italics = 1 " turn on italics for the one theme
 
 "------------------------------------------------------------------------------
 "
@@ -202,7 +201,8 @@ set splitright " create vertical splits to the right of the current buffer
 
 "let g:airline_theme = 'base16' " set the color scheme
 "let g:airline_theme = 'material'
-let g:airline_theme = 'one'
+"let g:airline_theme = 'one'
+let g:airline_theme = 'gruvbox' " set the color scheme
 let g:airline_powerline_fonts = 1 " enable powerline fonts
 let g:airline#extensions#ale#enabled = 1 " show ale-status in powerline
 let g:airline#extensions#tabline#enabled = 1 " enable top tabline
