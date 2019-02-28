@@ -61,7 +61,7 @@ set autoindent " use indentation from previous line on new lines
 set smartindent " enable smart indentation (eg. indenting next lines after '{' and such)
 set autoread " auto-reload files that changed on disk - undo reverts the reload
 set clipboard=unnamedplus " use the system clipboard by default
-set completeopt-=preview " remove preview window
+set completeopt+=noselect " disable selecting the first item in the preview list by default"
 set cursorline " highlight the current line
 set encoding=utf-8 " force UTF8 encoding
 set expandtab " expand tabs to spaces
@@ -370,6 +370,9 @@ let g:airline_section_x = airline#section#create(['go'])
 let g:ale_linters['go'] = ['golangci-lint'] " use golang-ci
 let g:ale_go_golangci_lint_package = 1 " lint the entire package, not just the open buffer
 let g:ale_go_golangci_lint_options = '' " don't pass any options to golang-ci, use the default settings and optionally the .golangci.yml in cwd
+
+" sort the list of completion options in deoplete.vim.
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 "------------------------------------------------------------------------------
 " Unused things after refactoring the file; migth add back in later or remove
