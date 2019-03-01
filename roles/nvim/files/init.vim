@@ -371,8 +371,9 @@ let g:ale_linters['go'] = ['golangci-lint'] " use golang-ci
 let g:ale_go_golangci_lint_package = 1 " lint the entire package, not just the open buffer
 let g:ale_go_golangci_lint_options = '' " don't pass any options to golang-ci, use the default settings and optionally the .golangci.yml in cwd
 
-" sort the list of completion options in deoplete.vim.
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const'] " sort the list of completion options in deoplete.vim.
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode-gomod' " use a gocode version with modules support for completion
 
 "------------------------------------------------------------------------------
 " Unused things after refactoring the file; migth add back in later or remove
