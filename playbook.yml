@@ -13,6 +13,7 @@
       - { role: macos, tags: ["desktop", "macos"] }
       - { role: fonts, tags: ["desktop", "fonts"] }
       - { role: firefox, tags: ["desktop", "firefox"] }
+      - { role: karabiner-elements, tags: ["desktop", "karabiner-elements"] }
       - { role: chrome, tags: ["desktop", "chrome"] }
       - { role: iterm, tags: ["desktop", "iterm"] }
       - { role: dropbox, tags: ["desktop", "dropbox"] }
