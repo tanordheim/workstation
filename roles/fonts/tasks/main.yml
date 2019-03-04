@@ -8,6 +8,7 @@
       - font-roboto-mono-for-powerline
       - font-robotomono-nerd-font
       - font-hack-nerd-font
+      - font-fira-code
     state: present
 
 - name: Install font files
