@@ -1,8 +1,8 @@
 {
-    "editor.fontFamily": "SFMono-Semibold",
-    "editor.fontSize": 12,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13,
     "editor.rulers": [80,120],
-    "editor.renderWhitespace": "all",
     "editor.tabSize": 2,
     "editor.minimap.enabled": false,
     "extensions.autoUpdate": false,
@@ -14,18 +14,19 @@
     "go.lintTool": "golangci-lint",
     "go.delveConfig": {
         "apiVersion": 2,
-        "maxStringLen": 256,
+        "maxStringLen": 512,
         "maxVariableRecurse": 5
     },
     "go.useLanguageServer": true,
     "go.alternateTools": {
         "go-langserver": "bingo"
     },
+    "go.vetOnSave": "off", // handled by golangci-lint
     "go.languageServerFlags": [
         "-enhance-signature-help",
         "-trace",
         "-format-style=goimports",
-        "-cache-style=none"
+        "-cache-style=on-demand"
     ],
     "go.languageServerExperimentalFeatures": {
         "format": true,
@@ -44,6 +45,7 @@
         "/usr/local/lib/python3.7/site-packages/kapitan"
     ],
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "One Dark Pro Bold"
+    "workbench.colorTheme": "One Monokai",
+    "extensions.ignoreRecommendations": false
 } 
  
