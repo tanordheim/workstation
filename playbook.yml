@@ -28,6 +28,7 @@
       - { role: docker, tags: ["devenv", "docker"] }
       - { role: vscode, tags: ["devenv", "vscode"] }
       - { role: go, tags: ["devenv", "go"] }
+      - { role: ruby, tags: ["devenv", "ruby"] }
       - { role: dotnet, tags: ["devenv", "dotnet"] }
       - { role: node, tags: ["devenv", "node"] }
       - { role: nvim, tags: ["base", "devenv", "nvim", "vim"] }
