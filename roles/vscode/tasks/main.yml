@@ -24,6 +24,7 @@
     - azemoh.one-monokai
     - mishkinf.goto-next-previous-member
     - rebornix.ruby
+    - castwide.solargraph
 
 - name: Create Visual Studio Code config directories
   file: path="~/Library/Application Support/Code/User" state=directory
