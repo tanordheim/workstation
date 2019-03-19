@@ -28,7 +28,12 @@
     - kumar-harsh.graphql-for-vscode
 
 - name: Create Visual Studio Code config directories
-  file: path="~/Library/Application Support/Code/User" state=directory
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+    - "~/Library/Application Support/Code/User"
+    - "~/Library/Application Support/Code/User/snippets"
 
 - name: Configure Visual Studio Code
   template:
@@ -38,3 +43,11 @@
   with_items:
     - "settings.json"
     - "keybindings.json"
+
+- name: Configure Visual Studio Code snippets
+  template:
+    src: "{{item}}-snippets.json.j2"
+    dest: "~/Library/Application Support/Code/User/snippets/{{item}}.json"
+    mode: 0644
+  with_items:
+    - "go"
