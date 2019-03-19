@@ -25,6 +25,7 @@
     - mishkinf.goto-next-previous-member
     - rebornix.ruby
     - castwide.solargraph
+    - kumar-harsh.graphql-for-vscode
 
 - name: Create Visual Studio Code config directories
   file: path="~/Library/Application Support/Code/User" state=directory
