@@ -1,6 +1,22 @@
 ---
 
-- name: Install istioctl
-  homebrew:
-    name: istioctl
-    state: present
+- name: Create the installation directory
+  become: true
+  file:
+    path: "{{istio_install_path}}"
+    owner: "{{ansible_user}}"
+    state: directory
+
+- name: Download istio
+  unarchive:
+    src: "{{istio_download_url}}"
+    dest: "{{istio_install_path}}"
+    remote_src: yes
+    extra_opts:
+      --strip-components=1
+
+- name: Configure shell
+  template:
+    src: "zshrc.j2"
+    dest: "~/.zshrc.d/istio.zsh"
+    mode: 0644
