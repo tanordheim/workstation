@@ -19,21 +19,20 @@
     },
     "go.useLanguageServer": true,
     "go.alternateTools": {
-        "go-langserver": "bingo"
+        "go-langserver": "gopls"
     },
+    "go.buildOnSave": "off", // handled by language server
     "go.vetOnSave": "off", // handled by golangci-lint
-    "go.languageServerFlags": [
-        "-enhance-signature-help",
-        "-trace",
-        "-format-style=goimports",
-    ],
     "go.languageServerExperimentalFeatures": {
         "format": true,
-        "autoComplete": true,
+        "autoComplete": true
     },
     "[go]": {
         "editor.formatOnSave": true,
-        "editor.formatOnSaveTimeout": 5000
+        "editor.formatOnSaveTimeout": 5000,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
     },
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
