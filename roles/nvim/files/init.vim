@@ -35,7 +35,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'ervandew/supertab'
+Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 
@@ -92,6 +92,9 @@ set directory=~/.vim/tmp/swap/ " set the directory where swap files and other ju
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set showmatch " auto-highlight matching parenthesis and other block indicators
 set scrolloff=10 " set how much to scroll when reaching the bottom of the buffer
+set hidden " hide abandoned buffers instead of unloading them
+set shortmess+=c " skip ins-completion-menu messages
+set signcolumn=yes " always show signcolumn
 
 " enable 24bit colors if available
 if (has("termguicolors"))
@@ -286,11 +289,47 @@ let g:ale_set_quickfix = 1 " use quickfix list for listing linting issues
 
 "------------------------------------------------------------------------------
 "
-" Plugin: ervandew/supertab
+" Plugin: neoclide/coc.nvim
 "
 "------------------------------------------------------------------------------
 
-let g:SuperTabDefaultCompletionType = "context" " determine which completion type to use based on context around the cursor
+" add coc to airline
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
+" use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" use <c-space> to trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" map coc gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 "------------------------------------------------------------------------------
 "
@@ -319,8 +358,8 @@ au FileType go nested :TagbarOpen " automatically open tagbar
 
 
 " keyboard bindings
-au FileType go nmap <leader>ga <Plug>(go-alternate-vertical)
-au FileType go nmap <leader>gd <Plug>(go-def)
+au FileType go nmap ga <Plug>(go-alternate-vertical)
+"au FileType go nmap <leader>gd <Plug>(go-def)
 au FileType go nmap <leader>gt :GoDeclsDir<CR>
 au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>t <Plug>(go-test-func)
@@ -331,12 +370,16 @@ au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
 
 let g:go_bin_path = $HOME.'/Code/go/bin' " explicitly set GOPATH
 let g:go_def_mode = 'gopls' " use gopls for 'go to definition'
+let g:go_info_mode = 'guru' " use guru for :GoInfo
 let g:go_fmt_command = 'goimports' " use goimports when running gofmt
 "let g:go_metalinter_command = 'golangci-lint' " use golang-ci-lint for linting
 "let g:go_metalinter_autosave = 1 " automatically run golang-ci when saving buffers
-let g:go_list_type = 'locationlist' " use locationlist for command outputs
+"let g:go_list_type = 'locationlist' " use locationlist for command outputs
+let g:go_list_type = 'quickfix' " use quickfix for command outputs
 let g:go_statusline_duration = 10000 " only show statusline for 10s
 let g:go_echo_command_info = 0 " stop echoing go command info, shown in statusline instead
+let g:go_def_mapping_enabled = 0 " disable go def-mapping, handled by coc
+let g:go_doc_keywordprg_enabled = 0 " disable godoc on cursor, handled by coc
 
 " tweak default syntax highlighting
 let g:go_highlight_functions = 1
@@ -348,7 +391,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
-let g:go_auto_type_info = 1
+"let g:go_auto_type_info = 1
 let g:go_addtags_transform = 'camelcase'
 let g:go_snippet_engine = 'neosnippet'
 

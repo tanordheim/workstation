@@ -49,6 +49,12 @@
     src: init.vim
     dest: ~/.config/nvim/init.vim
 
+- name: Install coc.nvim configuration
+  template:
+    src: "coc-settings.json.j2"
+    dest: "~/.config/nvim/coc-settings.json"
+    mode: 0644
+
 - name: Update Neovim plugins
   shell: nvim --headless {{ item }}
   with_items:
