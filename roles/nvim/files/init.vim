@@ -35,15 +35,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 
 " language plugins.
-Plug 'fatih/vim-go'
-Plug 'sebdah/vim-delve'
-Plug 'hashivim/vim-terraform'
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'sebdah/vim-delve', { 'for': 'go' }
+Plug 'hashivim/vim-terraform', { 'for': 'tf' }
 
 " colorschemes plugins.
 Plug 'morhetz/gruvbox'
@@ -287,22 +286,11 @@ let g:ale_set_quickfix = 1 " use quickfix list for listing linting issues
 
 "------------------------------------------------------------------------------
 "
-" Plugin: Shugo/deoplete.nvim
+" Plugin: ervandew/supertab
 "
 "------------------------------------------------------------------------------
 
-let g:deoplete#enable_at_startup = 1 " enable deoplete
-
-" use tab for triggering completion
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ deoplete#mappings#manual_complete()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+let g:SuperTabDefaultCompletionType = "context" " determine which completion type to use based on context around the cursor
 
 "------------------------------------------------------------------------------
 "
@@ -342,7 +330,10 @@ au FileType go nmap <leader>b :DlvToggleBreakpoint<CR>
 au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
 
 let g:go_bin_path = $HOME.'/Code/go/bin' " explicitly set GOPATH
+let g:go_def_mode = 'gopls' " use gopls for 'go to definition'
 let g:go_fmt_command = 'goimports' " use goimports when running gofmt
+"let g:go_metalinter_command = 'golangci-lint' " use golang-ci-lint for linting
+"let g:go_metalinter_autosave = 1 " automatically run golang-ci when saving buffers
 let g:go_list_type = 'locationlist' " use locationlist for command outputs
 let g:go_statusline_duration = 10000 " only show statusline for 10s
 let g:go_echo_command_info = 0 " stop echoing go command info, shown in statusline instead
@@ -361,27 +352,7 @@ let g:go_auto_type_info = 1
 let g:go_addtags_transform = 'camelcase'
 let g:go_snippet_engine = 'neosnippet'
 
-" add statusbar info to airline
-call airline#parts#define_raw('go', '%#goStatuslineColor#%{go#statusline#Show()}%')
-call airline#parts#define_condition('go', '&filetype=="go"')
-let g:airline_section_x = airline#section#create(['go'])
-
 " configure ale linting
-let g:ale_linters['go'] = ['golangci-lint'] " use golang-ci
-let g:ale_go_golangci_lint_package = 1 " lint the entire package, not just the open buffer
+let g:ale_linters['go'] = ['golangci-lint'] " use golangci-lint
+" let g:ale_go_golangci_lint_package = 1 " lint the entire package, not just the open buffer
 let g:ale_go_golangci_lint_options = '' " don't pass any options to golang-ci, use the default settings and optionally the .golangci.yml in cwd
-
-
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const'] " sort the list of completion options in deoplete.vim.
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode-gomod' " use a gocode version with modules support for completion
-
-"------------------------------------------------------------------------------
-" Unused things after refactoring the file; migth add back in later or remove
-" entirely
-"------------------------------------------------------------------------------
-
-" set smarttab
-" set shiftwidth=2
-
-" make buffers hidden when they're abandoned.
-" set hidden
