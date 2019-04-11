@@ -265,14 +265,6 @@ autocmd! VimEnter * NERDTree | wincmd w
 " automatically close the nerdtree buffer if it's the only one left open
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" automatically focus the currently open buffer in nerdtree
-function! NERDTreeSmartFind()
-  if @% != ""
-    NERDTreeFind | wincmd w
-  endif
-endfun
-nmap <leader>n call NERDTreeSmartFind()
-
 "------------------------------------------------------------------------------
 "
 " Plugin: w0rp/ale
@@ -300,6 +292,7 @@ let g:ale_linters = {
 let g:ale_linters_explicit = 1 " only use linters we explicitly enable
 let g:ale_lint_on_text_changed = 'never' " only lint on save
 let g:ale_go_golangci_lint_options = '' " dont pass any arguments to golangci-lint, use default settings and optionally .golangci.yml in cwd.
+let g:ale_go_golangci_lint_package = 1 " lint whole package, not just current file"
 
 " use ctrl+n and ctrl+N to jump between ale locations
 map <C-n> <Plug>(ale_next_wrap)
