@@ -271,7 +271,7 @@ function! NERDTreeSmartFind()
     NERDTreeFind | wincmd w
   endif
 endfun
-autocmd BufWinEnter * call NERDTreeSmartFind()
+nmap <leader>n call NERDTreeSmartFind()
 
 "------------------------------------------------------------------------------
 "
@@ -422,3 +422,14 @@ let g:go_auto_sameids = 1
 "let g:go_auto_type_info = 1
 let g:go_addtags_transform = 'camelcase'
 " let g:go_snippet_engine = 'neosnippet'
+
+"------------------------------------------------------------------------------
+"
+" Language: YAML
+"
+"------------------------------------------------------------------------------
+
+au FileType yaml set expandtab " use spaces, not tabs
+au FileType yaml set shiftwidth=2 " define the visible width of a tab
+au FileType yaml set softtabstop=2 " number of spaces a <tab> in insertmode represents
+au FileType yaml set tabstop=2 " how many spaces a tab represents
