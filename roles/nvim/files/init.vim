@@ -24,25 +24,24 @@ call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
 Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 Plug 'editorconfig/editorconfig-vim'
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 
 " language plugins.
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'sebdah/vim-delve', { 'for': 'go' }
-Plug 'hashivim/vim-terraform', { 'for': 'tf' }
+" Plug 'sebdah/vim-delve', { 'for': 'go' }
+" Plug 'hashivim/vim-terraform', { 'for': 'tf' }
 
 " colorschemes plugins.
 Plug 'morhetz/gruvbox'
@@ -109,7 +108,7 @@ augroup END
 
 "------------------------------------------------------------------------------
 "
-" Searching
+" Colors
 "
 "------------------------------------------------------------------------------
 
@@ -178,10 +177,6 @@ nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
 " close the quickfix window
 nnoremap <leader>a :cclose<CR>
-
-" use ctrl+n and ctrl+N to jump between quickfix locations
-map <C-n> :cnext<CR>
-map <C-m> :cprev<CR>
 
 "------------------------------------------------------------------------------
 "
@@ -270,6 +265,14 @@ autocmd! VimEnter * NERDTree | wincmd w
 " automatically close the nerdtree buffer if it's the only one left open
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" automatically focus the currently open buffer in nerdtree
+function! NERDTreeSmartFind()
+  if @% != ""
+    NERDTreeFind | wincmd w
+  endif
+endfun
+autocmd BufWinEnter * call NERDTreeSmartFind()
+
 "------------------------------------------------------------------------------
 "
 " Plugin: w0rp/ale
@@ -280,12 +283,27 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:ale_sign_error = '✗✗' " override error sign shown in gutter
 let g:ale_sign_warning = '⚠⚠' " override warning sign shown in gutter
 let g:ale_open_list = 1 " automatically open a list of ale errors or warnings (eg. lint errors)
-let g:ale_lint_on_text_changed = 'never' " only lint on save
-let g:ale_linters = {} " disable all default linters
-let g:ale_linters_explicit = 1 " only use linters we explicitly enable
-
 let g:ale_set_loclist = 0 " don't use location list for listing linting issues
 let g:ale_set_quickfix = 1 " use quickfix list for listing linting issues
+
+" define fixers for the supported file types
+let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'go': ['gofmt', 'goimports'],
+\}
+let g:ale_fix_on_save = 1 " fix files on save
+
+" define linters for the supported file types
+let g:ale_linters = {
+  \ 'go': ['golangci-lint'],
+\}
+let g:ale_linters_explicit = 1 " only use linters we explicitly enable
+let g:ale_lint_on_text_changed = 'never' " only lint on save
+let g:ale_go_golangci_lint_options = '' " dont pass any arguments to golangci-lint, use default settings and optionally .golangci.yml in cwd.
+
+" use ctrl+n and ctrl+N to jump between ale locations
+map <C-n> <Plug>(ale_next_wrap)
+map <C-m> <Plug>(ale_previous_wrap)
 
 "------------------------------------------------------------------------------
 "
@@ -331,6 +349,16 @@ function! s:show_documentation()
   endif
 endfunction
 
+" highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 "------------------------------------------------------------------------------
 "
 " Plugin: airblade/vim-gitgutter
@@ -354,30 +382,30 @@ au FileType go set noexpandtab " use hard tabs, not spaces
 au FileType go set shiftwidth=4 " define the visible width of a tab
 au FileType go set softtabstop=4 " number of spaces a <tab> in insertmode represents
 au FileType go set tabstop=4 " how many spaces a tab represents
-au FileType go nested :TagbarOpen " automatically open tagbar
+" au FileType go nested :TagbarOpen " automatically open tagbar
 
 
 " keyboard bindings
 au FileType go nmap ga <Plug>(go-alternate-vertical)
 "au FileType go nmap <leader>gd <Plug>(go-def)
 au FileType go nmap <leader>gt :GoDeclsDir<CR>
-au FileType go nmap <leader>i <Plug>(go-info)
+"au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>t <Plug>(go-test-func)
 au FileType go nmap <leader>T <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
-au FileType go nmap <leader>b :DlvToggleBreakpoint<CR>
-au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
+" au FileType go nmap <leader>b :DlvToggleBreakpoint<CR>
+" au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
 
 let g:go_bin_path = $HOME.'/Code/go/bin' " explicitly set GOPATH
 let g:go_def_mode = 'gopls' " use gopls for 'go to definition'
 let g:go_info_mode = 'guru' " use guru for :GoInfo
-let g:go_fmt_command = 'goimports' " use goimports when running gofmt
-"let g:go_metalinter_command = 'golangci-lint' " use golang-ci-lint for linting
-"let g:go_metalinter_autosave = 1 " automatically run golang-ci when saving buffers
-"let g:go_list_type = 'locationlist' " use locationlist for command outputs
+" let g:go_fmt_command = 'goimports' " use goimports when running gofmt
+let g:go_metalinter_command = [] " disable linting as we use ale for that
+let g:go_fmt_autosave = 0 " disable fmt on save as its handled by ale fixers
 let g:go_list_type = 'quickfix' " use quickfix for command outputs
+let g:go_updatetime = 100 " refresh every 100ms for go files
 let g:go_statusline_duration = 10000 " only show statusline for 10s
-let g:go_echo_command_info = 0 " stop echoing go command info, shown in statusline instead
+" let g:go_echo_command_info = 0 " stop echoing go command info, shown in statusline instead
 let g:go_def_mapping_enabled = 0 " disable go def-mapping, handled by coc
 let g:go_doc_keywordprg_enabled = 0 " disable godoc on cursor, handled by coc
 
@@ -393,9 +421,4 @@ let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 "let g:go_auto_type_info = 1
 let g:go_addtags_transform = 'camelcase'
-let g:go_snippet_engine = 'neosnippet'
-
-" configure ale linting
-let g:ale_linters['go'] = ['golangci-lint'] " use golangci-lint
-" let g:ale_go_golangci_lint_package = 1 " lint the entire package, not just the open buffer
-let g:ale_go_golangci_lint_options = '' " don't pass any options to golang-ci, use the default settings and optionally the .golangci.yml in cwd
+" let g:go_snippet_engine = 'neosnippet'
