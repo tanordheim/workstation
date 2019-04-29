@@ -5,6 +5,6 @@ go_delve_version: "1.1.0"
 go_delve_download_url: "https://github.com/go-delve/delve/archive/v{{go_delve_version}}.tar.gz"
 go_delve_gopath: "/opt/delve/{{go_delve_version}}"
 go_delve_install_path: "{{go_delve_gopath}}/src/github.com/derekparker/delve"
-go_gopls_version: "c3306ec36c557a903c58c199cbb40ded95bd7260" # master as of 2019-04-11
+go_gopls_version: "61a36cc422d946d27e9b381212897132cbaeacf8" # master as of 2019-04-29
 go_gopls_download_url: "https://github.com/saibing/tools/tarball/{{go_gopls_version}}"
 go_gopls_install_path: "/opt/gopls/{{go_gopls_version}}"
