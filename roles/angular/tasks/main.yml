@@ -1,5 +1,0 @@
----
-
-- name: Install Angular CLI
-  homebrew:
-    name: angular-cli
