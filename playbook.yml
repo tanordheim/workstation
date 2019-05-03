@@ -44,3 +44,4 @@
       - { role: hugo, tags: ["devenv", "hugo"] }
       - { role: kubedb, tags: ["devenv", "kubernetes", "kubedb"] }
       - { role: operator-sdk, tags: ["devenv", "kubernetes", "operator-sdk"] }
+      - { role: angular, tags: ["devenv", "node", "angular"] }
