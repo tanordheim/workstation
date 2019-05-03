@@ -5,7 +5,21 @@
     name: node
     state: present
 
+- name: Install typescript
+  homebrew:
+    name: typescript
+    state: present
+
 - name: Install yarn
   homebrew:
     name: yarn
     state: present
+
+- name: Install NVM
+  homebrew:
+    name: nvm
+    state: present
+
+
+- name: Configure NVM
+  template: src="zshrc.j2" dest="~/.zshrc.d/nvm.zsh" mode=0644
