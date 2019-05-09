@@ -1,14 +1,41 @@
 {
+
+    /**
+     * Generic settings
+     */
+    "extensions.autoUpdate": false,
+    "extensions.ignoreRecommendations": false,
+    "breadcrumbs.enabled": true,
+    "window.zoomLevel": 0,
+    "explorer.confirmDragAndDrop": false,
+
+    /**
+     * Editor settings
+     */
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
     "editor.rulers": [80,120],
     "editor.tabSize": 2,
     "editor.minimap.enabled": false,
-    "extensions.autoUpdate": false,
-    "breadcrumbs.enabled": true,
-    "window.zoomLevel": 0,
-    "explorer.confirmDragAndDrop": false,
+
+    /**
+     * Workbench settings
+     */
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.settings.editor": "json",
+    "workbench.editor.closeEmptyGroups": false,
+
+    /**
+     * Terminal settings
+     */
+    "terminal.integrated.fontFamily": "Hack Nerd Font, Regular",
+    "terminal.integrated.cursorStyle": "line",
+
+    /**
+     * Language: Go
+     */
     "go.autocompleteUnimportedPackages": true,
     "go.lintOnSave": "package",
     "go.lintTool": "golangci-lint",
@@ -39,17 +66,27 @@
         "usePlaceholders": true,
         "enhancedHover": true,
     },
+
+    /**
+     * Language: Jsonnet
+     */
+    "jsonnet.libPaths": [
+        "/usr/local/lib/python3.7/site-packages/kapitan"
+    ],
+
+    /**
+     * Language: Ruby
+     */
+    "ruby.useLanguageServer": true,
+
+    /**
+     * Extension: vim
+     */
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.leader": ",",
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/local/bin/nvim",
-    "jsonnet.libPaths": [
-        "/usr/local/lib/python3.7/site-packages/kapitan"
-    ],
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "One Monokai",
-    "extensions.ignoreRecommendations": false,
-    "ruby.useLanguageServer": true
+
 } 
  

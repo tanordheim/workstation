@@ -19,12 +19,13 @@
     - redhat.vscode-yaml
     - heptio.jsonnet
     - aeschli.vscode-css-formatter
-    - pkief.material-icon-theme
     - azemoh.one-monokai
     - mishkinf.goto-next-previous-member
     - rebornix.ruby
     - castwide.solargraph
     - kumar-harsh.graphql-for-vscode
+    - vscode-icons-team.vscode-icons
+    - zhuangtongfa.material-theme
 
 - name: Create Visual Studio Code config directories
   file:
