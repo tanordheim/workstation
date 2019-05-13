@@ -27,6 +27,7 @@
     - vscode-icons-team.vscode-icons
     - zhuangtongfa.material-theme
     - editorconfig.editorconfig
+    - ms-vscode.vscode-typescript-tslint-plugin
 
 - name: Create Visual Studio Code config directories
   file:
