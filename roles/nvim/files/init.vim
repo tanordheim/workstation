@@ -388,3 +388,15 @@ au FileType yaml set expandtab " use spaces, not tabs
 au FileType yaml set shiftwidth=2 " define the visible width of a tab
 au FileType yaml set softtabstop=2 " number of spaces a <tab> in insertmode represents
 au FileType yaml set tabstop=2 " how many spaces a tab represents
+
+"------------------------------------------------------------------------------
+"
+" Language: Protobuf
+"
+"------------------------------------------------------------------------------
+
+au FileType proto set expandtab " use spaces, not tabs
+au FileType proto set shiftwidth=2 " define the visible width of a tab
+au FileType proto set softtabstop=2 " number of spaces a <tab> in insertmode represents
+au FileType proto set tabstop=2 " how many spaces a tab represents
+
