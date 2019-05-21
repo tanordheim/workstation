@@ -24,16 +24,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 " Plug 'tpope/vim-dispatch'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'godlygeek/tabular'
@@ -94,6 +93,7 @@ set scrolloff=10 " set how much to scroll when reaching the bottom of the buffer
 set hidden " hide abandoned buffers instead of unloading them
 set shortmess+=c " skip ins-completion-menu messages
 set signcolumn=yes " always show signcolumn
+set cmdheight=2 " more space for messages"
 
 " enable 24bit colors if available
 if (has("termguicolors"))
@@ -195,7 +195,6 @@ set splitright " create vertical splits to the right of the current buffer
 
 let g:airline_theme = 'gruvbox' " set the color scheme
 let g:airline_powerline_fonts = 1 " enable powerline fonts
-let g:airline#extensions#ale#enabled = 1 " show ale-status in powerline
 let g:airline#extensions#tabline#enabled = 1 " enable top tabline
 let g:airline#extensions#tabline#show_tabs = 0 " only show buffers, not tabs, in the top tabline
 
@@ -267,39 +266,6 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 "------------------------------------------------------------------------------
 "
-" Plugin: w0rp/ale
-"
-"------------------------------------------------------------------------------
-
-" configure ale.
-let g:ale_sign_error = '✗✗' " override error sign shown in gutter
-let g:ale_sign_warning = '⚠⚠' " override warning sign shown in gutter
-let g:ale_open_list = 1 " automatically open a list of ale errors or warnings (eg. lint errors)
-let g:ale_set_loclist = 0 " don't use location list for listing linting issues
-let g:ale_set_quickfix = 1 " use quickfix list for listing linting issues
-
-" define fixers for the supported file types
-let g:ale_fixers = {
-  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ 'go': ['gofmt', 'goimports'],
-\}
-let g:ale_fix_on_save = 1 " fix files on save
-
-" define linters for the supported file types
-let g:ale_linters = {
-  \ 'go': ['golangci-lint'],
-\}
-let g:ale_linters_explicit = 1 " only use linters we explicitly enable
-let g:ale_lint_on_text_changed = 'never' " only lint on save
-let g:ale_go_golangci_lint_options = '' " dont pass any arguments to golangci-lint, use default settings and optionally .golangci.yml in cwd.
-let g:ale_go_golangci_lint_package = 1 " lint whole package, not just current file"
-
-" use ctrl+n and ctrl+N to jump between ale locations
-map <C-n> <Plug>(ale_next_wrap)
-map <C-m> <Plug>(ale_previous_wrap)
-
-"------------------------------------------------------------------------------
-"
 " Plugin: neoclide/coc.nvim
 "
 "------------------------------------------------------------------------------
@@ -325,6 +291,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" use ctrl+n and ctrl+N to jump between diagnostics
+nmap <silent> <C-n> <Plug>(coc-diagnostic-next)
+map <silent> <C-m> <Plug>(coc-diagnostic-prev)
 
 " map coc gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -375,30 +345,23 @@ au FileType go set noexpandtab " use hard tabs, not spaces
 au FileType go set shiftwidth=4 " define the visible width of a tab
 au FileType go set softtabstop=4 " number of spaces a <tab> in insertmode represents
 au FileType go set tabstop=4 " how many spaces a tab represents
-" au FileType go nested :TagbarOpen " automatically open tagbar
 
 
 " keyboard bindings
-au FileType go nmap ga <Plug>(go-alternate-vertical)
+"au FileType go nmap ga <Plug>(go-alternate-vertical)
 "au FileType go nmap <leader>gd <Plug>(go-def)
-au FileType go nmap <leader>gt :GoDeclsDir<CR>
+"au FileType go nmap <leader>gt :GoDeclsDir<CR>
 "au FileType go nmap <leader>i <Plug>(go-info)
-au FileType go nmap <leader>t <Plug>(go-test-func)
-au FileType go nmap <leader>T <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+"au FileType go nmap <leader>t <Plug>(go-test-func)
+"au FileType go nmap <leader>T <Plug>(go-test)
+"au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 " au FileType go nmap <leader>b :DlvToggleBreakpoint<CR>
 " au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
 
 let g:go_bin_path = $HOME.'/Code/go/bin' " explicitly set GOPATH
 let g:go_def_mode = 'gopls' " use gopls for 'go to definition'
-let g:go_info_mode = 'guru' " use guru for :GoInfo
-" let g:go_fmt_command = 'goimports' " use goimports when running gofmt
-let g:go_metalinter_command = [] " disable linting as we use ale for that
-let g:go_fmt_autosave = 0 " disable fmt on save as its handled by ale fixers
-let g:go_list_type = 'quickfix' " use quickfix for command outputs
-let g:go_updatetime = 100 " refresh every 100ms for go files
-let g:go_statusline_duration = 10000 " only show statusline for 10s
-" let g:go_echo_command_info = 0 " stop echoing go command info, shown in statusline instead
+let g:go_info_mode = 'gopls' " use gopls for :GoInfo
+let g:go_fmt_command = 'goimports' " use goimports when running gofmt
 let g:go_def_mapping_enabled = 0 " disable go def-mapping, handled by coc
 let g:go_doc_keywordprg_enabled = 0 " disable godoc on cursor, handled by coc
 
@@ -412,9 +375,8 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
-"let g:go_auto_type_info = 1
 let g:go_addtags_transform = 'camelcase'
-" let g:go_snippet_engine = 'neosnippet'
+let g:go_snippet_engine = 'neosnippet'
 
 "------------------------------------------------------------------------------
 "

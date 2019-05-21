@@ -1,16 +1,30 @@
 {
   "coc.preferences.enableFloatHighlight": false,
   "coc.preferences.formatOnType": true,
-  "codeLens.enable": true,
+  "coc.preferences.formatOnSaveFiletypes": ["go"],
+
+  "diagnostic.enable": true,
+  "diagnostic.enableSign": true,
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.level": "hint",
+  "diagnostic.errorSign": "✗",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "i",
+  "diagnostic.hintSign": "☛",
+
+  "codeLens.enable": true,
+
   "signature.target": "echo",
+
   "languageserver": {
+
     "gopls": {
       "command": "gopls",
-      "args": [],
+      "args": ["-logfile", "/tmp/gopls.log", "-v"],
       "filetypes": ["go"],
       "rootPatterns": ["go.mod", ".git/"]
     }
+
   }
 }
