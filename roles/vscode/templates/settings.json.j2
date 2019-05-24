@@ -40,6 +40,7 @@
         "**/.DS_Store": true,
         "node_modules": true,
     },
+    "files.eol": "\n",
 
     /**
      * Terminal settings
@@ -50,7 +51,7 @@
     /**
      * Language: Go
      */
-    "go.autocompleteUnimportedPackages": true,
+    // "go.autocompleteUnimportedPackages": true,
     "go.lintOnSave": "package",
     "go.lintTool": "golangci-lint",
     "go.delveConfig": {
@@ -59,14 +60,13 @@
         "maxVariableRecurse": 5
     },
     "go.useLanguageServer": true,
+    "go.formatTool": "goimports",
     "go.alternateTools": {
-        "go-langserver": "gopls"
+//        "go-langserver": "gopls"
     },
-    "go.buildOnSave": "off", // handled by language server
     "go.vetOnSave": "off", // handled by golangci-lint
     "go.languageServerExperimentalFeatures": {
-        "format": true,
-        "autoComplete": true
+        "diagnostics": true,
     },
     "[go]": {
         "editor.snippetSuggestions": "none",
@@ -78,7 +78,6 @@
     },
     "gopls": {
         "usePlaceholders": true,
-        "enhancedHover": true,
     },
 
     /**
@@ -101,6 +100,7 @@
     "vim.leader": ",",
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/local/bin/nvim",
+    "workbench.startupEditor": "newUntitledFile",
 
 } 
  
