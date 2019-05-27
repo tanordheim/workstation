@@ -352,9 +352,9 @@ au FileType go set tabstop=4 " how many spaces a tab represents
 "au FileType go nmap <leader>gd <Plug>(go-def)
 "au FileType go nmap <leader>gt :GoDeclsDir<CR>
 "au FileType go nmap <leader>i <Plug>(go-info)
-"au FileType go nmap <leader>t <Plug>(go-test-func)
-"au FileType go nmap <leader>T <Plug>(go-test)
-"au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+au FileType go nmap <leader>t <Plug>(go-test-func)
+au FileType go nmap <leader>T <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 " au FileType go nmap <leader>b :DlvToggleBreakpoint<CR>
 " au FileType go nmap <leader>B :DlvToggleTracepoint<CR>
 
