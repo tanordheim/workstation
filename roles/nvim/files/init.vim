@@ -36,6 +36,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'godlygeek/tabular'
+Plug 'Raimondi/delimitMate'
 
 " language plugins.
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -290,7 +291,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<Plug>delimitMateCR"
 
 " use ctrl+n and ctrl+N to jump between diagnostics
 nmap <silent> <C-n> <Plug>(coc-diagnostic-next)
@@ -334,6 +335,15 @@ let g:gitgutter_sign_modified = '┃'
 let g:gitgutter_sign_removed = '━'
 let g:gitgutter_sign_modified_removed = '╋━'
 let g:gitgutter_map_keys = 0 " don't enable gitgutter hotkeys, i want it mostly for the signs
+
+"------------------------------------------------------------------------------
+"
+" Plugin: Raimondi/delimitMate
+"
+"------------------------------------------------------------------------------
+
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
 
 "------------------------------------------------------------------------------
 "
