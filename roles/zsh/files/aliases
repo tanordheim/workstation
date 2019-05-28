@@ -1,5 +1,6 @@
 # Use colors in ls
 alias ls="ls -G"
+alias ll="ls -al"
 
 # use neovim instead of vi/vim.
 alias vi="nvim"
