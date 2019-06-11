@@ -5,6 +5,16 @@
     name: tmux
     state: present
 
+- name: Prepare tmux plugin manager directories
+  file:
+    path: ~/.tmux/plugins
+    state: directory
+
+- name: Install tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+
 - name: Install tmux configuration
   copy: src=tmux.conf dest=~/.tmux.conf
 
