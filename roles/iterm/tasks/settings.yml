@@ -2,11 +2,11 @@
 
 - name: Download color scheme
   get_url:
-    url: https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Gruvbox%20Dark.itermcolors
-    dest: /tmp/gruvbox-dark.itermcolors
+    url: https://raw.githubusercontent.com/rakr/iterm-two-firewatch/master/two-firewatch-dark.itermcolors
+    dest: /tmp/two-firewatch-dark.itermcolors
 
 - name: Install color scheme
-  shell: open /tmp/gruvbox-dark.itermcolors
+  shell: open /tmp/two-firewatch-dark.itermcolors
 
 - name: Set terminal font
   shell: /usr/libexec/PlistBuddy -c "Set 'New Bookmarks':0:'{{item}}' HackNerdFontComplete-Regular 12" ~/Library/Preferences/com.googlecode.iterm2.plist

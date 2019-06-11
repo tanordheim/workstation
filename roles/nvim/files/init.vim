@@ -45,7 +45,7 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'google/vim-jsonnet'
 
 " colorschemes plugins.
-Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-two-firewatch'
 
 " end the plug loader and enable filetype detection again.
 call plug#end()
@@ -114,10 +114,10 @@ augroup END
 "
 "------------------------------------------------------------------------------
 
-let g:gruvbox_italic=1 " turn on italics for the gruvbox theme
+let g:two_firewatch_italics=1 " turn on italics for the two firewatch theme"
 syntax on " enable syntax highlighting
 set background=dark " use dark background
-colorscheme gruvbox " set colorscheme
+colorscheme two-firewatch " set colorscheme
 
 "------------------------------------------------------------------------------
 "
@@ -195,7 +195,7 @@ set splitright " create vertical splits to the right of the current buffer
 "
 "------------------------------------------------------------------------------
 
-let g:airline_theme = 'gruvbox' " set the color scheme
+let g:airline_theme = 'twofirewatch' " set the color scheme
 let g:airline_powerline_fonts = 1 " enable powerline fonts
 let g:airline#extensions#tabline#enabled = 1 " enable top tabline
 let g:airline#extensions#tabline#show_tabs = 0 " only show buffers, not tabs, in the top tabline
