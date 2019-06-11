@@ -16,6 +16,7 @@
   with_items:
     - ~/.zsh
     - ~/.zshrc.d
+    - ~/.bin
 
 - name: Install zsh configuration
   copy: src={{ item.src }} dest=~/{{ item.dest }}
@@ -25,3 +26,5 @@
     - { src: "completions", dest: ".zsh/completions" }
     - { src: "exports", dest: ".zsh/exports" }
 
+- name: Install colortest script
+  copy: src=colortest dest=~/.bin/colortest mode=0755
