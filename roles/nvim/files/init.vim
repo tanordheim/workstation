@@ -41,7 +41,7 @@ Plug 'Raimondi/delimitMate'
 " language plugins.
 Plug 'fatih/vim-go', { 'for': 'go' }
 " Plug 'sebdah/vim-delve', { 'for': 'go' }
-" Plug 'hashivim/vim-terraform', { 'for': 'tf' }
+Plug 'hashivim/vim-terraform', { 'for': 'tf' }
 Plug 'google/vim-jsonnet'
 
 " colorschemes plugins.
@@ -422,3 +422,13 @@ au FileType jsonnet set shiftwidth=2 " define the visible width of a tab
 au FileType jsonnet set softtabstop=2 " number of spaces a <tab> in insertmode represents
 au FileType jsonnet set tabstop=2 " how many spaces a tab represents
 
+"------------------------------------------------------------------------------
+"
+" Language: Terraform
+"
+"------------------------------------------------------------------------------
+
+au FileType terraform set expandtab " use spaces, not tabs
+au FileType terraform set shiftwidth=2 " define the visible width of a tab
+au FileType terraform set softtabstop=2 " number of spaces a <tab> in insertmode represents
+au FileType terraform set tabstop=2 " how many spaces a tab represents
