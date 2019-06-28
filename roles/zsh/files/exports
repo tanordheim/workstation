@@ -1,2 +1,7 @@
+# Override the current locale to avoid apps using gettext from printing
+# warnings about "failed to set locale" when using the default macOS locale
+# (en_NO).
+export LANG="en_US"
+
 # Add local scripts and bin path to path.
 export PATH="$PATH:$HOME/.scripts:$HOME/.bin"
