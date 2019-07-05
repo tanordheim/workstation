@@ -1,17 +1,6 @@
 ---
 
-- name: Create the installation directory
-  become: true
-  file:
-    path: "{{kustomize_install_path}}"
-    state: directory
-
-- name: Install Kustomize
-  become: true
-  get_url:
-    url: "{{kustomize_download_url}}"
-    dest: "{{kustomize_install_path}}/kustomize"
-    mode: 0755
-
-- name: Configure shell
-  template: src="zshrc.j2" dest="~/.zshrc.d/kustomize.zsh" mode=0644
+- name: Install kustomize
+  homebrew:
+    name: kustomize
+    state: present

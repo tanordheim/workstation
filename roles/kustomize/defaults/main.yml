@@ -1,5 +1,0 @@
----
-
-kustomize_version: "2.0.0"
-kustomize_download_url: "https://github.com/kubernetes-sigs/kustomize/releases/download/v{{kustomize_version}}/kustomize_{{kustomize_version}}_darwin_amd64"
-kustomize_install_path: "/opt/kustomize/{{kustomize_version}}"
