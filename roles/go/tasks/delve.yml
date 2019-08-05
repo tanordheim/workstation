@@ -1,11 +1,5 @@
 ---
 
-- name: Install macOS legacy include headers
-  become: true
-  command: installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_{{ansible_distribution_version.split(".")[0]}}.{{ansible_distribution_version.split(".")[1]}}.pkg -target /
-  args:
-    creates: /System/Library/Frameworks/Kernel.framework/Versions/A/Headers/sys/stdio.h
-
 - name: Create the installation directory
   become: true
   file:
@@ -29,6 +23,7 @@
     chdir: "{{go_delve_install_path}}"
   environment:
     GOPATH: "{{go_delve_gopath}}"
+    PATH: "{{go_install_path}}/bin:{{go_glide_install_path}}:{{ ansible_env.PATH }}"
   when: go_delve_downloaded.changed
 
 - name: Install dlv
@@ -37,4 +32,6 @@
     chdir: "{{go_delve_install_path}}"
   environment:
     GOPATH: "{{go_delve_gopath}}"
+    PATH: "{{go_install_path}}/bin:{{go_glide_install_path}}:{{ ansible_env.PATH }}"
+    CPATH: "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include"
   when: go_delve_downloaded.changed

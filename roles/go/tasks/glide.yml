@@ -1,6 +1,17 @@
 ---
 
-- name: Install Glide
-  homebrew:
-    name: glide
-    state: present
+- name: Create the installation directory
+  become: true
+  file:
+    path: "{{go_glide_install_path}}"
+    owner: "{{ansible_user}}"
+    state: directory
+
+- name: Download Glide
+  unarchive:
+    src: "{{go_glide_download_url}}"
+    dest: "{{go_glide_install_path}}"
+    remote_src: yes
+    extra_opts:
+      --strip-components=1
+    creates: "{{go_glide_install_path}}/README.md"

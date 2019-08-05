@@ -1,7 +1,15 @@
 ---
 
 go_path: "/Users/trond/Code/go"
-go_delve_version: "1.1.0"
+go_version: "1.13beta1"
+go_download_url: "https://dl.google.com/go/go{{go_version}}.darwin-amd64.tar.gz"
+go_install_path: "/opt/go/{{go_version}}"
+
+go_glide_version: "0.13.3"
+go_glide_download_url: "https://github.com/Masterminds/glide/releases/download/v{{go_glide_version}}/glide-v{{go_glide_version}}-darwin-amd64.tar.gz"
+go_glide_install_path: "/opt/glide/{{go_glide_version}}"
+
+go_delve_version: "1.2.0"
 go_delve_download_url: "https://github.com/go-delve/delve/archive/v{{go_delve_version}}.tar.gz"
 go_delve_gopath: "/opt/delve/{{go_delve_version}}"
 go_delve_install_path: "{{go_delve_gopath}}/src/github.com/derekparker/delve"

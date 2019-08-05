@@ -1,9 +1,20 @@
 ---
 
-- name: Install Go
-  homebrew:
-    name: go
-    state: present
+- name: Create the installation directory
+  become: true
+  file:
+    path: "{{go_install_path}}"
+    owner: "{{ansible_user}}"
+    state: directory
+
+- name: Download Go
+  unarchive:
+    src: "{{go_download_url}}"
+    dest: "{{go_install_path}}"
+    remote_src: yes
+    extra_opts:
+      --strip-components=1
+    creates: "{{go_install_path}}/README.md"
 
 - name: Configure shell
   template: src="zshrc.j2" dest="~/.zshrc.d/go.zsh" mode=0644
