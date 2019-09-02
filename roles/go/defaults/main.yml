@@ -1,7 +1,7 @@
 ---
 
 go_path: "/Users/trond/Code/go"
-go_version: "1.13beta1"
+go_version: "1.13rc2"
 go_download_url: "https://dl.google.com/go/go{{go_version}}.darwin-amd64.tar.gz"
 go_install_path: "/opt/go/{{go_version}}"
 
