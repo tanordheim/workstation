@@ -1,9 +1,0 @@
----
-
-- name: Install git
-  homebrew:
-    name: ["git", "git-lfs"]
-    state: present
-
-- name: Install git configuration
-  copy: src=gitconfig dest=~/.gitconfig

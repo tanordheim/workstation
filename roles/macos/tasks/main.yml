@@ -1,9 +1,0 @@
----
-
-- include: energy.yml
-- include: mouse.yml
-- include: keyboard.yml
-- include: interface.yml
-- include: dock.yml
-- include: finder.yml
-- include: terminfo.yml

@@ -1,6 +1,0 @@
----
-
-- name: Install kustomize
-  homebrew:
-    name: kustomize
-    state: present

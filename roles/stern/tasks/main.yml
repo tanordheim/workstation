@@ -1,6 +1,0 @@
----
-
-- name: Install Stern
-  homebrew:
-    name: stern
-    state: present

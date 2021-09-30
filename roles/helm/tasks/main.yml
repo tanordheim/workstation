@@ -1,6 +1,0 @@
----
-
-- name: Install Helm
-  homebrew:
-    name: kubernetes-helm
-    state: present

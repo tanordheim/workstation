@@ -1,8 +1,0 @@
----
-
-- name: Show all file extensions
-  osx_defaults:
-    key: AppleShowAllExtensions
-    type: bool
-    value: YES
-    state: present

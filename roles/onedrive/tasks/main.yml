@@ -1,6 +1,0 @@
----
-
-- name: Install OneDrive
-  homebrew_cask:
-    name: onedrive
-    state: present

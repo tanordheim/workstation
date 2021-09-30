@@ -1,6 +1,0 @@
----
-
-- name: Install minikube
-  homebrew_cask:
-    name: minikube
-    state: present

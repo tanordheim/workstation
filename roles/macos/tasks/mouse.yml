@@ -1,8 +1,0 @@
----
-
-- name: Set scroll direction
-  osx_defaults:
-    key: com.apple.swipescrolldirection
-    type: bool
-    value: NO
-    state: present

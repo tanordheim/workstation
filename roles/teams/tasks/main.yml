@@ -1,6 +1,0 @@
----
-
-- name: Install Teams
-  homebrew_cask:
-    name: microsoft-teams
-    state: present

@@ -1,6 +1,0 @@
----
-
-- name: Install Firefox
-  homebrew_cask:
-    name: firefox
-    state: present
