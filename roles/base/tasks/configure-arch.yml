@@ -1,0 +1,60 @@
+---
+
+- name: Install core packages
+  community.general.pacman:
+    name:
+      - zsh
+  become: true
+
+- name: Create user group
+  ansible.builtin.group:
+    name: trond
+    gid: 1000
+  become: true
+
+- name: Create user
+  ansible.builtin.user:
+    name: trond
+    uid: 1000
+    comment: Trond Nordheim
+    shell: /bin/zsh
+    group: trond
+    groups: [wheel]
+  become: true
+
+- name: Allow sudo for created user
+  ansible.builtin.copy:
+    src: trond-sudo
+    dest: /etc/sudoers.d/trond
+    owner: root
+    group: root
+    mode: '0440'
+  become: true
+
+- name: Allow passwordless pacman for created user
+  ansible.builtin.copy:
+    src: trond-pacman-sudo
+    dest: /etc/sudoers.d/trond-pacman
+    owner: root
+    group: root
+    mode: '0440'
+  become: true
+
+- name: Install yay AUR helper
+  shell:
+    cmd: |
+      git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+      cd /tmp/yay-bin
+      makepkg -si --noconfirm > /tmp/makepkg.log
+      rm -rf /tmp/yay-bin
+    creates: /usr/bin/yay
+  vars:
+    ansible_remote_tmp: /tmp
+  register: yay_installed
+  become: true
+  become_user: trond
+
+- name: Generate yay AUR helper database
+  shell: yay -Y --gendb
+  become: true
+  when: yay_installed.changed
