@@ -2,4 +2,5 @@
 
 - hosts: workstations
   roles:
-          - { role: base, tags: ["bootstrap"] }
+    - { role: base, tags: ["bootstrap"] }
+    - git
