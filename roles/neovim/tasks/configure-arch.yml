@@ -1,0 +1,13 @@
+---
+
+- name: Uninstall regualr vim
+  community.general.pacman:
+    name: vim
+    state: removed
+  become: true
+
+- name: Install neovim
+  community.general.pacman:
+    name:
+      - neovim
+  become: true

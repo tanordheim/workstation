@@ -1,0 +1,5 @@
+---
+
+- name: Configure SDDM
+  import_tasks: configure-arch.yml
+  when: ansible_os_family == "Archlinux"

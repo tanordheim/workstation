@@ -5,3 +5,6 @@
     - { role: base, tags: ["bootstrap"] }
     - git
     - zsh
+    - neovim
+    - kde
+    - sddm

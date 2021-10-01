@@ -1,0 +1,8 @@
+---
+
+- name: Install KDE Plasma
+  community.general.pacman:
+    name:
+      - plasma
+      - plasma-wayland-session
+  become: true
