@@ -3,6 +3,7 @@
 - name: Install core packages
   community.general.pacman:
     name:
+      - openssh
       - zsh
   become: true
 

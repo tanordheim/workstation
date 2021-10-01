@@ -29,5 +29,6 @@
     - `pacman -S --needed git base-devel ansible`
   - Clone https://github.com/tanordheim/workstation.git.
   - Create the `.vault_password` file in the repo checkout containing the Vault secret.
-  - Do initial system provisioning with: `ansible-galaxy install -r requirements.txt && ansible-playbook playbook.yml`
+  - Do initial system provisioning with: `ansible-galaxy install -r requirements.txt && ansible-playbook playbook.yml -t bootstrap`
   - Set a password of the new `trond` user.
+- Create a new checkout of the repository under the `trond` user and run a full ansible run.
