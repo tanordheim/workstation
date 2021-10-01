@@ -41,7 +41,7 @@
   become: true
 
 - name: Install yay AUR helper
-  shell:
+  ansible.builtin.shell:
     cmd: |
       git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
       cd /tmp/yay-bin
@@ -55,6 +55,33 @@
   become_user: trond
 
 - name: Generate yay AUR helper database
-  shell: yay -Y --gendb
+  ansible.builtin.shell: yay -Y --gendb
   become: true
   when: yay_installed.changed
+
+- name: Prepare SSH key directory
+  ansible.builtin.file:
+    path: /home/trond/.ssh
+    owner: trond
+    group: trond
+    mode: '0640'
+    state: directory
+  become: true
+
+- name: Install SSH public key
+  ansible.builtin.copy:
+    dest: /home/trond/.ssh/id_rsa.pub
+    content: "{{ ssh.public_key }}"
+    owner: trond
+    group: trond
+    mode: '0640'
+  become: true
+
+- name: Install SSH private key
+  ansible.builtin.copy:
+    dest: /home/trond/.ssh/id_rsa
+    content: "{{ ssh.private_key }}"
+    owner: trond
+    group: trond
+    mode: '0600'
+  become: true
