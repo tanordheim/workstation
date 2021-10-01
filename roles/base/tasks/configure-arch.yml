@@ -92,3 +92,9 @@
     owner: trond
     group: trond
     mode: '0600'
+
+- name: Set default X11 keymap
+  ansible.builtin.shell:
+    cmd: localectl set-x11-keymap no
+    creates: /etc/X11/xorg.conf.d/00-keyboard.conf
+  become: true

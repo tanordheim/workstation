@@ -5,4 +5,5 @@
     name:
       - plasma
       - plasma-wayland-session
+      - konsole
   become: true
