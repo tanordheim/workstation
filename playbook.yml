@@ -4,3 +4,4 @@
   roles:
     - { role: base, tags: ["bootstrap"] }
     - git
+    - zsh

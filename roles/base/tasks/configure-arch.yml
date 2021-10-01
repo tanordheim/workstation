@@ -53,12 +53,21 @@
     ansible_remote_tmp: /tmp
   register: yay_installed
   become: true
-  become_user: trond
+  become_user: trond # become and become_user required since this runs as root for the first time during bootstrap.
 
 - name: Generate yay AUR helper database
   ansible.builtin.shell: yay -Y --gendb
   become: true
   when: yay_installed.changed
+
+- name: Create local bin directory
+  ansible.builtin.file:
+    path: /home/trond/.local/bin
+    recurse: true
+    owner: trond
+    group: trond
+    mode: '0755'
+    state: directory
 
 - name: Prepare SSH key directory
   ansible.builtin.file:
@@ -67,7 +76,6 @@
     group: trond
     mode: '0750'
     state: directory
-  become: true
 
 - name: Install SSH public key
   ansible.builtin.copy:
@@ -76,7 +84,6 @@
     owner: trond
     group: trond
     mode: '0640'
-  become: true
 
 - name: Install SSH private key
   ansible.builtin.copy:
@@ -85,4 +92,3 @@
     owner: trond
     group: trond
     mode: '0600'
-  become: true
