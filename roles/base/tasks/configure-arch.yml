@@ -65,7 +65,7 @@
     path: /home/trond/.ssh
     owner: trond
     group: trond
-    mode: '0640'
+    mode: '0750'
     state: directory
   become: true
 
