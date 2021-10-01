@@ -27,5 +27,7 @@
   - Enable and start `NetworkManager.service`.
   - Install base software prerequisites:
     - `pacman -S --needed git base-devel ansible`
-  - Clone https://github.com/tanordheim/workstation.git and run: `ansible-galaxy install -r requirements.txt && ansible-playbook playbook.yml`
+  - Clone https://github.com/tanordheim/workstation.git.
+  - Create the `.vault_password` file in the repo checkout containing the Vault secret.
+  - Do initial system provisioning with: `ansible-galaxy install -r requirements.txt && ansible-playbook playbook.yml`
   - Set a password of the new `trond` user.
