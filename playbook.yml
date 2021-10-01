@@ -2,4 +2,4 @@
 
 - hosts: workstations
   roles:
-    - base
+          - { role: base, tags: ["bootstrap"] }
