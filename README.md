@@ -27,11 +27,5 @@
   - Enable and start `NetworkManager.service`.
   - Install base software prerequisites:
     - `pacman -S --needed git base-devel ansible`
-  - Clone https://github.com/tanordheim/workstation.git and run: `ansible`
-
-
-
-
-
-  - Add local `trond` user.
-  - Set up sudo access (`echo "trond ALL=(ALL) ALL" > /etc/sudoers.d/trond && chmod 0440 /etc/sudoers.d/trond`).
+  - Clone https://github.com/tanordheim/workstation.git and run: `ansible-galaxy install -r requirements.txt && ansible-playbook playbook.yml`
+  - Set a password of the new `trond` user.
