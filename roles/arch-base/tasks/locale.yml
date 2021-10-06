@@ -10,7 +10,7 @@
   become: true
   notify: locale-gen
 
-- name: Generrate locale.conf
+- name: Generate locale.conf
   ansible.builtin.copy:
     src: locale.conf
     dest: /etc/locale.conf
