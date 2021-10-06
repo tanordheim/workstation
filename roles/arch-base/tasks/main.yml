@@ -11,6 +11,7 @@
       - openssh
       - reflector
       - sudo
+      - libxkbcommon
       - zsh
   become: true
 
