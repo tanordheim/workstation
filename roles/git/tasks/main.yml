@@ -1,5 +1,16 @@
 ---
 
-- name: Configure Git
-  import_tasks: configure-arch.yml
-  when: ansible_os_family == "Archlinux"
+- name: Install Git packages
+  community.general.pacman:
+    name:
+      - git
+      - git-lfs
+  become: true
+
+- name: Create Git configuration
+  ansible.builtin.copy:
+    src: gitconfig
+    dest: /home/trond/.gitconfig
+    owner: trond
+    group: trond
+    mode: '0644'

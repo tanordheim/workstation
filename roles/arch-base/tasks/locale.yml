@@ -1,0 +1,26 @@
+---
+
+- name: Create locale.gen
+  ansible.builtin.copy:
+    src: locale.gen
+    dest: /etc/locale.gen
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+  notify: locale-gen
+
+- name: Generrate locale.conf
+  ansible.builtin.copy:
+    src: locale.conf
+    dest: /etc/locale.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: Set default X11 keymap
+  ansible.builtin.shell:
+    cmd: localectl set-x11-keymap no
+    creates: /etc/X11/xorg.conf.d/00-keyboard.conf
+  become: true

@@ -1,5 +1,9 @@
 ---
 
-- name: Configure KDE Plasma
-  import_tasks: configure-arch.yml
-  when: ansible_os_family == "Archlinux"
+- name: Install KDE Plasma
+  community.general.pacman:
+    name:
+      - plasma
+      - plasma-wayland-session
+      - konsole
+  become: true

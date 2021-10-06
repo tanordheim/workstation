@@ -1,0 +1,36 @@
+---
+
+- name: Update pacman cache
+  community.general.pacman:
+    update_cache: yes
+  become: true
+
+- name: Install core packages
+  community.general.pacman:
+    name:
+      - openssh
+      - reflector
+      - sudo
+      - zsh
+  become: true
+
+- name: Create reflector config
+  ansible.builtin.copy:
+    src: reflector.conf
+    dest: /etc/xdg/reflector/reflector.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: Enable reflector to run on boot and weekly
+  ansible.builtin.service:
+    name: "{{ item }}"
+    enabled: true
+  become: true
+  with_items: [reflector.service, reflector.timer]
+
+- include: user.yml
+- include: locale.yml
+- include: aur.yml
+- include: timezone.yml

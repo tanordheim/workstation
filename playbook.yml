@@ -2,7 +2,8 @@
 
 - hosts: workstations
   roles:
-    - { role: base, tags: ["bootstrap"] }
+    - role: arch-base
+      tags: ["bootstrap"]
     - git
     - zsh
     - neovim
