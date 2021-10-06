@@ -1,6 +1,6 @@
 ---
 
-- name: Uninstall regualr vim
+- name: Uninstall regular vim
   community.general.pacman:
     name: vim
     state: removed
