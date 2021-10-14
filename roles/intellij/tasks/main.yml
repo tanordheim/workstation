@@ -1,6 +1,0 @@
----
-
-- name: Install Jetbrains Toolbox
-  community.general.pacman:
-    name: jetbrains-toolbox
-    executable: yay

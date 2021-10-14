@@ -20,5 +20,7 @@
       tags: ["browsers"]
     - role: slack
       tags: ["slack"]
-    - role: intellij
-      tags: ["intellij"]
+    - role: telegram
+      tags: ["telegram"]
+    - role: jetbrains
+      tags: ["jetbrains"]

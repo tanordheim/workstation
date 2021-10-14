@@ -1,0 +1,15 @@
+---
+
+- name: Install JetBrains Toolbox
+  community.general.pacman:
+    name: jetbrains-toolbox
+    executable: yay
+
+- name: Create JetBrains profile config
+  ansible.builtin.copy:
+    src: profile
+    dest: /etc/profile.d/jetbrains.sh
+    owner: root
+    group: root
+    mode: '0644'
+  become: true

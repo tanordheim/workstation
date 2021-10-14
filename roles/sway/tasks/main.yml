@@ -8,7 +8,7 @@
       - swaylock
       - swayidle
       - alacritty
-      - dmenu
+      - wofi
       - waybar
       - otf-font-awesome
       - noto-fonts
@@ -27,15 +27,26 @@
     - alacritty
     - waybar
 
-- name: Install configuration files
-  ansible.builtin.copy:
-    src: "{{ item.src }}"
-    dest: "/home/trond/.config/{{ item.dest }}"
-    owner: trond
-    group: trond
-    mode: '0644'
-  with_items:
-    - { src: sway_config, dest: sway/config }
-    - { src: alacritty.yml, dest: alacritty/alacritty.yml }
-    - { src: waybar_config, dest: waybar/config }
-    - { src: waybar.css, dest: waybar/style.css }
+# TODO:
+#  + wofi
+#  - dmenu
+#
+# OTHER:
+#  - notificatoins (mako?)
+#  - redshift
+#
+# INSPIRATION
+#  - https://github.com/verttj/SwayyHome/blob/master/11:11/config/sway/config (https://www.reddit.com/r/unixporn/comments/q56l1k/sway_1111/)
+
+#- name: Install configuration files
+#  ansible.builtin.copy:
+#    src: "{{ item.src }}"
+#    dest: "/home/trond/.config/{{ item.dest }}"
+#    owner: trond
+#    group: trond
+#    mode: '0644'
+#  with_items:
+#    - { src: sway_config, dest: sway/config }
+#    - { src: alacritty.yml, dest: alacritty/alacritty.yml }
+#    - { src: waybar_config, dest: waybar/config }
+#    - { src: waybar.css, dest: waybar/style.css }
