@@ -15,7 +15,27 @@
       - ttf-fira-code
   become: true
 
-# config todo
-# - sway config
-# - alacritty config
-# - waybar config
+- name: Create configuration directories
+  ansible.builtin.file:
+    path: "/home/trond/.config/{{ item }}"
+    owner: trond
+    group: trond
+    mode: '0755'
+    state: directory
+  with_items:
+    - sway
+    - alacritty
+    - waybar
+
+- name: Install configuration files
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "/home/trond/.config/{{ item.dest }}"
+    owner: trond
+    group: trond
+    mode: '0644'
+  with_items:
+    - { src: sway_config, dest: sway/config }
+    - { src: alacritty.yml, dest: alacritty/alacritty.yml }
+    - { src: waybar_config, dest: waybar/config }
+    - { src: waybar.css, dest: waybar/style.css }

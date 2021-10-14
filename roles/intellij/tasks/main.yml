@@ -1,4 +1,6 @@
 ---
 
-- include: webstorm.yml
-- include: rider.yml
+- name: Install Jetbrains Toolbox
+  community.general.pacman:
+    name: jetbrains-toolbox
+    executable: yay

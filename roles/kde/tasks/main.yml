@@ -17,3 +17,8 @@
     option: Options
     value: ",caps:escape"
     no_extra_spaces: true
+
+- name: Install Bismuth tiling script for kwin
+  community.general.pacman:
+    name: kwin-bismuth
+    executable: yay
