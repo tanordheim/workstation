@@ -1,0 +1,12 @@
+---
+
+- name: Install audio packages
+  community.general.pacman:
+    name:
+      - pavucontrol
+      - pulseaudio-alsa
+      - alsa-firmware
+      - alsa-utils
+      - alsa-ucm-conf
+      - sof-firmware
+  become: true

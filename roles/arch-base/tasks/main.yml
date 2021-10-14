@@ -13,7 +13,6 @@
       - sudo
       - libxkbcommon
       - zsh
-      - pavucontrol
   become: true
 
 - name: Create reflector config
@@ -36,3 +35,4 @@
 - include: locale.yml
 - include: aur.yml
 - include: timezone.yml
+- include: audio.yml
