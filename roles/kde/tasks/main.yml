@@ -9,3 +9,11 @@
       - konsole
       - dolphin
   become: true
+
+- name: Map capslock to escape
+  community.general.ini_file:
+    path: /home/trond/.config/kxkbrc
+    section: Layout
+    option: Options
+    value: ",caps:escape"
+    no_extra_spaces: true
