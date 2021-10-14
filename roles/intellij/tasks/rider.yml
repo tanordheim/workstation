@@ -1,0 +1,7 @@
+---
+
+- name: Install Rider
+  community.general.pacman:
+    name: rider
+    executable: yay
+

@@ -7,5 +7,12 @@
     - git
     - zsh
     - neovim
-    - kde
+    - role: kde
+      tags: ["kde"]
     - sddm
+    - role: browsers
+      tags: ["browsers"]
+    - role: slack
+      tags: ["slack"]
+    - role: intellij
+      tags: ["intellij"]

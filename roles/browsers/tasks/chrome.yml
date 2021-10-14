@@ -1,0 +1,6 @@
+---
+
+- name: Install Google Chrome
+  community.general.pacman:
+    name: google-chrome
+    executable: yay

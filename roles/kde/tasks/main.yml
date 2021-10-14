@@ -5,5 +5,7 @@
     name:
       - plasma
       - plasma-wayland-session
+      - xdg-desktop-portal-kde
       - konsole
+      - dolphin
   become: true

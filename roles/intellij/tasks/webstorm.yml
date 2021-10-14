@@ -1,0 +1,6 @@
+---
+
+- name: Install WebStorm
+  community.general.pacman:
+    name: webstorm
+    executable: yay

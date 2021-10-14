@@ -1,0 +1,6 @@
+---
+
+- name: Install Firefox
+  community.general.pacman:
+    name: firefox
+  become: true
