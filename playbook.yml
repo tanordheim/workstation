@@ -5,7 +5,8 @@
     - role: arch-base
       tags: ["bootstrap"]
     - git
-    - zsh
+    - role: zsh
+      tags: ["zsh"]
     - neovim
     - role: kde
       tags: ["kde"]
