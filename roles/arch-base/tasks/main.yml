@@ -13,6 +13,7 @@
       - sudo
       - libxkbcommon
       - zsh
+      - pavucontrol
   become: true
 
 - name: Create reflector config
