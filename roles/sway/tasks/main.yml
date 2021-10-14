@@ -1,0 +1,21 @@
+---
+
+- name: Install Sway
+  community.general.pacman:
+    name:
+      - sway
+      - xdg-desktop-portal-wlr
+      - swaylock
+      - swayidle
+      - alacritty
+      - dmenu
+      - waybar
+      - otf-font-awesome
+      - noto-fonts
+      - ttf-fira-code
+  become: true
+
+# config todo
+# - sway config
+# - alacritty config
+# - waybar config

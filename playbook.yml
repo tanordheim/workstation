@@ -4,13 +4,18 @@
   roles:
     - role: arch-base
       tags: ["bootstrap"]
-    - git
+    - role: git
+      tags: ["git"]
     - role: zsh
       tags: ["zsh"]
-    - neovim
+    - role: neovim
+      tags: ["neovim"]
     - role: kde
       tags: ["kde"]
-    - sddm
+    - role: sway
+      tags: ["sway"]
+    - role: sddm
+      tags: ["sddm"]
     - role: browsers
       tags: ["browsers"]
     - role: slack
