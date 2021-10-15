@@ -13,6 +13,7 @@
       - dunst
       - brightnessctl
       - gammastep
+      - wl-clipboard
   become: true
 
 - name: Install required fonts and icons

@@ -8,6 +8,8 @@
       tags: ["git"]
     - role: zsh
       tags: ["zsh"]
+    - role: tmux
+      tags: ["tmux"]
     - role: neovim
       tags: ["neovim"]
     - role: kde
@@ -26,3 +28,5 @@
       tags: ["jetbrains"]
     - role: node
       tags: ["node"]
+    - role: dotnet
+      tags: ["dotnet"]

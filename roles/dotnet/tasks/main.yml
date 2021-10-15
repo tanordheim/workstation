@@ -1,0 +1,14 @@
+---
+
+- name: Install .NET Core packages
+  community.general.pacman:
+    name:
+      - dotnet-runtime
+      - dotnet-sdk
+  become: true
+
+- name: Configure zsh
+  ansible.builtin.copy:
+    src: zshrc
+    dest: /home/trond/.zshrc.d/dotnet.zsh
+    mode: '0644'

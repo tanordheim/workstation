@@ -1,0 +1,32 @@
+---
+
+- name: Install tmux
+  community.general.pacman:
+    name:
+      - tmux
+  become: true
+
+- name: Prepare tmux config directories
+  ansible.builtin.file:
+    path: "/home/trond/.config/{{ item }}"
+    state: directory
+  with_items:
+    - tmux
+    - tmux/plugins
+
+- name: Install tmux plugin manager
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: /home/trond/.config/tmux/plugins/tpm
+    update: no
+
+- name: Install tmux configuration
+  ansible.builtin.copy:
+    src: tmux.conf
+    dest: /home/trond/.config/tmux/tmux.conf
+
+- name: Configure zsh
+  ansible.builtin.copy:
+    src: zshrc
+    dest: /home/trond/.zshrc.d/tmux.zsh
+    mode: '0644'
