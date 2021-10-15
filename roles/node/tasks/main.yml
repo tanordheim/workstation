@@ -1,0 +1,20 @@
+---
+
+- name: Install Node packages
+  community.general.pacman:
+    name:
+      - nodejs
+      - npm
+      - yarn
+  become: true
+
+- name: Install Node Version Manager
+  community.general.pacman:
+    name: nvm
+    executable: yay
+
+- name: Configure zsh
+  ansible.builtin.copy:
+    src: zshrc
+    dest: /home/trond/.zshrc.d/nvm.zsh
+    mode: '0644'

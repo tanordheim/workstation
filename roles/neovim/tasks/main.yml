@@ -14,8 +14,9 @@
 
 - name: Configure zsh
   ansible.builtin.copy:
-    src: init.vim
-    dest: /home/trond/.config/nvim/init.vim
+    src: zshrc
+    dest: /home/trond/.zshrc.d/neovim.zsh
+    mode: '0644'
 
 - name: Prepare neovim configuration directories
   ansible.builtin.file:

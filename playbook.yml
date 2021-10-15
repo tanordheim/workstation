@@ -24,3 +24,5 @@
       tags: ["telegram"]
     - role: jetbrains
       tags: ["jetbrains"]
+    - role: node
+      tags: ["node"]
