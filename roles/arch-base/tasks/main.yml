@@ -9,6 +9,8 @@
   community.general.pacman:
     name:
       - openssh
+      - man-db
+      - man-pages
       - reflector
       - sudo
       - libxkbcommon

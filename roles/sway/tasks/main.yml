@@ -10,10 +10,20 @@
       - alacritty
       - wofi
       - waybar
+      - dunst
+      - brightnessctl
+      - gammastep
+  become: true
+
+- name: Install required fonts and icons
+  community.general.pacman:
+    name:
       - otf-font-awesome
       - noto-fonts
       - ttf-fira-code
-  become: true
+      - nerd-fonts-complete
+      - gnome-icon-theme
+    executable: yay
 
 - name: Create configuration directories
   ansible.builtin.file:
@@ -30,10 +40,14 @@
 # TODO:
 #  + wofi
 #  - dmenu
+#  - dunst?
+#  - dunst noification icons, where do they come from
+#  - wallpapers
+#  - gammastep
 #
 # OTHER:
-#  - notificatoins (mako?)
 #  - redshift
+#  - scripts for brightness and volume
 #
 # INSPIRATION
 #  - https://github.com/verttj/SwayyHome/blob/master/11:11/config/sway/config (https://www.reddit.com/r/unixporn/comments/q56l1k/sway_1111/)
