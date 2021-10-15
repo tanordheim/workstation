@@ -14,6 +14,7 @@
       - brightnessctl
       - gammastep
       - wl-clipboard
+      - kanshi
   become: true
 
 - name: Install required fonts and icons
@@ -45,6 +46,7 @@
 #  - dunst noification icons, where do they come from
 #  - wallpapers
 #  - gammastep
+#  - kanshi
 #
 # OTHER:
 #  - redshift
