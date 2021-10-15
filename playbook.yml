@@ -24,6 +24,8 @@
       tags: ["slack"]
     - role: telegram
       tags: ["telegram"]
+    - role: docker
+      tags: ["docker"]
     - role: jetbrains
       tags: ["jetbrains"]
     - role: node
