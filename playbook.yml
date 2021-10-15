@@ -30,3 +30,5 @@
       tags: ["node"]
     - role: dotnet
       tags: ["dotnet"]
+    - role: go
+      tags: ["go"]

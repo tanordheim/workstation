@@ -1,0 +1,2 @@
+export GOPATH="/home/trond/.local/share/go"
+export PATH="$PATH:$GOPATH/bin"

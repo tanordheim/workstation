@@ -1,0 +1,22 @@
+---
+
+- name: Install Go
+  community.general.pacman:
+    name:
+      - go
+  become: true
+
+- name: Prepare GOPATH
+  ansible.builtin.file:
+    path: "/home/trond/.local/share/go/{{ item }}"
+    state: directory
+    recurse: true
+  with_items:
+    - bin
+    - src
+
+- name: Configure zsh
+  ansible.builtin.copy:
+    src: zshrc
+    dest: /home/trond/.zshrc.d/go.zsh
+    mode: '0644'
