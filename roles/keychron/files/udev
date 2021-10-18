@@ -1,0 +1,1 @@
+SUBSYSTEMS=="usb", ATTRS{product}=="Keychron K2", RUN+="/usr/local/bin/keychron-k2-configure"

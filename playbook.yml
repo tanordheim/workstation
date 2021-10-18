@@ -4,6 +4,8 @@
   roles:
     - role: arch-base
       tags: ["bootstrap"]
+    - role: keychron
+      tags: ["keychron"]
     - role: git
       tags: ["git"]
     - role: zsh

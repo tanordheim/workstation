@@ -1,0 +1,19 @@
+---
+
+- name: Create script to configure the keyboard
+  ansible.builtin.copy:
+    src: keychron-k2-configure.sh
+    dest: /usr/local/bin/keychron-k2-configure
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
+- name: Install udev rule
+  ansible.builtin.copy:
+    src: udev
+    dest: /etc/udev/rules.d/80-keychron.rules
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
