@@ -8,12 +8,13 @@
 - name: Install core packages
   community.general.pacman:
     name:
-      - openssh
+      - libxkbcommon
       - man-db
       - man-pages
+      - openssh
+      - pacman-contrib
       - reflector
       - sudo
-      - libxkbcommon
       - zsh
   become: true
 
@@ -32,6 +33,12 @@
     enabled: true
   become: true
   with_items: [reflector.service, reflector.timer]
+
+- name: Enable paccache timer to clean up pacman cache
+  ansible.builtin.service:
+    name: paccache.timer
+    enabled: true
+  become: true
 
 - include: user.yml
 - include: locale.yml
