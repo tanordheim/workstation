@@ -8,6 +8,7 @@
       - xdg-desktop-portal-kde
       - konsole
       - dolphin
+      - kdeconnect
   become: true
 
 - name: Map capslock to escape
