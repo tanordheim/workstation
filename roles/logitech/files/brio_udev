@@ -1,0 +1,1 @@
+KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", SUBSYSTEMS=="usb", ATTRS{product}=="Logitech BRIO", ATTR{index}=="0", RUN+="/usr/local/bin/logitech-brio-configure"

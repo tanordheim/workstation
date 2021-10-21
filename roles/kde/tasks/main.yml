@@ -3,12 +3,12 @@
 - name: Install KDE Plasma
   community.general.pacman:
     name:
+      - dolphin
+      - kdeconnect
+      - konsole
       - plasma
       - plasma-wayland-session
       - xdg-desktop-portal-kde
-      - konsole
-      - dolphin
-      - kdeconnect
   become: true
 
 - name: Map capslock to escape
