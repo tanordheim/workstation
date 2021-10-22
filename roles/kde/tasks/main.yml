@@ -11,6 +11,14 @@
       - xdg-desktop-portal-kde
   become: true
 
+- name: Install KDE Plasma themes
+  community.general.pacman:
+    name:
+      - kvantum-theme-nordic-git
+      - nordic-kde-git
+      - sddm-nordic-theme-git
+    executable: yay
+
 - name: Map capslock to escape
   community.general.ini_file:
     path: /home/trond/.config/kxkbrc
