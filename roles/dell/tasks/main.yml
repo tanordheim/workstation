@@ -1,0 +1,25 @@
+---
+
+- name: Install required packages
+  community.general.pacman:
+    name:
+      - ddcutil
+  become: true
+
+- name: Create script to swap KVM inputs
+  ansible.builtin.copy:
+    src: dell-monitor-kvm-swap-pc.sh
+    dest: /usr/local/bin/dell-monitor-kvm-swap-pc
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
+- name: Allow passwordless swap of KVM inputs
+  ansible.builtin.copy:
+    src: trond-kvm-swap-sudo
+    dest: /etc/sudoers.d/trond-kvm-swap
+    owner: root
+    group: root
+    mode: '0440'
+  become: true

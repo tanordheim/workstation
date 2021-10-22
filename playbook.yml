@@ -8,6 +8,8 @@
       tags: ["keychron"]
     - role: logitech
       tags: ["logitech"]
+    - role: dell
+      tags: ["dell"]
     - role: git
       tags: ["git"]
     - role: zsh
