@@ -9,6 +9,7 @@
   community.general.pacman:
     name:
       - libxkbcommon
+      - linux-headers
       - man-db
       - man-pages
       - openssh

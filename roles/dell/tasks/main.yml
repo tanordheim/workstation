@@ -6,6 +6,15 @@
       - ddcutil
   become: true
 
+- name: Load kernel modules on boot
+  ansible.builtin.copy:
+    src: module-load.conf
+    dest: /etc/modules-load.d/i2c-dev.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
 - name: Create script to swap KVM inputs
   ansible.builtin.copy:
     src: dell-monitor-kvm-swap-pc.sh
