@@ -14,6 +14,7 @@
     shell: /bin/zsh
     group: trond
     groups: [wheel]
+    append: yes
   become: true
 
 - name: Allow sudo for created user

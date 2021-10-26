@@ -42,6 +42,15 @@
     enabled: true
   become: true
 
+- name: Enable wakeup from usb devices
+  ansible.builtin.copy:
+    src: roles/arch-base/files/udev-wakeup-keyboard-mouse.rules
+    dest: /etc/udev/rules.d/10-wake-computer-with-keyboard-or-mouse.rules
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
 - include: user.yml
 - include: locale.yml
 - include: aur.yml
