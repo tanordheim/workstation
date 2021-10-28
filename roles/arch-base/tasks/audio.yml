@@ -3,10 +3,15 @@
 - name: Install audio packages
   community.general.pacman:
     name:
+      - libpulse
       - pavucontrol
-      - pulseaudio-alsa
-      - alsa-firmware
-      - alsa-utils
-      - alsa-ucm-conf
+      - pipewire
+      - pipewire-alsa
+      - pipewire-pulse
+      - pipewire-jack
       - sof-firmware
+#      - pulseaudio-alsa
+#      - alsa-firmware
+#      - alsa-utils
+#      - alsa-ucm-conf
   become: true
