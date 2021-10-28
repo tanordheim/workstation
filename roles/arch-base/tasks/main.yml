@@ -8,6 +8,7 @@
 - name: Install core packages
   community.general.pacman:
     name:
+      - jq
       - libxkbcommon
       - linux-headers
       - man-db
