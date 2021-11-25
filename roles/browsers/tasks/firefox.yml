@@ -4,3 +4,12 @@
   community.general.pacman:
     name: firefox
   become: true
+
+- name: Create Firefox profile config
+  ansible.builtin.copy:
+    src: firefox_profile
+    dest: /etc/profile.d/firefox.sh
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
