@@ -3,5 +3,5 @@
 - name: Install Slack
   community.general.pacman:
     name:
-      - slack-wayland
+      - slack-desktop
     executable: yay

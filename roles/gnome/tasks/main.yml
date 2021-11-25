@@ -1,0 +1,9 @@
+---
+
+- name: Install GNOME
+  community.general.pacman:
+    name:
+      - gnome
+      - gnome-tweaks
+      - xdg-desktop-portal-gnome
+  become: true

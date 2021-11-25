@@ -20,6 +20,8 @@
       tags: ["neovim"]
     - role: kde
       tags: ["kde"]
+    - role: gnome
+      tags: ["gnome"]
     - role: sway
       tags: ["sway"]
     - role: sddm
