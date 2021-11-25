@@ -32,3 +32,15 @@
     group: root
     mode: '0440'
   become: true
+
+- name: Create script to configure docked audio behavior
+  ansible.builtin.copy:
+    src: "{{ item }}.sh"
+    dest: "/usr/local/bin/{{ item }}"
+    owner: root
+    group: root
+    mode: '0755'
+  with_items:
+    - configure-audio-docked
+    - configure-audio-undocked
+  become: true
