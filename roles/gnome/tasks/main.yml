@@ -7,3 +7,11 @@
       - gnome-tweaks
       - xdg-desktop-portal-gnome
   become: true
+  tags: [gnome]
+
+- name: Enable GDM
+  ansible.builtin.service:
+    name: gdm
+    enabled: true
+  become: true
+  tags: [gnome]
