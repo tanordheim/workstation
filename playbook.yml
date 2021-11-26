@@ -18,14 +18,14 @@
       tags: ["tmux"]
     - role: neovim
       tags: ["neovim"]
-    - role: kde
-      tags: ["kde"]
+#    - role: kde
+#      tags: ["kde"]
     - role: gnome
       tags: ["gnome"]
-    - role: sway
-      tags: ["sway"]
-    - role: sddm
-      tags: ["sddm"]
+#    - role: sway
+#      tags: ["sway"]
+#    - role: sddm
+#      tags: ["sddm"]
     - role: browsers
       tags: ["browsers"]
     - role: slack
