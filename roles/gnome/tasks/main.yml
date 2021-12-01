@@ -3,11 +3,19 @@
 - name: Install GNOME
   community.general.pacman:
     name:
+      - dconf-editor
       - gnome
+      - gnome-shell-extensions
       - gnome-tweaks
       - xdg-desktop-portal-gnome
   become: true
   tags: [gnome]
+
+- name: Install GNOME (AUR)
+  community.general.pacman:
+    name:
+      - nerd-fonts-complete
+    executable: yay
 
 - name: Enable GDM
   ansible.builtin.service:
@@ -15,3 +23,10 @@
     enabled: true
   become: true
   tags: [gnome]
+
+- name: Configure Electron apps to use Wayland
+  ansible.builtin.copy:
+    src: electron-flags.conf
+    dest: /home/trond/.config/electron-flags.conf
+
+- include: settings.yml

@@ -13,7 +13,7 @@
     comment: Trond Nordheim
     shell: /bin/zsh
     group: trond
-    groups: [wheel]
+    groups: [wheel, video]
     append: yes
   become: true
 

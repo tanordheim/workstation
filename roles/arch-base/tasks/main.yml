@@ -10,11 +10,12 @@
     name:
       - jq
       - libxkbcommon
-      - linux-headers
+      - linux-lts-headers
       - man-db
       - man-pages
       - openssh
       - pacman-contrib
+      - python-psutil
       - reflector
       - sudo
       - usbutils

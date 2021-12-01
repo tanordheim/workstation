@@ -1,0 +1,62 @@
+---
+
+- name: Enable extensions
+  ansible.builtin.shell:
+    cmd: "gnome-extensions enable {{ item }}"
+  with_items:
+    - user-theme@gnome-shell-extensions.gcampax.github.com
+
+- name: Disable hot corners
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/enable-hot-corners"
+    value: "false"
+
+- name: Only include apps from current workspace in application switcher
+  community.general.dconf:
+    key: "/org/gnome/shell/app-switcher/current-workspace-only"
+    value: "true"
+
+- name: Show battery percentage
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/show-battery-percentage"
+    value: "true"
+
+- name: Disable natural scrolling
+  community.general.dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
+    value: "false"
+
+- name: Remap caps lock to escape
+  community.general.dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['caps:escape']"
+
+- name: Show weekday in clock
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/clock-show-weekday"
+    value: "true"
+
+- name: Show seconds in clock
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/clock-show-seconds"
+    value: "true"
+
+- name: Show week number in calendar
+  community.general.dconf:
+    key: "/org/gnome/desktop/calendar/show-weekdate"
+    value: "true"
+
+- name: Enable Adwaita dark theme
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'Adwaita-dark'"
+
+- name: Set monospace font
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/monospace-font-name"
+    value: "'JetBrainsMono Nerd Font Mono 9'"
+
+- name: Disable terminal bell
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/audible-bell"
+    value: "false"
