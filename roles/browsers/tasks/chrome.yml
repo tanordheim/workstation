@@ -4,3 +4,8 @@
   community.general.pacman:
     name: google-chrome
     executable: yay
+
+- name: Configure Chrome to use Wayland
+  ansible.builtin.copy:
+    src: chrome-flags.conf
+    dest: /home/trond/.config/chrome-flags.conf
