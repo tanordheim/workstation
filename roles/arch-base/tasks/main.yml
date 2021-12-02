@@ -58,3 +58,4 @@
 - include: aur.yml
 - include: timezone.yml
 - include: audio.yml
+- include: video.yml
