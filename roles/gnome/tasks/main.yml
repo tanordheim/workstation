@@ -17,16 +17,11 @@
       - nerd-fonts-complete
     executable: yay
 
-- name: Enable GDM
+- name: Disable GDM
   ansible.builtin.service:
     name: gdm
-    enabled: true
+    enabled: false
   become: true
   tags: [gnome]
-
-- name: Configure Electron apps to use Wayland
-  ansible.builtin.copy:
-    src: electron-flags.conf
-    dest: /home/trond/.config/electron-flags.conf
 
 - include: settings.yml

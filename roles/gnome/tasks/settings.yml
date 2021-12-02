@@ -1,10 +1,10 @@
 ---
 
-- name: Enable extensions
-  ansible.builtin.shell:
-    cmd: "gnome-extensions enable {{ item }}"
-  with_items:
-    - user-theme@gnome-shell-extensions.gcampax.github.com
+#- name: Enable extensions
+#  ansible.builtin.shell:
+#    cmd: "gnome-extensions enable {{ item }}"
+#  with_items:
+#    - user-theme@gnome-shell-extensions.gcampax.github.com
 
 - name: Disable hot corners
   community.general.dconf:
