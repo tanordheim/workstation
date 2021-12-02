@@ -11,13 +11,13 @@
       - xdg-desktop-portal-kde
   become: true
 
-- name: Install KDE Plasma themes
-  community.general.pacman:
-    name:
-      - kvantum-theme-nordic-git
-      - nordic-kde-git
-      - sddm-nordic-theme-git
-    executable: yay
+#- name: Install KDE Plasma themes
+#  community.general.pacman:
+#    name:
+#      - kvantum-theme-nordic-git
+#      - nordic-kde-git
+#      - sddm-nordic-theme-git
+#    executable: yay
 
 - name: Map capslock to escape
   community.general.ini_file:
@@ -27,7 +27,7 @@
     value: ",caps:escape"
     no_extra_spaces: true
 
-- name: Install Bismuth tiling script for kwin
-  community.general.pacman:
-    name: kwin-bismuth
-    executable: yay
+#- name: Install Bismuth tiling script for kwin
+#  community.general.pacman:
+#    name: kwin-bismuth
+#    executable: yay
