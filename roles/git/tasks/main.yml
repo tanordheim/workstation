@@ -5,6 +5,7 @@
     name:
       - git
       - git-lfs
+      - github-cli
   become: true
 
 - name: Create Git configuration
