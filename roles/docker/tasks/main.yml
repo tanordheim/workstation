@@ -4,6 +4,7 @@
   community.general.pacman:
     name:
       - docker
+      - docker-compose
   become: true
 
 - name: Enable and start Docker
