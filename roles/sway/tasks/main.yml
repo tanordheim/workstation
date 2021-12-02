@@ -41,11 +41,11 @@
     - alacritty
     - waybar
 
-- name: Auto-start sway on tty1 login
-  ansible.builtin.copy:
-    src: zshrc
-    dest: /home/trond/.zshrc.d/sway.zsh
-    mode: '0644'
+#- name: Auto-start sway on tty1 login
+#  ansible.builtin.copy:
+#    src: zshrc
+#    dest: /home/trond/.zshrc.d/sway.zsh
+#    mode: '0644'
 
 # TODO:
 #  + wofi
