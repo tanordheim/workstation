@@ -3,6 +3,7 @@
 - name: Install .NET Core packages
   community.general.pacman:
     name:
+      - aspnet-runtime
       - dotnet-runtime
       - dotnet-sdk
   become: true
