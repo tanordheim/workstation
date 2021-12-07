@@ -1,0 +1,6 @@
+---
+
+- name: Install LibreOffice
+  community.general.pacman:
+    name: libreoffice-fresh
+  become: true

@@ -28,6 +28,8 @@
       tags: ["sddm"]
     - role: browsers
       tags: ["browsers"]
+    - role: libreoffice
+      tags: ["libreoffice"]
     - role: electron
       tags: ["electron"]
     - role: slack
