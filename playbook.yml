@@ -29,8 +29,8 @@
 #    tags: ["gnome"]
 #  - role: sway
 #    tags: ["sway"]
-    - role: sddm
-      tags: ["sddm"]
+    - role: gdm
+      tags: ["gdm"]
 #  - role: browsers
 #    tags: ["browsers"]
 #  - role: libreoffice

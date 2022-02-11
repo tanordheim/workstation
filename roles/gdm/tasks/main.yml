@@ -1,15 +1,15 @@
 ---
 
-- name: Install SDDM
+- name: Install GDM
   community.general.pacman:
     name:
-      - sddm
+      - gdm
   become: true
-  tags: [sddm]
+  tags: [gdm]
 
-- name: Enable the SDDM service
+- name: Enable the GDM service
   ansible.builtin.service:
-    name: sddm
+    name: gdm
     enabled: true
   become: true
-  tags: [sddm]
+  tags: [gdm]
