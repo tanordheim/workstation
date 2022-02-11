@@ -10,8 +10,4 @@
       - pipewire-pulse
       - pipewire-jack
       - sof-firmware
-#      - pulseaudio-alsa
-#      - alsa-firmware
-#      - alsa-utils
-#      - alsa-ucm-conf
   become: true
