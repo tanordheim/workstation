@@ -1,0 +1,57 @@
+---
+
+- name: Install i3
+  community.general.pacman:
+    name:
+      - i3-gaps
+      - i3status
+      - alacritty
+  become: true
+
+- name: Install required fonts and icons
+  community.general.pacman:
+    name:
+      - noto-fonts
+      - ttf-fira-code
+      - nerd-fonts-complete
+    executable: yay
+
+- name: Create configuration directories
+  ansible.builtin.file:
+    path: "/home/trond/.config/{{ item }}"
+    owner: trond
+    group: trond
+    mode: '0755'
+    state: directory
+  with_items:
+    - i3
+    - alacritty
+
+# TODO:
+#  + wofi
+#  - dmenu
+#  - dunst?
+#  - dunst noification icons, where do they come from
+#  - wallpapers
+#  - gammastep
+#  - kanshi
+#
+# OTHER:
+#  - redshift
+#  - scripts for brightness and volume
+#
+# INSPIRATION
+#  - https://github.com/verttj/SwayyHome/blob/master/11:11/config/sway/config (https://www.reddit.com/r/unixporn/comments/q56l1k/sway_1111/)
+
+#- name: Install configuration files
+#  ansible.builtin.copy:
+#    src: "{{ item.src }}"
+#    dest: "/home/trond/.config/{{ item.dest }}"
+#    owner: trond
+#    group: trond
+#    mode: '0644'
+#  with_items:
+#    - { src: sway_config, dest: sway/config }
+#    - { src: alacritty.yml, dest: alacritty/alacritty.yml }
+#    - { src: waybar_config, dest: waybar/config }
+#    - { src: waybar.css, dest: waybar/style.css }

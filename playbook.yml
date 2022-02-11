@@ -27,10 +27,10 @@
       tags: ["kde"]
 #  - role: gnome
 #    tags: ["gnome"]
-#  - role: sway
-#    tags: ["sway"]
     - role: gdm
       tags: ["gdm"]
+    - role: i3
+      tags: ["i3"]
 #  - role: browsers
 #    tags: ["browsers"]
 #  - role: libreoffice
