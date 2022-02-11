@@ -7,9 +7,9 @@
   become: true
   tags: [sddm]
 
-- name: Disable the SDDM service
+- name: Enable the SDDM service
   ansible.builtin.service:
     name: sddm
-    enabled: false
+    enabled: true
   become: true
   tags: [sddm]
