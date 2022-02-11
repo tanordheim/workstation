@@ -1,0 +1,22 @@
+---
+
+- name: Install throttled
+  community.general.pacman:
+    name:
+      - throttled
+  become: true
+
+- name: Enable Lenovo throttle fix service
+  ansible.builtin.service:
+    name: lenovo_fix
+    enabled: true
+  become: true
+
+- name: Disable panel self reflesh to avoid flickering
+  ansible.builtin.copy:
+    src: i915-modprobe.conf
+    dest: /etc/modprobe.d/i915.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
