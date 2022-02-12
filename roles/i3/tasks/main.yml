@@ -6,6 +6,7 @@
       - i3-gaps
       - i3status
       - alacritty
+      - autorandr
   become: true
 
 - name: Install required fonts and icons
