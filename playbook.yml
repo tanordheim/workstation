@@ -18,7 +18,6 @@
       tags: ["zsh"]
     - role: tmux
       tags: ["tmux"]
-
     - role: gdm
       tags: ["gdm"]
     - role: i3
@@ -37,6 +36,8 @@
       tags: ["docker"]
     - role: jetbrains
       tags: ["jetbrains"]
+    - role: 1password
+      tags: ["1password"]
     - role: node
       tags: ["node"]
     - role: dotnet

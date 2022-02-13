@@ -1,4 +1,4 @@
 ---
 
-- include: chrome.yml
-- include: firefox.yml
+- include_tasks: chrome.yml
+- include_tasks: firefox.yml

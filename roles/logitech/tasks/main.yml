@@ -1,3 +1,3 @@
 ---
 
-- include: brio_webcam.yml
+- include_tasks: brio_webcam.yml

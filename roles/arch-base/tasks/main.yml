@@ -62,9 +62,9 @@
     mode: '0644'
   become: true
 
-- include: user.yml
-- include: locale.yml
-- include: aur.yml
-- include: timezone.yml
-- include: audio.yml
-- include: video.yml
+- include_tasks: user.yml
+- include_tasks: locale.yml
+- include_tasks: aur.yml
+- include_tasks: timezone.yml
+- include_tasks: audio.yml
+- include_tasks: video.yml

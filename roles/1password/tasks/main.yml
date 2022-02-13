@@ -1,0 +1,8 @@
+---
+
+- name: Install 1Password
+  community.general.pacman:
+    name:
+      - 1password
+      - 1password-cli
+    executable: yay
