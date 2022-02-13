@@ -5,7 +5,7 @@
     name: google-chrome
     executable: yay
 
-- name: Configure Chrome to use Wayland
+- name: Configure Chrome to use hardware acceleration
   ansible.builtin.copy:
     src: chrome-flags.conf
     dest: /home/trond/.config/chrome-flags.conf

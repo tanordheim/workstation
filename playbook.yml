@@ -16,40 +16,32 @@
       tags: ["git"]
     - role: zsh
       tags: ["zsh"]
+    - role: tmux
+      tags: ["tmux"]
 
-# todo: re-enable, fails due to host key verification when doing ls-remote for some of the plugins
-#    - role: tmux
-#      tags: ["tmux"]
-
-#  - role: neovim
-#    tags: ["neovim"]
-    - role: kde
-      tags: ["kde"]
-#  - role: gnome
-#    tags: ["gnome"]
     - role: gdm
       tags: ["gdm"]
     - role: i3
       tags: ["i3"]
-#  - role: browsers
-#    tags: ["browsers"]
-#  - role: libreoffice
-#    tags: ["libreoffice"]
-#  - role: electron
-#    tags: ["electron"]
-#  - role: slack
-#    tags: ["slack"]
-#  - role: telegram
-#    tags: ["telegram"]
-#  - role: signal
-#    tags: ["signal"]
+    - role: browsers
+      tags: ["browsers"]
+    - role: libreoffice
+      tags: ["libreoffice"]
+    - role: slack
+      tags: ["slack"]
+    - role: telegram
+      tags: ["telegram"]
+    - role: signal
+      tags: ["signal"]
     - role: docker
       tags: ["docker"]
-#  - role: jetbrains
-#      tags: ["jetbrains"]
-#    - role: node
-#      tags: ["node"]
-#    - role: dotnet
-#      tags: ["dotnet"]
-#    - role: go
-#      tags: ["go"]
+    - role: jetbrains
+      tags: ["jetbrains"]
+    - role: node
+      tags: ["node"]
+    - role: dotnet
+      tags: ["dotnet"]
+    - role: go
+      tags: ["go"]
+#  - role: neovim
+#    tags: ["neovim"]

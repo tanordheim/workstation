@@ -1,6 +1,0 @@
----
-
-- name: Configure Electron apps to use Wayland
-  ansible.builtin.copy:
-    src: electron-flags.conf
-    dest: /home/trond/.config/electron-flags.conf

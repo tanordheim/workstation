@@ -53,6 +53,15 @@
     mode: '0644'
   become: true
 
+- name: Allow video group to control backlight
+  ansible.builtin.copy:
+    src: roles/arch-base/files/udev-video-backlight.rules
+    dest: /etc/udev/rules.d/10-video-backlight.rules
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
 - include: user.yml
 - include: locale.yml
 - include: aur.yml

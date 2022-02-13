@@ -19,6 +19,7 @@
     repo: https://github.com/tmux-plugins/tpm
     dest: /home/trond/.config/tmux/plugins/tpm
     update: no
+    accept_hostkey: yes
 
 - name: Install tmux configuration
   ansible.builtin.copy:

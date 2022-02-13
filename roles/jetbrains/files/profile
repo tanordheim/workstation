@@ -1,3 +1,0 @@
-# Fix reparenting issues in Wayland for JetBrains applications.
-# See https://bugs.openjdk.java.net/browse/JDK-8058197
-export _JAVA_AWT_WM_NONREPARENTING=1

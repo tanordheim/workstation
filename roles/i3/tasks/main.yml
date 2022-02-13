@@ -4,10 +4,16 @@
   community.general.pacman:
     name:
       - i3-gaps
-      - i3status
+      - i3lock
+      - polybar
       - alacritty
       - autorandr
-  become: true
+      - dex
+      - network-manager-applet
+      - picom
+      - rofi
+      - xss-lock
+    executable: yay
 
 - name: Install required fonts and icons
   community.general.pacman:
