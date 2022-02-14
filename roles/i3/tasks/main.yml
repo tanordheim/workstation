@@ -10,8 +10,11 @@
       - autorandr
       - dex
       - network-manager-applet
+      - nitrogen
       - picom
       - rofi
+      - scrot
+      - xclip
       - xss-lock
     executable: yay
 
