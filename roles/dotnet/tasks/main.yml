@@ -6,7 +6,8 @@
       - aspnet-runtime
       - dotnet-runtime
       - dotnet-sdk
-  become: true
+      - omnisharp-roslyn
+    executable: yay
 
 - name: Configure zsh
   ansible.builtin.copy:

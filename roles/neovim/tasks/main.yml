@@ -1,16 +1,12 @@
 ---
 
-- name: Uninstall regular vim
-  community.general.pacman:
-    name: vim
-    state: removed
-  become: true
-
 - name: Install neovim
   community.general.pacman:
     name:
+      - fd
       - neovim
-  become: true
+      - ripgrep
+    executable: yay
 
 - name: Configure zsh
   ansible.builtin.copy:
@@ -24,23 +20,15 @@
     state: directory
     recurse: true
   with_items:
-    - .local/share/nvim/site/autoload
-    - .config/nvim/plugged
     - .config/nvim/tmp/undo
     - .config/nvim/tmp/backup
     - .config/nvim/tmp/swap
 
-- name: Install vim-plug
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: /home/trond/.local/share/nvim/site/autoload/plug.vim
-    mode: '0644'
+#- name: Install neovim configuration
+#  ansible.builtin.copy:
+#    src: init.vim
+#    dest: /home/trond/.config/nvim/init.vim
+#    mode: '0644'
 
-- name: Install neovim configuration
-  ansible.builtin.copy:
-    src: init.vim
-    dest: /home/trond/.config/nvim/init.vim
-    mode: '0644'
-
-- name: Update Neovim plugins
-  ansible.builtin.shell: nvim --headless +PlugInstall +qall
+#- name: Update Neovim plugins
+#  ansible.builtin.shell: nvim --headless +PlugInstall +qall

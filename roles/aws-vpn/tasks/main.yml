@@ -1,0 +1,14 @@
+---
+
+- name: Install AWS VPN client
+  community.general.pacman:
+    name:
+      - awsvpnclient
+    executable: yay
+
+- name: Enable and start AWS VPN client
+  ansible.builtin.service:
+    name: awsvpnclient
+    state: started
+    enabled: true
+  become: true

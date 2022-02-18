@@ -24,6 +24,8 @@
       tags: ["i3"]
     - role: browsers
       tags: ["browsers"]
+    - role: aws-vpn
+      tags: ["aws-vpn"]
     - role: libreoffice
       tags: ["libreoffice"]
     - role: slack
@@ -44,5 +46,5 @@
       tags: ["dotnet"]
     - role: go
       tags: ["go"]
-#  - role: neovim
-#    tags: ["neovim"]
+    - role: neovim
+      tags: ["neovim"]
