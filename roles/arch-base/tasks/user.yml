@@ -52,6 +52,14 @@
     mode: '0755'
     state: directory
 
+- name: Create local environment config directory
+  ansible.builtin.file:
+    path: /home/trond/.config/environment.d
+    owner: trond
+    group: trond
+    mode: '0755'
+    state: directory
+
 - name: Prepare SSH key directory
   ansible.builtin.file:
     path: /home/trond/.ssh

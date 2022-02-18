@@ -22,12 +22,16 @@
       tags: ["gdm"]
     - role: i3
       tags: ["i3"]
+    - role: sway
+      tags: ["sway"]
     - role: browsers
       tags: ["browsers"]
     - role: aws-vpn
       tags: ["aws-vpn"]
     - role: libreoffice
       tags: ["libreoffice"]
+    - role: electron
+      tags: ["electron"]
     - role: slack
       tags: ["slack"]
     - role: telegram

@@ -1,13 +1,4 @@
-# Allow system to wake up via USB devices. Copied from
-# https://askubuntu.com/a/1213465.
-
-# - enable wakeup on ALL USB hubs (0-99)
-# e.g. ls /sys/bus/usb/devices/usb*
-# - rumor is that this step may not be necessary 
-# on all computers
-# (I couldn't figure out how to enable wake on
-# only parent hub of the keyboard and mouse.)
-KERNEL=="usb[0-9]|usb[0-9][0-9]", SUBSYSTEM=="usb", DRIVER=="usb", ATTR{power/wakeup}="enabled"
+KERNEL=="usb[0-9]|usb[0-9][0-9]", SUBSYSTEM=="usb", DRIVER=="usb", ATTR{power/wakeup}="disabled"
 
 # enable wakeup for all keyboards
 # Keyboards are HID class 3 protocol 1 devices.

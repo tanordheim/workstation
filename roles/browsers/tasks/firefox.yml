@@ -4,3 +4,9 @@
   community.general.pacman:
     name: firefox
   become: true
+
+- name: Create Firefox environment config
+  ansible.builtin.copy:
+    src: firefox-environment.conf
+    dest: /home/trond/.config/environment.d/firefox.conf
+    mode: '0644'
