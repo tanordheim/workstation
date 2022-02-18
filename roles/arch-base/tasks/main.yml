@@ -44,6 +44,12 @@
     enabled: true
   become: true
 
+- name: Enable systemd-resolved service
+  ansible.builtin.service:
+    name: systemd-resolved
+    enabled: true
+  become: true
+
 - name: Enable wakeup from usb devices
   ansible.builtin.copy:
     src: roles/arch-base/files/udev-wakeup-keyboard-mouse.rules
