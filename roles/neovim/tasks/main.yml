@@ -14,6 +14,12 @@
     dest: /home/trond/.zshrc.d/neovim.zsh
     mode: '0644'
 
+- name: Install required language servers
+  community.general.pacman:
+    name:
+      - yaml-language-server
+  become: true
+
 - name: Prepare neovim configuration directories
   ansible.builtin.file:
     path: "/home/trond/{{ item }}"
