@@ -18,9 +18,3 @@
     group: root
     mode: '0644'
   become: true
-
-- name: Set default X11 keymap
-  ansible.builtin.shell:
-    cmd: localectl set-x11-keymap no pc104 '' caps:escape
-    creates: /etc/X11/xorg.conf.d/00-keyboard.conf
-  become: true
