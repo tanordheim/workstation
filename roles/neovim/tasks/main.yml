@@ -31,11 +31,8 @@
     - .config/nvim/tmp/backup
     - .config/nvim/tmp/swap
 
-#- name: Install neovim configuration
-#  ansible.builtin.copy:
-#    src: init.vim
-#    dest: /home/trond/.config/nvim/init.vim
-#    mode: '0644'
-
-#- name: Update Neovim plugins
-#  ansible.builtin.shell: nvim --headless +PlugInstall +qall
+- name: Install neovim configuration
+  ansible.builtin.copy:
+    src: config/
+    dest: /home/trond/.config/nvim/
+    mode: '0644'
