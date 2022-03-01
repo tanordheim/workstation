@@ -17,8 +17,9 @@
 - name: Install required language servers
   community.general.pacman:
     name:
+      - terraform-ls-bin
       - yaml-language-server
-  become: true
+    executable: yay
 
 - name: Prepare neovim configuration directories
   ansible.builtin.file:
