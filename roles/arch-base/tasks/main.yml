@@ -17,6 +17,7 @@
       - pacman-contrib
       - python-psutil
       - reflector
+      - rsync
       - sudo
       - usbutils
       - zsh
