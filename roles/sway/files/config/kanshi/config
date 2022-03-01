@@ -1,0 +1,11 @@
+profile {
+  output eDP-1 enable mode 3840x2400 scale 2.0 position 0,0
+  exec ln -sf ~/.config/sway/config-outputs-undocked ~/.config/sway/config-outputs-current
+}
+
+profile {
+  output "Dell Inc. DELL U3821DW 8M4QZ63" mode 3840x1600 scale 1.0 position 1440,0
+  output "Unknown VG27B L3LMQS001581" mode 2560x1440 scale 1.0 transform 90 position 0,0
+  output eDP-1 disable
+  exec ln -sf ~/.config/sway/config-outputs-docked ~/.config/sway/config-outputs-current
+}
