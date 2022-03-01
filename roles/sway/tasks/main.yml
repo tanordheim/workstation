@@ -18,6 +18,7 @@
       - kanshi
       - grim
       - slurp
+      - xorg-xwayland
   become: true
 
 - name: Install required fonts and icons
@@ -41,12 +42,6 @@
     - sway
     - alacritty
     - waybar
-
-- name: Create Sway environment config
-  ansible.builtin.copy:
-    src: environment.conf
-    dest: /home/trond/.config/environment.d/sway.conf
-    mode: '0644'
 
 - name: Auto-start sway on tty1 login
   ansible.builtin.copy:

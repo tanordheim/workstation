@@ -4,9 +4,3 @@
   community.general.pacman:
     name: jetbrains-toolbox
     executable: yay
-
-- name: Create JetBrains environment config
-  ansible.builtin.copy:
-    src: environment.conf
-    dest: /home/trond/.config/environment.d/jetbrains.conf
-    mode: '0644'
