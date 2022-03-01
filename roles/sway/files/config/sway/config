@@ -21,23 +21,22 @@ set $right l
 #
 # Colors and layout
 #
-# font "JetBrainsMono Nerd Font" 10
-# font "NotoSansDisplay Nerd Font" 10
-font "NotoSans Mono Nerd Font" 10
+font "Noto Sans Mono" 10
 for_window [title="^.*"] title_format ""
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 4
+default_floating_border pixel 4
 gaps inner 10
-gaps outer 5
+smart_gaps on
+smart_borders on
 
 # Window color settings
-# class                 border  backgr. text    indicator
-client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
-client.unfocused        #2e3440 #1f222d #888888 #1f222d
-client.focused_inactive #2e3440 #1f222d #888888 #1f222d
-client.placeholder      #2e3440 #1f222d #888888 #1f222d
-client.urgent           #900000 #900000 #ffffff #900000
-client.background       #242424
+# class                 border  backgr. text    indicator child_border
+client.focused          #a89984 #a89984 #504945 #b8bb26   #a89984
+client.focused_inactive #504945 #504945 #a89984 #98971a   #504945
+client.unfocused        #282828 #282828 #928374 #98971a   #282828
+client.urgent           #b16286 #b16286 #ebdbb2 #b8bb26   #b16286
+client.placeholder      #1d2021 #1d2021 #504945 #b8bb26   #1d2021
+client.background       #32302f
 
 #
 # Input configuration
@@ -129,7 +128,7 @@ workspace $ws8 output $primary_output
 workspace $ws9 output $primary_output
 workspace $ws10 output $secondary_output
 
-output * bg $HOME/wallpapers/nord-underwater-8k.png fill
+output * bg $HOME/wallpapers/gruvbox_nord-underwater-8k.png fill
 
 #
 # Default workspaces for apps

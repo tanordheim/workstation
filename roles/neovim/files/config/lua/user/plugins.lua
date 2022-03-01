@@ -105,7 +105,7 @@ packer.startup(function(use)
   use('folke/which-key.nvim')
 
   -- themes
-  use('arcticicestudio/nord-vim')
+  use('ellisonleao/gruvbox.nvim')
 
   -- automatically set up configuration after cloning packer.nvim
   -- must be last
