@@ -18,6 +18,7 @@
       - kanshi
       - grim
       - slurp
+      - imv
       - xorg-xwayland
   become: true
 

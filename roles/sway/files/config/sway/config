@@ -128,7 +128,7 @@ workspace $ws8 output $primary_output
 workspace $ws9 output $primary_output
 workspace $ws10 output $secondary_output
 
-output * bg $HOME/wallpapers/gruvbox_nord-underwater-8k.png fill
+output * bg $HOME/wallpapers/skeleton-using-pc.jpg fill
 
 #
 # Default workspaces for apps
@@ -234,7 +234,21 @@ bindsym $mod+r mode "resize"
 #
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag \
+  -f 'Noto Sans Mono 10' \
+  --background 1d2021 \
+  --text d5c4a1 \
+  --border a89984 \
+  --border-bottom d65d0e \
+  --button-background 504945 \
+  --button-text d5c4a1 \
+  --button-padding 3 \
+  --button-dismiss-gap 0 \
+  -t warning \
+  -m 'Do you really want to exit Sway?' \
+  -s 'No' \
+  -b 'Yes, exit sway' \
+  'swaymsg exit'
 bindsym $mod+Shift+q kill
 
 #
