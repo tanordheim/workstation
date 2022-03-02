@@ -48,3 +48,5 @@
       tags: ["go"]
     - role: neovim
       tags: ["neovim"]
+    - role: wallpapers
+      tags: ["wallpapers"]

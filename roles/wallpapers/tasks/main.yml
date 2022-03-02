@@ -1,0 +1,12 @@
+---
+
+- name: Create wallpaper directory
+  ansible.builtin.file:
+    path: /home/trond/wallpapers
+    state: directory
+
+- name: Install wallpapers
+  ansible.builtin.copy:
+    src: .
+    dest: /home/trond/wallpapers/
+    mode: '0644'
