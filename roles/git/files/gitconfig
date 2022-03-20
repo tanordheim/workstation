@@ -40,7 +40,13 @@
     dh1 = diff HEAD~1
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     pr = pull --rebase
+    thrust = "!f() { until git push $@; do sleep 0.5; done; }; f"
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

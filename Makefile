@@ -25,4 +25,7 @@ sync_waybar_config:
 sync_wallpapers:
 	rsync -rv ~/wallpapers/* ./roles/wallpapers/files/
 
-sync_dotfiles: sync_nvim_config sync_sway_config sync_dunst_config sync_gammastep_config sync_wofi_config sync_alacritty_config sync_kanshi_config sync_waybar_config sync_wallpapers
+sync_git_config:
+	cp ~/.gitconfig ./roles/git/files/gitconfig
+
+sync_dotfiles: sync_nvim_config sync_sway_config sync_dunst_config sync_gammastep_config sync_wofi_config sync_alacritty_config sync_kanshi_config sync_waybar_config sync_wallpapers sync_git_config
