@@ -73,6 +73,14 @@ packer.startup(function(use)
   use('JoosepAlviste/nvim-ts-context-commentstring')
   use('romgrk/nvim-treesitter-context')
 
+  -- test runners
+  -- use('vim-test/vim-test')
+  use({
+    'tanordheim/vim-test',
+    branch = 'csharp-nested-test'
+  })
+  use('rcarriga/vim-ultest')
+
   -- telescope
   use({
     'nvim-telescope/telescope-fzf-native.nvim',

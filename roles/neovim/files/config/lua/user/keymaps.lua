@@ -37,6 +37,15 @@ keymap('n', '<leader>r', ':NvimTreeRefresh<cr>', opts)
 keymap('n', '<leader>f', '<cmd>Telescope find_files<cr>', opts)
 keymap('n', '<C-t>', '<cmd>Telescope live_grep<cr>', opts)
 
+-- vim-test
+keymap('n', '<leader>t', '<cmd>UltestNearest<CR>', opts)
+keymap('n', '<leader>T', '<cmd>Ultest<CR>', opts)
+keymap('n', '<leader>a', '<cmd>Ultest<CR>', opts)
+keymap('n', '<leader>l', '<cmd>UltestLast<CR>', opts)
+keymap('n', '<leader>ts', '<cmd>UltestSummary<CR>', opts)
+-- TODO: UltestDebug (requires vim-dap)
+-- TODO: UltestDebugNearest (requires vim-dap)
+
 --
 -- insert mode
 --
