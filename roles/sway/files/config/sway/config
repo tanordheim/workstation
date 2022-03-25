@@ -125,7 +125,7 @@ workspace $ws5 output $primary_output
 workspace $ws6 output $primary_output
 workspace $ws7 output $primary_output
 workspace $ws8 output $primary_output
-workspace $ws9 output $primary_output
+workspace $ws9 output $secondary_output
 workspace $ws10 output $secondary_output
 
 output * bg $HOME/wallpapers/skeleton-using-pc.jpg fill

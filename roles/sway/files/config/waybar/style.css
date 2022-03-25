@@ -1,17 +1,29 @@
+@define-color red #d7005f;
+@define-color green #718c00;
+@define-color yellow #d75f00;
+@define-color blue #4271a3;
+@define-color magenta #8959a8;
+@define-color cyan #3e999f;
+@define-color white #4d4d4c;
+
+@define-color background #e0ddd6;
+@define-color foreground #4e4e4b;
+@define-color active-workspace-indicator #cc620e;
+@define-color urgent-workspace-indicator #b62158;
+@define-color idle-inhibitor-enabled-background #b62158;
+@define-color idle-inhibitor-enabled-foreground #e0ddd6;
+
 * {
   border: none;
   border-radius: 0;
   font-family: Nota Sans Mono;
-  font-size: 14px;
+  font-size: 13px;
   min-height: 0;
 }
 
 window#waybar {
-  background-color: #32302f;
-  border-bottom: 4px solid #928374;
-  color: #d5c4a1;
-  transition-property: background-color;
-  transition-duration: .5s;
+  background-color: @background;
+  color: @foreground;
 }
 
 window#waybar.hidden {
@@ -19,35 +31,35 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  margin-left: 0;
-  background-color: #504945;
+  background-color: @background;
 }
 
 #workspaces button {
+  color: @foreground;
   padding: 0 5px;
-  background-color: transparent;
-  color: #d5c4a1;
-  box-shadow: inset 0 -4px #928374;
+  margin-right: 5px;
+  text-shadow: inherit;
+  box-shadow: inherit;
+  box-shadow: inset 0 -3px transparent;
 }
 
-#workspaces button:hover {
-  box-shadow: inset 0 -4px #d5c4a1;
-}
-
+#workspaces button:hover,
 #workspaces button.focused {
-  box-shadow: inset 0 -4px #ebdbb2;
+  box-shadow: inset 0 -3px @active-workspace-indicator;
 }
 
 #workspaces button.urgent {
-  box-shadow: inset 0 -4px #cc241d;
+  box-shadow: inset 0 -3px @urgent-workspace-indicator;
+  color: @urgent-workspace-indicator;
 }
 
 #mode {
-  background-color: #458588;
-  border-bottom: 4px solid #d5c4a1;
+  padding: 0 15px;
 }
 
-#clock,
+#clock {
+}
+
 #idle_inhibitor,
 #cpu,
 #memory,
@@ -58,67 +70,41 @@ window#waybar.hidden {
 #battery,
 #backlight {
   padding: 0 10px;
-  padding-top: 2px;
-  margin: 0;
-  color: #d5c4a1;
-}
-
-#clock,
-#idle_inhibitor {
-  border-bottom: 4px solid transparent;
+  margin-right: 5px;
+  box-shadow: inset 0 -3px transparent;
 }
 
 #idle_inhibitor {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #idle_inhibitor.activated {
-  border-bottom-color: #fb4934;
-}
-
-#pulseaudio,
-#backlight,
-#battery,
-#cpu,
-#memory,
-#network,
-#temperature,
-#tray {
-  background-color: #504945;
+  background: @idle-inhibitor-enabled-background;
+  color: @idle-inhibitor-enabled-foreground;
 }
 
 #pulseaudio {
-  border-bottom: 4px solid #d3869b;
+  box-shadow: inset 0 -3px @blue;
 }
 
-#battery,
-#backlight {
-  border-bottom: 4px solid #b8bb26;
+#network {
+  box-shadow: inset 0 -3px @green;
 }
 
 #cpu,
 #memory,
 #temperature {
-  border-bottom: 4px solid #8ec07c;
+  margin-right: 0;
+  box-shadow: inset 0 -3px @magenta;
 }
 
-#network {
-  border-bottom: 4px solid #83a598;
+#battery {
+  margin-left: 5px;
+  box-shadow: inset 0 -3px @cyan;
 }
 
-#tray {
-  border-bottom: 4px solid #fadb2f;
-}
-
-@keyframes blink {
-  to {
-    background-color: #d5c4a1;
-    color: #1d2021;
-  }
-}
-
-label:focus {
-  background-color: #1d2021;
+#backlight {
+  box-shadow: inset 0 -3px @yellow;
 }
 
 #tray > .passive {
