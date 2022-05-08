@@ -20,6 +20,8 @@
       tags: ["tmux"]
     - role: sway
       tags: ["sway"]
+    - role: gnome
+      tags: ["gnome"]
     - role: browsers
       tags: ["browsers"]
     - role: aws-vpn

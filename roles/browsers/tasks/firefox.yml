@@ -2,5 +2,12 @@
 
 - name: Install Firefox
   community.general.pacman:
-    name: firefox
-  become: true
+    name:
+      - firefox
+      - firefox-profile-switcher-connector-bin
+    executable: yay
+
+- name: Create Firefox environment config
+  ansible.builtin.copy:
+    src: firefox-env.conf
+    dest: /home/trond/.config/environment.d/firefox.conf
