@@ -24,10 +24,10 @@
     dest: /home/trond/.config/wofi/
     mode: preserve
 
-- name: Install alacritty configuration
+- name: Install kitty configuration
   ansible.builtin.copy:
-    src: config/alacritty/
-    dest: /home/trond/.config/alacritty/
+    src: config/kitty/
+    dest: /home/trond/.config/kitty/
     mode: preserve
 
 - name: Install kanshi configuration

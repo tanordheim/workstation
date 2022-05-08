@@ -89,3 +89,6 @@ lualine.setup({
   tabline = {},
   extensions = {},
 })
+
+-- enable global status bar
+vim.opt.laststatus = 3

@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 require('user.lsp.omnisharp')
+-- require('user.lsp.csharp-ls')
 require('user.lsp.terraform')
 require('user.lsp.yamlls')
 

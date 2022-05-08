@@ -6,7 +6,10 @@ end
 local pid = vim.fn.getpid()
 
 lspconfig.omnisharp.setup {
-  cmd = { '/usr/bin/omnisharp', '--languageserver', '--hostPID', tostring(pid) },
+  handlers = {
+    ['textDocument/definition'] = require('omnisharp_extended').handler
+  },
+  cmd = { '/usr/bin/omnisharp', '--languageserver', '--verbose', '--hostPID', tostring(pid) },
   capabilities = require('user.lsp.handlers').capabilities,
   on_attach = require('user.lsp.handlers').on_attach
 }

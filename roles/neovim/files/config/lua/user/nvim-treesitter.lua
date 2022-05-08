@@ -21,3 +21,7 @@ treesitter_configs.setup {
     enable_autocmd = false,
   }
 }
+
+-- use treesitter for folding
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'

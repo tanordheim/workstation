@@ -23,11 +23,9 @@ set $right l
 #
 font "Noto Sans Mono" 10
 for_window [title="^.*"] title_format ""
-default_border pixel 4
-default_floating_border pixel 4
+default_border pixel 2
+default_floating_border pixel 2
 gaps inner 10
-smart_gaps on
-smart_borders on
 
 # Window color settings
 # class                 border  backgr. text    indicator child_border
@@ -41,13 +39,18 @@ client.background       #32302f
 #
 # Input configuration
 #
-input type:touchpad {
+input "1739:52823:SYNA8009:00_06CB:CE57_Touchpad" {
   dwt enabled
   tap enabled
   tap_button_map lrm
 }
 
-input type:keyboard {
+input "1452:592:Keychron_Keychron_K2" {
+  xkb_layout "no"
+  xkb_options "caps:escape"
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
   xkb_layout "no"
   xkb_options "caps:escape"
 }
@@ -85,7 +88,7 @@ exec gammastep
 # Application shortcuts
 #
 bindsym $mod+d exec wofi --show=drun --prompt=""
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 bindsym $mod+p exec grim -o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" - | wl-copy
 bindsym $mod+Shift+p exec grim -g "$(slurp -d)" - | wl-copy
 #bindsym XF86AudioLowerVolume exec /home/trond/.local/bin/change-audio-volume -5

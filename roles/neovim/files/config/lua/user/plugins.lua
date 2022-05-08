@@ -42,6 +42,7 @@ packer.startup(function(use)
   use('wbthomason/packer.nvim') -- have packer manage itself
   use('nvim-lua/popup.nvim') -- an implementation of the Popup API from vim in Neovim
   use('nvim-lua/plenary.nvim') -- lua convenience functions
+  use('MunifTanjim/nui.nvim') -- ui library
 
   -- icons
   use('kyazdani42/nvim-web-devicons')
@@ -49,6 +50,9 @@ packer.startup(function(use)
   -- language server
   use('neovim/nvim-lspconfig')
   use('ray-x/lsp_signature.nvim')
+  use('Hoffs/omnisharp-extended-lsp.nvim')
+  use('chen244/csharpls-extended-lsp.nvim')
+  use('lukas-reineke/lsp-format.nvim')
 
   -- snippets
   use('rafamadriz/friendly-snippets')
@@ -74,12 +78,7 @@ packer.startup(function(use)
   use('romgrk/nvim-treesitter-context')
 
   -- test runners
-  -- use('vim-test/vim-test')
-  use({
-    'tanordheim/vim-test',
-    branch = 'csharp-nested-test'
-  })
-  use('rcarriga/vim-ultest')
+  use('vim-test/vim-test')
 
   -- telescope
   use({
@@ -91,8 +90,11 @@ packer.startup(function(use)
   -- autopairs
   use('windwp/nvim-autopairs')
 
-  -- nvim-tree
-  use('kyazdani42/nvim-tree.lua')
+  -- neo-tree
+  use({
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x'
+  })
 
   -- lualine
   use('nvim-lualine/lualine.nvim')
@@ -111,6 +113,9 @@ packer.startup(function(use)
 
   -- which-key
   use('folke/which-key.nvim')
+
+  -- symbol outline
+  use('simrat39/symbols-outline.nvim')
 
   -- themes
   use('EdenEast/nightfox.nvim')

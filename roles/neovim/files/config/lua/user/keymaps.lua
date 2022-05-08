@@ -29,20 +29,27 @@ keymap('n', '<S-h>', ':BufferLineCyclePrev<cr>', opts)
 -- clear search highlights
 keymap('n', '<leader><cr>', ':nohlsearch<cr>', opts)
 
--- nvim-tree
-keymap('n', '<C-n>', ':NvimTreeToggle<cr>', opts)
-keymap('n', '<leader>r', ':NvimTreeRefresh<cr>', opts)
+-- neo-tree
+keymap('n', '<F2>', ':Neotree source=filesystem toggle=true reveal=true position=left<cr>', opts)
+
+-- symbols_outline
+keymap('n', '<F3>', ':SymbolsOutline<cr>', opts)
 
 -- telescope
-keymap('n', '<leader>f', '<cmd>Telescope find_files<cr>', opts)
-keymap('n', '<C-t>', '<cmd>Telescope live_grep<cr>', opts)
+keymap('n', '<leader>f', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
+keymap('n', '<C-t>', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+keymap('n', '<C-n>', '<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<cr>', opts)
 
 -- vim-test
-keymap('n', '<leader>t', '<cmd>UltestNearest<CR>', opts)
-keymap('n', '<leader>T', '<cmd>Ultest<CR>', opts)
-keymap('n', '<leader>a', '<cmd>Ultest<CR>', opts)
-keymap('n', '<leader>l', '<cmd>UltestLast<CR>', opts)
-keymap('n', '<leader>ts', '<cmd>UltestSummary<CR>', opts)
+keymap('n', '<leader>t', '<cmd>TestNearest<cr>', opts)
+keymap('n', '<leader>T', '<cmd>TestFile<cr>', opts)
+keymap('n', '<leader>a', '<cmd>TestSuite<cr>', opts)
+-- keymap('n', '<leader>l', '<cmd>TestLast<cr>', opts)
+--keymap('n', '<leader>t', '<cmd>UltestNearest<CR>', opts)
+--keymap('n', '<leader>T', '<cmd>Ultest<CR>', opts)
+--keymap('n', '<leader>a', '<cmd>Ultest<CR>', opts)
+--keymap('n', '<leader>l', '<cmd>UltestLast<CR>', opts)
+--keymap('n', '<leader>ts', '<cmd>UltestSummary<CR>', opts)
 -- TODO: UltestDebug (requires vim-dap)
 -- TODO: UltestDebugNearest (requires vim-dap)
 

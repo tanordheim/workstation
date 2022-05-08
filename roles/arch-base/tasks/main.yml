@@ -8,6 +8,8 @@
 - name: Install core packages
   community.general.pacman:
     name:
+      - cups
+      - fwupd
       - jq
       - libxkbcommon
       - linux-lts-headers
@@ -42,6 +44,12 @@
 - name: Enable paccache timer to clean up pacman cache
   ansible.builtin.service:
     name: paccache.timer
+    enabled: true
+  become: true
+
+- name: Enable cups service
+  ansible.builtin.service:
+    name: cups
     enabled: true
   become: true
 
