@@ -1,9 +1,0 @@
-KERNEL=="usb[0-9]|usb[0-9][0-9]", SUBSYSTEM=="usb", DRIVER=="usb", ATTR{power/wakeup}="disabled"
-
-# enable wakeup for all keyboards
-# Keyboards are HID class 3 protocol 1 devices.
-SUBSYSTEM=="usb", ATTRS{bInterfaceClass}=="03", ATTRS{bInterfaceProtocol}=="01", ATTR{../power/wakeup}="enabled"
-
-# enable wakeup for all mice (button click, not movement)
-# Mice are HID class 3 protocol 2 devices.
-SUBSYSTEM=="usb", ATTRS{bInterfaceClass}=="03", ATTRS{bInterfaceProtocol}=="02", ATTR{../power/wakeup}="enabled"

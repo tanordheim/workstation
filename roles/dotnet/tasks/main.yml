@@ -1,16 +1,26 @@
 ---
 
-- name: Install .NET Core packages
-  community.general.pacman:
+- name: Install Microsoft package repository configuration
+  ansible.builtin.apt:
+    deb: https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
+    state: present
+  become: true
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: true
+
+- name: Install dotnet SDK
+  ansible.builtin.apt:
     name:
-      - aspnet-runtime
-      - dotnet-runtime
-      - dotnet-sdk
-      - omnisharp-roslyn
-    executable: yay
+      - dotnet-runtime-6.0
+      - dotnet-sdk-6.0
+    state: present
+  become: true
 
 - name: Configure zsh
   ansible.builtin.copy:
     src: zshrc
-    dest: /home/trond/.zshrc.d/dotnet.zsh
+    dest: "{{ ansible_user_dir }}/.zshrc.d/dotnet.zsh"
     mode: '0644'

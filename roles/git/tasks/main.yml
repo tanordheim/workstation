@@ -1,17 +1,30 @@
 ---
 
+- name: Add GitHub apt key
+  ansible.builtin.shell:
+    cmd: curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+    warn: false
+    creates: /usr/share/keyrings/githubcli-archive-keyring.gpg
+  become: true
+
+- name: Add GitHub apt repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
+    state: present
+  become: true
+
 - name: Install Git packages
-  community.general.pacman:
+  ansible.builtin.apt:
     name:
       - git
       - git-lfs
-      - github-cli
+      - gh
   become: true
 
 - name: Create Git configuration
   ansible.builtin.copy:
     src: gitconfig
-    dest: /home/trond/.gitconfig
-    owner: trond
-    group: trond
+    dest: "{{ ansible_user_dir }}/.gitconfig"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
     mode: '0644'

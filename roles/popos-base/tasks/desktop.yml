@@ -1,0 +1,15 @@
+---
+
+- name: Remap caps lock to escape
+  ansible.builtin.lineinfile:
+    path: /etc/default/keyboard
+    regexp: 'XKBOPTIONS=""'
+    line: 'XKBOPTIONS="caps:escape"'
+  become: true
+
+- name: Install additional desktop packages
+  ansible.builtin.apt:
+    name:
+      - gnome-tweaks
+    state: present
+  become: true

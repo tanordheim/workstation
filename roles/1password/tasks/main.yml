@@ -1,8 +1,33 @@
 ---
 
+- name: Add 1Password apt key
+  ansible.builtin.shell:
+    cmd: "curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg"
+    warn: false
+    creates: /usr/share/keyrings/1password-archive-keyring.gpg
+  become: true
+
+- name: Add 1Password apt repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main"
+    filename: 1password
+    state: present
+  become: true
+
+- name: Add 1Password debsig-verify policy
+  ansible.builtin.shell:
+    cmd: |
+      mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+      curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+      mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+      curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+    creates: /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+  become: true
+
 - name: Install 1Password
-  community.general.pacman:
+  ansible.builtin.apt:
     name:
       - 1password
       - 1password-cli
-    executable: yay
+    state: present
+  become: true

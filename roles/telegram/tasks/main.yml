@@ -1,7 +1,0 @@
----
-
-- name: Install Telegram
-  community.general.pacman:
-    name:
-      - telegram-desktop
-  become: true

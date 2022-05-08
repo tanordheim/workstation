@@ -1,0 +1,23 @@
+---
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: true
+
+- name: Install core packages
+  ansible.builtin.apt:
+    name:
+      - gparted
+      - jq
+      - "linux-headers-{{ ansible_kernel }}"
+      - vainfo
+      - vdpauinfo
+      - v4l-utils
+      - xclip
+      - zsh
+    state: present
+  become: true
+
+- include_tasks: desktop.yml
+- include_tasks: user.yml

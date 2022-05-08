@@ -1,14 +1,27 @@
 ---
 
-- name: Install AWS VPN client
-  community.general.pacman:
-    name:
-      - awsvpnclient
-    executable: yay
+- name: Add AWS VPN client apt key
+  ansible.builtin.shell:
+    cmd: "curl -fsSL https://d20adtppz83p9s.cloudfront.net/GTK/latest/debian-repo/awsvpnclient_public_key.asc | gpg --dearmor --output /usr/share/keyrings/awsvpnclient.gpg"
+    warn: false
+    creates: /usr/share/keyrings/awsvpnclient.gpg
+  become: true
 
-- name: Enable and start AWS VPN client
-  ansible.builtin.service:
+- name: Add AWS VPN client apt repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/awsvpnclient.gpg] https://d20adtppz83p9s.cloudfront.net/GTK/latest/debian-repo ubuntu-20.04 main
+    filename: awsvpnclient
+    state: present
+  become: true
+
+- name: Install AWS VPN client
+  ansible.builtin.apt:
     name: awsvpnclient
-    state: started
-    enabled: true
+  become: true
+
+# The AWS VPN client is hot garbage, and requires an old version of libssl to run.
+- name: Add libssl1 package for AWS VPN client to run
+  ansible.builtin.apt:
+    deb: http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.3_amd64.deb
+    state: present
   become: true

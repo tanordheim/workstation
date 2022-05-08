@@ -1,29 +1,27 @@
 ---
 
-- name: Install neovim
-  community.general.pacman:
+- name: Install neovim prerequisites
+  ansible.builtin.apt:
     name:
-      - fd
-      - neovim
+      - fd-find
       - ripgrep
-    executable: yay
+    state: present
+  become: true
 
-- name: Configure zsh
+- name: Install neovim {{ neovim_version }}
+  ansible.builtin.apt:
+    deb: https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim-linux64.deb
+  become: true
+
+- name: Configure shell
   ansible.builtin.copy:
     src: zshrc
-    dest: /home/trond/.zshrc.d/neovim.zsh
+    dest: "{{ ansible_user_dir }}/.zshrc.d/neovim.zsh"
     mode: '0644'
-
-- name: Install required language servers
-  community.general.pacman:
-    name:
-      - terraform-ls-bin
-      - yaml-language-server
-    executable: yay
 
 - name: Prepare neovim configuration directories
   ansible.builtin.file:
-    path: "/home/trond/{{ item }}"
+    path: "{{ ansible_user_dir }}/{{ item }}"
     state: directory
     recurse: true
   with_items:
@@ -34,5 +32,5 @@
 - name: Install neovim configuration
   ansible.builtin.copy:
     src: config/
-    dest: /home/trond/.config/nvim/
+    dest: "{{ ansible_user_dir }}/.config/nvim/"
     mode: '0644'

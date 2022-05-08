@@ -1,7 +1,7 @@
 ---
 
-- name: Install Firefox
+- name: Install VirtualBox
   ansible.builtin.apt:
-    name: firefox
+    name: virtualbox
     state: present
   become: true

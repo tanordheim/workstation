@@ -1,0 +1,51 @@
+---
+
+- name: Create local bin directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.local/bin"
+    recurse: true
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0755'
+    state: directory
+
+- name: Create local config directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0755'
+    state: directory
+
+- name: Create local environment config directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/environment.d"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0755'
+    state: directory
+
+- name: Prepare SSH key directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0750'
+    state: directory
+
+- name: Install SSH public key
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.ssh/id_rsa.pub"
+    content: "{{ ssh.public_key }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0640'
+
+- name: Install SSH private key
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.ssh/id_rsa"
+    content: "{{ ssh.private_key }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: '0600'
+

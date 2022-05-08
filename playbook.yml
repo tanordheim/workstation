@@ -2,53 +2,92 @@
 
 - hosts: workstations
   roles:
-    - role: arch-base
+    - role: popos-base
       tags: ["bootstrap"]
-    - role: keychron
-      tags: ["keychron"]
-    - role: logitech
-      tags: ["logitech"]
-    - role: dell
-      tags: ["dell"]
+    - role: wallpapers
+      tags: ["wallpapers"]
     - role: lenovo
       tags: ["lenovo"]
-    - role: git
-      tags: ["git"]
+    - role: logitech
+      tags: ["logitech"]
+    - role: keychron
+      tags: ["keychron"]
     - role: zsh
       tags: ["zsh"]
+    - role: neovim
+      tags: ["neovim"]
     - role: tmux
       tags: ["tmux"]
-    - role: sway
-      tags: ["sway"]
-    - role: gnome
-      tags: ["gnome"]
-    - role: browsers
-      tags: ["browsers"]
-    - role: aws-vpn
-      tags: ["aws-vpn"]
-    - role: libreoffice
-      tags: ["libreoffice"]
-    - role: electron
-      tags: ["electron"]
-    - role: slack
-      tags: ["slack"]
-    - role: telegram
-      tags: ["telegram"]
-    - role: signal
-      tags: ["signal"]
-    - role: docker
-      tags: ["docker"]
-    - role: jetbrains
-      tags: ["jetbrains"]
+    - role: git
+      tags: ["git"]
     - role: 1password
       tags: ["1password"]
-    - role: node
-      tags: ["node"]
+    - role: docker
+      tags: ["docker"]
+    - role: virtualbox
+      tags: ["virtualbox"]
+    - role: jetbrains
+      tags: ["jetbrains"]
+    - role: browsers
+      tags: ["browsers"]
+    - role: aws-cli
+      tags: ["aws-cli"]
+    - role: aws-vpn
+      tags: ["aws-vpn"]
     - role: dotnet
       tags: ["dotnet"]
     - role: go
       tags: ["go"]
-    - role: neovim
-      tags: ["neovim"]
-    - role: wallpapers
-      tags: ["wallpapers"]
+    - role: node
+      tags: ["node"]
+    - role: python
+      tags: ["python"]
+
+#    - role: arch-base
+#      tags: ["bootstrap"]
+#    - role: keychron
+#      tags: ["keychron"]
+#    - role: logitech
+#      tags: ["logitech"]
+#    - role: dell
+#      tags: ["dell"]
+#    - role: lenovo
+#      tags: ["lenovo"]
+#    - role: git
+#      tags: ["git"]
+#    - role: tmux
+#      tags: ["tmux"]
+#    - role: sway
+#      tags: ["sway"]
+#    - role: gnome
+#      tags: ["gnome"]
+#    - role: browsers
+#      tags: ["browsers"]
+#    - role: aws-vpn
+#      tags: ["aws-vpn"]
+#    - role: libreoffice
+#      tags: ["libreoffice"]
+#    - role: electron
+#      tags: ["electron"]
+#    - role: slack
+#      tags: ["slack"]
+#    - role: telegram
+#      tags: ["telegram"]
+#    - role: signal
+#      tags: ["signal"]
+#    - role: docker
+#      tags: ["docker"]
+#    - role: jetbrains
+#      tags: ["jetbrains"]
+#    - role: 1password
+#      tags: ["1password"]
+#    - role: node
+#      tags: ["node"]
+#    - role: dotnet
+#      tags: ["dotnet"]
+#    - role: go
+#      tags: ["go"]
+#    - role: neovim
+#      tags: ["neovim"]
+#    - role: wallpapers
+#      tags: ["wallpapers"]

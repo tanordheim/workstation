@@ -1,1 +1,0 @@
-trond ALL=(ALL) NOPASSWD: /usr/bin/pacman

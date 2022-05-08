@@ -1,18 +1,18 @@
 ---
 
 - name: Install zsh
-  community.general.pacman:
+  ansible.builtin.apt:
     name:
       - zsh
-      - zsh-completions
       - bc
+    state: present
   become: true
 
 - name: Create zsh configuration directories
   ansible.builtin.file:
-    path: /home/trond/{{ item }}
-    owner: trond
-    group: trond
+    path: "{{ ansible_user_dir }}/{{ item }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
     mode: '0755'
     state: directory
   with_items:
@@ -22,9 +22,9 @@
 - name: Create zsh configuration files
   ansible.builtin.copy:
     src: "{{ item.src }}"
-    dest: "/home/trond/{{ item.dest }}"
-    owner: trond
-    group: trond
+    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
     mode: '0644'
   with_items:
     - { src: "zshrc", dest: ".zshrc" }
@@ -35,7 +35,13 @@
 - name: Install colortest script
   ansible.builtin.copy:
     src: colortest
-    dest: /home/trond/.local/bin/colortest
-    owner: trond
-    group: trond
+    dest: "{{ ansible_user_dir }}/.local/bin/colortest"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
     mode: '0755'
+
+- name: Make zsh default shell
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: "/usr/bin/zsh"
+  become: true

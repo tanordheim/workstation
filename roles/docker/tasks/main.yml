@@ -1,23 +1,31 @@
 ---
 
-- name: Install Docker
-  community.general.pacman:
-    name:
-      - docker
-      - docker-compose
+- name: Install Docker apt key
+  ansible.builtin.shell:
+    cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    warn: false
+    creates: /usr/share/keyrings/docker-archive-keyring.gpg
   become: true
 
-- name: Enable and start Docker
-  ansible.builtin.service:
-    name: docker
-    state: started
-    enabled: true
+- name: Install Docker apt repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+  become: true
+
+- name: Install Docker
+  ansible.builtin.apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose-plugin
+    state: present
   become: true
 
 - name: Add user to Docker group
   ansible.builtin.user:
-    name: trond
+    name: "{{ ansible_user_id }}"
     groups: docker
     append: yes
   become: true
-  notify: restart docker

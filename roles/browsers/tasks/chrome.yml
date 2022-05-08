@@ -1,11 +1,12 @@
 ---
 
 - name: Install Google Chrome
-  community.general.pacman:
-    name: google-chrome
-    executable: yay
+  ansible.builtin.apt:
+    name: google-chrome-stable
+    state: present
+  become: true
 
 - name: Configure Chrome to use hardware acceleration
   ansible.builtin.copy:
-    src: chrome-flags.conf
-    dest: /home/trond/.config/chrome-flags.conf
+    src: google-chrome.desktop
+    dest: "{{ ansible_user_dir }}/.local/share/applications/google-chrome.desktop"
