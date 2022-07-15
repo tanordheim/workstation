@@ -1,0 +1,126 @@
+---
+
+- name: Disable natural scrolling
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+
+- name: Create screenshots folder
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/Pictures/Screenshots"
+    mode: '0750'
+    state: directory
+
+- name: Set screenshots folder
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    value: "{{ ansible_user_dir }}/Pictures/screenshots"
+
+- name: Enable automatic update checks
+  community.general.osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: AutomaticCheckEnabled
+    type: bool
+    value: true
+
+- name: Check for updates daily
+  community.general.osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: ScheduleFrequency
+    type: int
+    value: 1
+
+- name: Automatically download updates in the background
+  community.general.osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: AutomaticDownload
+    type: int
+    value: 1
+
+- name: Always show extensions for known file types
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+
+- name: Enable font smoothing for non-Apple monitors
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleFontSmoothing
+    type: int
+    value: 2
+
+- name: Set keyboard repeat rate
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: int
+    value: 2
+
+- name: Set keyboard repeat delay
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: 15
+
+- name: Save documents locally by default instead of iCloud
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSDocumentSaveNewDocumentsToCloud
+    type: bool
+    value: false
+
+- name: Show all files in Finder
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: string
+    value: YES
+
+- name: Show hidden windows in Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: showhidden
+    type: bool
+    value: true
+
+- name: Set dock icon size
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 36
+
+- name: Disable UI system sounds
+  community.general.osx_defaults:
+    domain: com.apple.systemsound
+    key: com.apple.sound.uiaudio.enabled
+    type: int
+    value: 0
+
+- name: Enable auto dark mode
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleInterfaceStyleSwitchesAutomatically
+    type: int
+    value: 1
+
+- name: Use separate spaces for each display
+  community.general.osx_defaults:
+    domain: com.apple.spaces
+    key: spans-displays
+    type: int
+    value: 0
+
+- name: Don't rearrange spaces based on most recently used
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mru-spaces
+    type: int
+    value: 0

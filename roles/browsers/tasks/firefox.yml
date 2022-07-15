@@ -1,7 +1,6 @@
 ---
 
 - name: Install Firefox
-  ansible.builtin.apt:
+  community.general.homebrew_cask:
     name: firefox
     state: present
-  become: true

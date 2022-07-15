@@ -1,0 +1,26 @@
+---
+
+- name: Create local bin directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.local/bin"
+    recurse: true
+    mode: '0755'
+    state: directory
+
+- name: Prepare SSH key directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    mode: '0750'
+    state: directory
+
+- name: Install SSH public key
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.ssh/id_rsa.pub"
+    content: "{{ ssh.public_key }}"
+    mode: '0640'
+
+- name: Install SSH private key
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.ssh/id_rsa"
+    content: "{{ ssh.private_key }}"
+    mode: '0600'

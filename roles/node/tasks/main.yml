@@ -1,22 +1,15 @@
 ---
 
-- name: Install Node packages
-  ansible.builtin.apt:
-    name:
-      - nodejs
-      - npm
-      - yarn
-    state: present
-  become: true
+- name: Install Node Version Manager
+  community.general.homebrew:
+    name: nvm
 
-- name: Install NVM
-  ansible.builtin.git:
-    repo: "git@github.com:nvm-sh/nvm.git"
-    dest: "{{ ansible_user_dir }}/.nvm"
-    version: "v{{ nvm_version }}"
-    accept_hostkey: yes
+- name: Create NVM home directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.nvm"
+    state: directory
 
-- name: Configure shell
+- name: Configure zsh
   ansible.builtin.copy:
     src: zshrc
     dest: "{{ ansible_user_dir }}/.zshrc.d/nvm.zsh"

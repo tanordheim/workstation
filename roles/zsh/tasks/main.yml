@@ -1,18 +1,15 @@
 ---
 
 - name: Install zsh
-  ansible.builtin.apt:
+  community.general.homebrew:
     name:
       - zsh
+      - zsh-completions
       - bc
-    state: present
-  become: true
 
 - name: Create zsh configuration directories
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/{{ item }}"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
     mode: '0755'
     state: directory
   with_items:
@@ -23,8 +20,6 @@
   ansible.builtin.copy:
     src: "{{ item.src }}"
     dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
     mode: '0644'
   with_items:
     - { src: "zshrc", dest: ".zshrc" }
@@ -36,12 +31,4 @@
   ansible.builtin.copy:
     src: colortest
     dest: "{{ ansible_user_dir }}/.local/bin/colortest"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
     mode: '0755'
-
-- name: Make zsh default shell
-  ansible.builtin.user:
-    name: "{{ ansible_user_id }}"
-    shell: "/usr/bin/zsh"
-  become: true

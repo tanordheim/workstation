@@ -1,0 +1,5 @@
+---
+
+- name: Install Amethyst
+  community.general.homebrew_cask:
+    name: amethyst

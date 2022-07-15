@@ -1,15 +1,12 @@
 ---
 
 - name: Install Go
-  ansible.builtin.apt:
-    name:
-      - golang
-    state: present
-  become: true
+  community.general.homebrew:
+    name: go
 
 - name: Prepare GOPATH
   ansible.builtin.file:
-    path: "{{ ansible_user_dir }}/trond/.local/share/go/{{ item }}"
+    path: "{{ ansible_user_dir }}/.local/share/go/{{ item }}"
     state: directory
     recurse: true
   with_items:

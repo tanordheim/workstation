@@ -1,11 +1,5 @@
 ---
 
 - name: Install JetBrains Toolbox
-  ansible.builtin.shell:
-    cmd: |
-      rm -rf /tmp/jetbrains-toolbox
-      mkdir /tmp/jetbrains-toolbox
-      curl -fsSL -o- 'https://data.services.jetbrains.com/products/download?platform=linux&code=TBA' | tar -zx --strip-components=1 -C /tmp/jetbrains-toolbox
-      /tmp/jetbrains-toolbox/jetbrains-toolbox --install
-    warn: false
-    creates: "{{ ansible_user_dir }}/.local/share/JetBrains/Toolbox"
+  community.general.homebrew_cask:
+    name: jetbrains-toolbox

@@ -1,5 +1,5 @@
 ---
 
-- name: Install Slack
+- name: Install Alfred
   community.general.homebrew_cask:
-    name: slack
+    name: alfred

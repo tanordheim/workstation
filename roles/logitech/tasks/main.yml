@@ -1,19 +1,5 @@
 ---
 
-- name: Create script to configure Logitec Brio camera
-  ansible.builtin.copy:
-    src: logitech-brio-configure.sh
-    dest: /usr/local/bin/logitech-brio-configure
-    owner: root
-    group: root
-    mode: '0755'
-  become: true
-
-- name: Install Logitec Brio udev rule
-  ansible.builtin.copy:
-    src: brio_udev
-    dest: /etc/udev/rules.d/80-logitech-brio.rules
-    owner: root
-    group: root
-    mode: '0644'
-  become: true
+- name: Install Logitech G Hub
+  community.general.homebrew_cask:
+    name: logitech-g-hub

@@ -1,0 +1,9 @@
+---
+
+- name: Add Homebrew drivers cask
+  community.general.homebrew_tap:
+    name: homebrew/cask-drivers
+
+- name: Add Homebrew fonts cask
+  community.general.homebrew_tap:
+    name: homebrew/cask-fonts

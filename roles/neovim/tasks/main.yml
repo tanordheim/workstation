@@ -1,19 +1,13 @@
 ---
 
-- name: Install neovim prerequisites
-  ansible.builtin.apt:
+- name: Install neovim
+  community.general.homebrew:
     name:
-      - fd-find
+      - fd
+      - neovim
       - ripgrep
-    state: present
-  become: true
 
-- name: Install neovim {{ neovim_version }}
-  ansible.builtin.apt:
-    deb: https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim-linux64.deb
-  become: true
-
-- name: Configure shell
+- name: Configure zsh
   ansible.builtin.copy:
     src: zshrc
     dest: "{{ ansible_user_dir }}/.zshrc.d/neovim.zsh"

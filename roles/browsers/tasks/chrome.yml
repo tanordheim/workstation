@@ -1,12 +1,6 @@
 ---
 
 - name: Install Google Chrome
-  ansible.builtin.apt:
-    name: google-chrome-stable
+  community.general.homebrew_cask:
+    name: google-chrome
     state: present
-  become: true
-
-- name: Configure Chrome to use hardware acceleration
-  ansible.builtin.copy:
-    src: google-chrome.desktop
-    dest: "{{ ansible_user_dir }}/.local/share/applications/google-chrome.desktop"

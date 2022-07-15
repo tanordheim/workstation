@@ -1,0 +1,6 @@
+---
+
+- include_tasks: user.yml
+- include_tasks: app-store.yml
+- include_tasks: preferences.yml
+- include_tasks: homebrew.yml

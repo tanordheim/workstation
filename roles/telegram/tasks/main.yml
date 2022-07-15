@@ -1,0 +1,5 @@
+---
+
+- name: Install Telegram
+  community.general.homebrew_cask:
+    name: telegram

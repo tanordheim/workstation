@@ -1,2 +1,5 @@
 # Add local bin directory to PATH.
 export PATH="$PATH:$HOME/.local/bin"
+
+# Add homebrew information to path
+eval "$(/opt/homebrew/bin/brew shellenv)"

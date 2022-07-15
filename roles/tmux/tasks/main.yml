@@ -1,10 +1,8 @@
 ---
 
 - name: Install tmux
-  ansible.builtin.apt:
+  community.general.homebrew:
     name: tmux
-    state: present
-  become: true
 
 - name: Prepare tmux config directories
   ansible.builtin.file:
