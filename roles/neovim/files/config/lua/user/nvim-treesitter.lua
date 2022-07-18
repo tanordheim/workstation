@@ -4,7 +4,20 @@ if not treesitter_configs_status_ok then
 end
 
 treesitter_configs.setup {
-  ensure_installed = 'maintained',
+  ensure_installed = {
+    'bash',
+    'c_sharp',
+    'dockerfile',
+    'go',
+    'gomod',
+    'javascript',
+    'json',
+    'jsonc',
+    'lua',
+    'python',
+    'typescript',
+    'yaml'
+  },
   autopairs = {
     enable = true
   },

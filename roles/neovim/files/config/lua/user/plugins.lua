@@ -49,6 +49,7 @@ packer.startup(function(use)
 
   -- language server
   use('neovim/nvim-lspconfig')
+  use('williamboman/nvim-lsp-installer')
   use('ray-x/lsp_signature.nvim')
   use('Hoffs/omnisharp-extended-lsp.nvim')
   use('chen244/csharpls-extended-lsp.nvim')

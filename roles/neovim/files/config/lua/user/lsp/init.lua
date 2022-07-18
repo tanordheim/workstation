@@ -3,9 +3,10 @@ if not status_ok then
 	return
 end
 
-require('user.lsp.omnisharp')
--- require('user.lsp.csharp-ls')
-require('user.lsp.terraform')
-require('user.lsp.yamlls')
-
+require('user.lsp.config')
 require('user.lsp.handlers').setup()
+
+-- require('user.lsp.omnisharp')
+-- require('user.lsp.terraform')
+-- require('user.lsp.yamlls')
+
