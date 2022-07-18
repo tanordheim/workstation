@@ -1,29 +1,11 @@
 ---
 
-- name: Create AWS CLI download directory
-  ansible.builtin.file:
-    path: /usr/local/src/awscli-exe-linux-x86_64
-    state: directory
-    mode: '0755'
-  become: true
+- name: Install AWS CLI
+  community.general.homebrew:
+    name: awscli
 
-- name: Download AWS CLI installer
-  ansible.builtin.unarchive:
-    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-    dest: /usr/local/src/awscli-exe-linux-x86_64
-    remote_src: true
-    creates: /usr/local/src/awscli-exe-linux-x86_64/aws
-  become: true
-
-- name: Run AWS CLI installer
-  ansible.builtin.shell:
-    cmd: /usr/local/src/awscli-exe-linux-x86_64/aws/install
-    creates: /usr/local/bin/aws
-  become: true
-
-- name: Download AWS ECS CLI
-  ansible.builtin.get_url:
-    url: https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
-    dest: /usr/local/bin/ecs-cli
-    mode: '0755'
-  become: true
+- name: Configure zsh
+  ansible.builtin.copy:
+    src: zshrc
+    dest: "{{ ansible_user_dir }}/.zshrc.d/awscli.zsh"
+    mode: '0644'

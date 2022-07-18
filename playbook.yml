@@ -34,6 +34,8 @@
       tags: ["neovim"]
     - role: aws-vpn
       tags: ["aws-vpn"]
+    - role: aws-cli
+      tags: ["aws-cli"]
     - role: dotnet
       tags: ["dotnet"]
     - role: go
