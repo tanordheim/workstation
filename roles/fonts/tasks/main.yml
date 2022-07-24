@@ -1,0 +1,6 @@
+---
+
+- name: Install Fonts
+  community.general.homebrew_cask:
+    name:
+      - font-noto-nerd-font
