@@ -6,8 +6,8 @@
       tags: ["bootstrap"]
     - role: zsh
       tags: ["zsh"]
-    - role: amethyst
-      tags: ["amethyst"]
+    - role: yabai
+      tags: ["yabai"]
     - role: iterm2
       tags: ["iterm2"]
     - role: 1password

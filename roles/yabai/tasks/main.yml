@@ -1,0 +1,5 @@
+---
+
+- name: Install Yabai
+  community.general.homebrew:
+    name: koekeishiya/formulae/yabai
