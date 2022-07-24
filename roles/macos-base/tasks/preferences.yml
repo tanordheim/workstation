@@ -99,7 +99,7 @@
 
 - name: Disable UI system sounds
   community.general.osx_defaults:
-    domain: com.apple.systemsound
+    domain: NSGlobalDomain
     key: com.apple.sound.uiaudio.enabled
     type: int
     value: 0
