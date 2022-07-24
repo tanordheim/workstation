@@ -44,8 +44,6 @@
       tags: ["node"]
     - role: wallpapers
       tags: ["wallpapers"]
-    - role: libreoffice
-      tags: ["libreoffice"]
     - role: logitech
       tags: ["logitech"]
     - role: fonts
