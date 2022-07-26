@@ -3,3 +3,15 @@
 - name: Install Yabai
   community.general.homebrew:
     name: koekeishiya/formulae/yabai
+
+- name: Configure passwordless sudo for loading scripting additions
+  ansible.builtin.copy:
+    src: sudoers
+    dest: "/private/etc/sudoers.d/yabai"
+    mode: '0644'
+  become: true
+
+- name: Prepare yabai configuration directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/yabai"
+    state: directory

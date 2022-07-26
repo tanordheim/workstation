@@ -13,3 +13,5 @@
 ## Post installation steps
 
 - Import `ìterm2.json` iTerm profile into iTerm.
+- Disable SIP for Yabai to work optimally as per [the Yabai docs](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection).
+- Install and load the Yabai scripting addition as per [the Yabai docs](https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)).
