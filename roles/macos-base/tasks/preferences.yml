@@ -104,12 +104,12 @@
     type: int
     value: 0
 
-- name: Enable auto dark mode
+- name: Enable dark mode
   community.general.osx_defaults:
     domain: NSGlobalDomain
-    key: AppleInterfaceStyleSwitchesAutomatically
-    type: int
-    value: 1
+    key: AppleInterfaceStyle
+    type: string
+    value: Dark
 
 - name: Use separate spaces for each display
   community.general.osx_defaults:
