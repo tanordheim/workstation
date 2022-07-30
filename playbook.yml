@@ -30,6 +30,8 @@
       tags: ["telegram"]
     - role: slack
       tags: ["slack"]
+    - role: video-conferencing
+      tags: ["video-conferencing"]
     - role: neovim
       tags: ["neovim"]
     - role: aws-vpn

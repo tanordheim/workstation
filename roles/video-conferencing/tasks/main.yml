@@ -1,0 +1,6 @@
+---
+
+- include_tasks: meet-in-one.yml
+- include_tasks: teams.yml
+- include_tasks: zoom.yml
+- include_tasks: pop.yml

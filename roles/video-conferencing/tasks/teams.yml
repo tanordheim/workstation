@@ -1,0 +1,5 @@
+---
+
+- name: Install Microsoft Teams
+  community.general.homebrew_cask:
+    name: microsoft-teams

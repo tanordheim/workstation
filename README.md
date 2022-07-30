@@ -3,6 +3,7 @@
 - Install MacOS normally.
 - Install Rosetta 2 (`sudo softwareupdate --install-rosetta`).
 - Install XCode command line tools (`xcode-select --install`).
+- Ensure that the computer is logged into the App Store.
 - Clone https://github.com/tanordheim/workstation.git.
 - Create the `.vault_password` file in the repo checkout containing the Vault secret.
 - Install Homebrew.
