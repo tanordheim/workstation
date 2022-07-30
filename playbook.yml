@@ -32,6 +32,8 @@
       tags: ["slack"]
     - role: video-conferencing
       tags: ["video-conferencing"]
+    - role: linear
+      tags: ["linear"]
     - role: neovim
       tags: ["neovim"]
     - role: aws-vpn

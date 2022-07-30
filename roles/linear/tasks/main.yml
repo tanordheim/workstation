@@ -1,0 +1,5 @@
+---
+
+- name: Install Linear
+  community.general.homebrew_cask:
+    name: linear-linear
