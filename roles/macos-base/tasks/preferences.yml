@@ -69,6 +69,13 @@
     type: int
     value: 15
 
+- name: Disable keyboard press and hold
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: false
+
 - name: Save documents locally by default instead of iCloud
   community.general.osx_defaults:
     domain: NSGlobalDomain
