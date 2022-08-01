@@ -1,0 +1,5 @@
+---
+
+- name: Install PocketCasts
+  community.general.homebrew_cask:
+    name: pocket-casts

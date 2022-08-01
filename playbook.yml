@@ -32,6 +32,10 @@
       tags: ["slack"]
     - role: video-conferencing
       tags: ["video-conferencing"]
+    - role: spotify
+      tags: ["spotify"]
+    - role: pocketcasts
+      tags: ["pocketcasts"]
     - role: linear
       tags: ["linear"]
     - role: neovim
