@@ -1,0 +1,9 @@
+---
+
+- name: Tap kaf
+  community.general.homebrew_tap:
+    name: birdayz/kaf
+
+- name: Install Kaf
+  community.general.homebrew:
+    name: kaf

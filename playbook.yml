@@ -30,6 +30,8 @@
       tags: ["telegram"]
     - role: slack
       tags: ["slack"]
+    - role: discord
+      tags: ["discord"]
     - role: video-conferencing
       tags: ["video-conferencing"]
     - role: spotify
@@ -44,6 +46,8 @@
       tags: ["aws-vpn"]
     - role: aws-cli
       tags: ["aws-cli"]
+    - role: kaf
+      tags: ["kaf"]
     - role: dotnet
       tags: ["dotnet"]
     - role: go
