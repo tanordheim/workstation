@@ -1,0 +1,9 @@
+---
+
+- name: Install LocalStack
+  community.general.homebrew:
+    name: localstack
+
+- name: Install LocalStack AWS CLI
+  ansible.builtin.pip:
+    name: awscli-local

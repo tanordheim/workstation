@@ -20,6 +20,8 @@
       tags: ["git"]
     - role: docker
       tags: ["docker"]
+    - role: localstack
+      tags: ["localstack"]
     - role: tmux
       tags: ["tmux"]
     - role: jetbrains
