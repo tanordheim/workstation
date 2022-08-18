@@ -1,6 +1,0 @@
----
-
-- name: Install MeetInOne
-  community.general.mas:
-    id: 1542778639
-    state: present
