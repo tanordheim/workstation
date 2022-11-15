@@ -6,6 +6,8 @@
       tags: ["bootstrap"]
     - role: zsh
       tags: ["zsh"]
+    - role: rectangle
+      tags: ["rectangle"]
     - role: iterm2
       tags: ["iterm2"]
     - role: 1password
