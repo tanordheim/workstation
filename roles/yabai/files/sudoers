@@ -1,1 +1,0 @@
-trond ALL = (root) NOPASSWD: /opt/homebrew/bin/yabai --load-sa
