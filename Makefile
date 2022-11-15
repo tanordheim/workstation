@@ -10,8 +10,4 @@ sync_git_config:
 sync_tmux:
 	cp ~/.config/tmux/tmux.conf ./roles/tmux/files/tmux.conf
 
-sync_yabai:
-	cp ~/.config/yabai/yabairc ./roles/yabai/files/yabairc
-	cp ~/.config/skhd/skhdrc ./roles/yabai/files/skhdrc
-
-sync_dotfiles: sync_nvim_config sync_wallpapers sync_git_config sync_tmux sync_yabai
+sync_dotfiles: sync_nvim_config sync_wallpapers sync_git_config sync_tmux
