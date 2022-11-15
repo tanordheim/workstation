@@ -8,6 +8,7 @@ treesitter_configs.setup {
     'bash',
     'c_sharp',
     'dockerfile',
+    'hcl',
     'go',
     'gomod',
     'javascript',

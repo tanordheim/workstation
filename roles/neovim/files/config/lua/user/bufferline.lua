@@ -18,10 +18,10 @@ end
 bufferline.setup {
   highlights = {
     background = {
-      gui = 'italic'
+      italic = true
     },
     buffer_selected = {
-      gui = 'bold'
+      bold = true
     },
   },
   options = {

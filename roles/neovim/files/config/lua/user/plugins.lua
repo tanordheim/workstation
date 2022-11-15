@@ -119,6 +119,10 @@ packer.startup(function(use)
   use('simrat39/symbols-outline.nvim')
 
   -- themes
+  use({
+    'catppuccin/nvim',
+    as = 'catppuccin'
+  })
   use('EdenEast/nightfox.nvim')
 
   -- automatically set up configuration after cloning packer.nvim
