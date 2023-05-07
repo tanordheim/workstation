@@ -32,6 +32,7 @@ local options = {
   wrap = false,                            -- display lines as one long line
   scrolloff = 8,                           -- minimal number of lines to keep above/below cursor when scrolling
   sidescrolloff = 8,                       -- minimal number of columns to keep left/right of cursor when scrolling
+  foldenable = false,                      -- disable folding by default
 }
 
 -- skip ins-completion-menu messages

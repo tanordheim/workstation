@@ -40,19 +40,22 @@ packer.init {
 
 packer.startup(function(use)
   use('wbthomason/packer.nvim') -- have packer manage itself
-  use('nvim-lua/popup.nvim') -- an implementation of the Popup API from vim in Neovim
-  use('nvim-lua/plenary.nvim') -- lua convenience functions
-  use('MunifTanjim/nui.nvim') -- ui library
+  use('nvim-lua/popup.nvim')    -- an implementation of the Popup API from vim in Neovim
+  use('nvim-lua/plenary.nvim')  -- lua convenience functions
+  use('MunifTanjim/nui.nvim')   -- ui library
 
   -- icons
   use('kyazdani42/nvim-web-devicons')
 
   -- language server
+  use({
+    'williamboman/mason.nvim',
+    run = ':MasonUpdate'
+  })
+  use('williamboman/mason-lspconfig.nvim')
   use('neovim/nvim-lspconfig')
-  use('williamboman/nvim-lsp-installer')
   use('ray-x/lsp_signature.nvim')
   use('Hoffs/omnisharp-extended-lsp.nvim')
-  use('chen244/csharpls-extended-lsp.nvim')
   use('lukas-reineke/lsp-format.nvim')
 
   -- snippets
@@ -63,6 +66,7 @@ packer.startup(function(use)
   use('hrsh7th/cmp-nvim-lsp')
   use('saadparwaiz1/cmp_luasnip')
   use('hrsh7th/nvim-cmp')
+  use('github/copilot.vim')
 
   -- comments
   use('numToStr/Comment.nvim')

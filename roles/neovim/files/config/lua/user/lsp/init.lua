@@ -5,8 +5,3 @@ end
 
 require('user.lsp.config')
 require('user.lsp.handlers').setup()
-
--- require('user.lsp.omnisharp')
--- require('user.lsp.terraform')
--- require('user.lsp.yamlls')
-

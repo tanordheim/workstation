@@ -8,7 +8,6 @@ local pid = vim.fn.getpid()
 local opts = {
   handlers = {
     ['textDocument/definition'] = require('omnisharp_extended').handler
-  },
-  cmd = { '/usr/bin/omnisharp', '--languageserver', '--verbose', '--hostPID', tostring(pid) },
+  }
 }
 return opts

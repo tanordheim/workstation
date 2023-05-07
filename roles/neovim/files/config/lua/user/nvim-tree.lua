@@ -5,7 +5,7 @@ end
 
 tree.setup {
   diagnostics = {
-    enable = false, -- disabled, causing some lua issues - seemingly if tree not visible
+    enable = true,
     icons = {
       hint = '',
       info = '',

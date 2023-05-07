@@ -1,5 +1,9 @@
-local lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
-if not lsp_installer_ok then
+local mason_ok, mason = pcall(require, 'mason')
+if not mason_ok then
+  return
+end
+local mason_lspconfig_ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
+if not mason_lspconfig_ok then
   return
 end
 local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
@@ -11,12 +15,14 @@ local servers = {
   'jsonls',
   'omnisharp',
   'pyright',
-  'sumneko_lua',
+  'lua_ls',
   'terraformls',
   'yamlls'
 }
 
-lsp_installer.setup {
+mason.setup {}
+
+mason_lspconfig.setup {
   ensure_installed = servers
 }
 

@@ -3,7 +3,7 @@ if not symbols_outline_status_ok then
   return
 end
 
-vim.g.symbols_outline = {
+symbols_outline.setup {
   auto_preview = false,
   width = 10
 }
